@@ -1,0 +1,74 @@
+User Stories
+
+User Story: User can create a user name and profile
+Priority: 10
+
+User Story: User can create username and password
+Priority: 20
+
+User Story: User can input enrolled classes
+Priority: 30
+ 
+User Story: User can input available study times
+Priority: 40
+ 
+User Story: User can input dedicated study times
+Priority: 50
+
+
+User Story: User can search for study matches
+Priority: 60
+ 
+User Story: User can invite another user to join a study session
+Priority: 70
+
+User Story: User can accept invitation from another user to join a study session
+Priority: 80
+
+
+User Story: User can create a study group.
+Priority: 90
+ 
+User Story: User can invite others to join study group.
+Priority: 100
+ 
+User Story: User can accept invitation from others to join study group.
+Priority: 110
+ 
+User Story: User can invite group members to a study session
+Priority: 120
+
+
+User Story: User can have friends 
+Priority: 130
+ 
+User Story: User can invite friends to study session
+Priority: 140
+ 
+User Story: User can accept invitation to study session
+Priority: 150
+ 
+User Story: User can search for specific user
+Priority: 160
+
+User Story: User can see groups in which he/she is a member
+Priority: 170
+ 
+User Story: User can block specific users
+Priority: 180
+ 
+User Story: User can have advanced controls of groups
+Priority: 190
+ 
+User Story: User can indicate need for lab partner
+Priority: 200
+ 
+User Story: User can use map to see who wants to study now
+Priority: 210
+ 
+User Story: User can use map to see who wants to study in he future
+Priority: 220
+ 
+User Story: User can use map to create a study session
+Priority: 230
+ 
