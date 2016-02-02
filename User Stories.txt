@@ -1,15 +1,23 @@
 User Stories
 
-1. User Story: User can create a user name and profile
+1. As a user,
+   I want to create a user name and password
+   so that I can log in.
 Priority: 10
 
-2. User Story: User can create username and password
+2. As a user, 
+   I want to create a profile
+   so that other users and I can see my profile. 
 Priority: 20
 
-3. User Story: User can input enrolled classes
+3. As a user,
+   I can input my enrolled classes
+   so that other users and I can see my classes schedule. 
 Priority: 30
  
-4. User Story: User can input available study times
+4. As a user,
+   I can input available study times, 
+   so that other users and I can see my study times. 
 Priority: 40
  
 5. User Story: User can input dedicated study times
