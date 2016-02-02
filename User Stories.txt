@@ -24,16 +24,16 @@ Priority: 70
 8. User Story: User can accept invitation from another user to join a study session
 Priority: 80
 
-9. User Story: User can create a study group.
+9. User Story: As a user, I want to create a study group so I can study with others.
 Priority: 90
  
-10. User Story: User can invite others to join study group.
+10. User Story: As a user, I want to be able to send invites to my group so I can work with the people I want to.
 Priority: 100
  
-11. User Story: User can accept invitation from others to join study group.
+11. User Story: As a user, I want an inbox for group invites so I can see who wants me to be a part of their group.
 Priority: 110
  
-12. User Story: User can invite group members to a study session
+12. User Story: As a user, I want to invite people in my group to study so that I can study on my own schedule.
 Priority: 120
 
 13. User Story: User can have friends 
