@@ -26,7 +26,7 @@
             android:maxWidth="200dp"
             android:maxHeight="200dp"
             android:id="@+id/profilePicture"
-            android:src="@drawable/triton"/>
+            android:src="@drawable/TritonProfilePic"/>
 
         <Button
             style="?android:attr/buttonStyleSmall"
