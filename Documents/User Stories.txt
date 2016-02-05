@@ -1,7 +1,7 @@
 User Stories
 
 1. As a user,
-   I want to create an account and a password
+   I want to create an account with a password
    so that I can log in.
    Priority: 10
 
