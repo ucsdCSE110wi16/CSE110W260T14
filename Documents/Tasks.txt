@@ -4,3 +4,39 @@ Task:
 User Story #
 Schedule: 
 
+User Story #21
+      Task: Create a map page of the campus
+      Scedule:
+
+      Task: Create pin objects to show study location on map
+      Schedule: 
+
+      Task: Have a dialog box be displayed when pin on map is clicked
+      Schedule: 
+
+      Task: Have the dialog box display study location, time, class studying for, and creator of pin point
+      Schedule: 
+      
+User Story #22
+      Task: Create a page to search for study partners
+      Schedule:
+      
+      Task: Add filters to narrow down searches, class, times, etc.
+      Schedule:
+      
+      Task: Have a list of search results be displayed on a new page
+      Schedule:
+      
+      Task: Create drop down menu to organize search results by class or time
+      Schedule:
+      
+User Story #23
+      Task: Create an icon on the map screen to create a study session
+      Schedule:
+      
+      Task: Have a dialog box open allowing user to create session, user inputs location, time, and class.
+      Schedule:
+      
+      Task: Add newly created study session to map using a pin point.
+      Schedule:
+
