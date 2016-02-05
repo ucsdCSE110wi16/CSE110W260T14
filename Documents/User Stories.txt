@@ -3,70 +3,102 @@ User Stories
 1. As a user,
    I want to create a user name and password
    so that I can log in.
-Priority: 10
+   Priority: 10
 
 2. As a user, 
    I want to create a profile
    so that other users and I can see my profile. 
-Priority: 20
+   Priority: 20
 
 3. As a user,
    I can input my enrolled classes
    so that other users and I can see my classes schedule. 
-Priority: 30
+   Priority: 30
  
 4. As a user,
    I can input available study times, 
    so that other users and I can see my study times. 
-Priority: 40
+   Priority: 40
  
-5. User Story: User can input dedicated study times
-Priority: 50
+5. As a user:
+   I want to input dedicated study times
+   So that other users can see when im available.
+   Priority: 50
 
-6. User Story: User can search for study matches
-Priority: 60
+6. As a user:
+   I want to be able to search for study partners
+   So that we can study together.
+   Priority: 60
  
-7. User Story: User can invite another user to join a study session
-Priority: 70
+7. As a user:
+   I want to invite another user to my study session
+   So that we can all study together
+   Priority: 70
 
-8. User Story: User can accept invitation from another user to join a study session
-Priority: 80
+8. As a user:
+   I want to accept an initation from another user
+   So that I can study with them.
+   Priority: 80
 
-9. User Story: As a user, I want to create a study group so I can study with others.
-Priority: 90
+9. As a user:
+   I want to create a study group
+   So that I can study with others.
+   Priority: 90
  
-10. User Story: As a user, I want to be able to send invites to my group so I can work with the people I want to.
-Priority: 100
+10. As a user, 
+   I want to be able to send invites to my group 
+   so that I can work with the people I want to.
+   Priority: 100
  
-11. User Story: As a user, I want an inbox for group invites so I can see who wants me to be a part of their group.
-Priority: 110
+11. As a user, 
+   I want an inbox for group invites 
+   so that I can see who wants me to be a part of their group.
+   Priority: 110
  
-12. User Story: As a user, I want to invite people in my group to study so that I can study on my own schedule.
-Priority: 120
+12. As a user, 
+   I want to invite people in my group to study 
+   so that I can study on my own schedule.
+   Priority: 120
 
-13. User Story: User can have friends 
-Priority: 130
+13. As a user:
+   I want to have a list of friends
+   So that I can send invites without having to search for them.
+   Priority: 130
  
-14. User Story: User can invite friends to study session
-Priority: 140
+14. As a user:
+   I want to invite friends to study sessions
+   So that they can study with me
+   Priority: 140
  
-15. User Story: User can accept invitation to study session
-Priority: 150
+15. As a user:
+   I want to accept an invitation from a friend on my list
+   So that I can study with them
+   Priority: 150
  
-16. User Story: User can search for specific user
-Priority: 160
+16. As a user:
+   I want to search for a specific user
+   So that I can find them quicker
+   Priority: 160
 
-17. User Story: User can see groups in which he/she is a member
-Priority: 170
+17. As a user:
+   I want to see what groups im a part of
+   So that I know which ones im part of
+   Priority: 170
  
-18. User Story: User can block specific users
-Priority: 180
+18. As a user:
+   I want to block specific users
+   So that they can't access my profile or send me invites.
+   Priority: 180
  
-19. User Story: User can have advanced controls of groups
-Priority: 190
+19. As a user:
+   I want to have advanced controls of my group
+   So that I can change any of the aspects of the group.
+   Priority: 190
  
-20. User Story: User can indicate need for lab partner
-Priority: 200
+20. As a user:
+   I want to indicate the need for a lab partner
+   So that other users who need a partner can find me.
+   Priority: 200
  
 21. As a User
     I want to use a an interactive map
