@@ -4,6 +4,59 @@ Task:
 User Story #
 Schedule: 
 
+User Story #1
+(?)   Task: Create a user class that contains valid ucsd email address and password. 
+      Scedule:
+
+      Task: Create user interface for logging in using registered account, having login button, create new user button, and forgot password button. 
+      Schedule:
+
+      Task: Create user interface for creating new user account. 
+      Schedule:
+
+(?)   Task: Create user interface for forgot password. 
+      Schedule: 
+
+User Story #2
+      Task: Create a profile class that is linked to the corresponding user. The profile contains name, major, bio, picture, enrolled classes, study time, status, friend list, group list. 
+      Scedule:
+
+      Task: Create user interface for creating profile. 
+      Schedule: 
+
+      Task: Create the schema for storing profile in a database.
+      Schedule:
+
+      Task: Create SQL scripts for adding, finding, updating profile records. 
+      Schedule:
+
+User Story #3
+      Task: Create user interface for entering enrolled classes.
+      Scedule:
+
+      Task: Store/update the classes information into the corresponding profile. 
+      Schedule: 
+
+      Task: Create user interface for displaying enrolled classes in weekly calendar view.
+      Scedule:
+
+User Story #4
+      Task: Create study time class, that contains start time, end time, location, and subject.
+      Scedule:
+
+      Task: Create user interface for available study times.
+      Scedule:
+
+      Task: Create the schema for storing profile's available study time in a database.
+      Schedule:
+
+      Task: Create SQL scripts for adding, finding, updating profile's available study time records. 
+      Schedule:
+
+      Task: Create user interface for displaying available study times in weekly calendar view.
+      Scedule: 
+
+
 User Story #21
       Task: Create a map page of the campus
       Scedule:
