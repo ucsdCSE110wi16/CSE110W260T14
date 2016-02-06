@@ -55,6 +55,54 @@ User Story #4
 
       Task: Create user interface for displaying available study times in weekly calendar view.
       Scedule: 
+      
+User Story #17. 
+   As a user I want to see what groups im a part of
+   So that I know which ones im part of
+   Priority: 170
+   
+   Task: Create group class that contains name field, course (index), members (list), and an event flag (boolean).
+   Task: Creat UI for group screen, that displays properties of group.
+   Task: Create functionality to invite other users, and have invite notifications pop up.
+   Task: Create funcitonal to start a study event (reference to studyevent class), automatically include all members.
+ 
+   Schedule:
+   
+ 
+User Story #18. 
+   As a user,I want to block specific users
+   So that they can't access my profile or send me invites.
+   Priority: 180
+   
+   Task: Create a block button when looking at another profile (object class)
+   Task: Once block button is pressed, restrict other member from ever being able to view your profile
+   (since member cannot view your file, cannot send you invites)
+   
+   Schedule:
+ 
+ 
+User Story #19. 
+   As a user I want to have advanced controls of my group
+   So that I can change any of the aspects of the group.
+   Priority: 190
+   
+   Task: Create admin field in Group class.
+   Task: Designate that only the admin user can edit the group settings (invite/accept request/kick members),
+         Only they can add members to the group.
+   Task:
+   
+   Schedule:
+ 
+User Story #20 
+   As a user I want to indicate the need for a lab partner
+   So that other users who need a partner can find me.
+   Priority: 200
+   
+   Task: Set boolean flag, for text displaying whether one needs a study partner.
+          Text or indication of study partner graphic (like a red dot).
+
+   Schedule:
+
 
 
 User Story #21
