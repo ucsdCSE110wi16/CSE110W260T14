@@ -5,8 +5,8 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.example.john.tritonstudy"
-        minSdkVersion 23
+        applicationId "edu.cse100.wi16.tritonstudy"
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"

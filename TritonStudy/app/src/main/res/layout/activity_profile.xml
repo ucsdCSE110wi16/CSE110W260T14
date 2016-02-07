@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.cse100.wi16.tritonstudy.ProfileActivity"
+    android:background="#2b92b9">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:id="@+id/imageView5"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:background="@drawable/profile_anon" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="210dp"
+            android:layout_height="237dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_rowSpan="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="First name:"
+                android:id="@+id/labelNameFirst"
+                android:textColor="#ffffff" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/textNameFirst"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#ffffff"
+                android:background="#016691"
+                android:singleLine="true" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left">
+
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Last name:"
+                    android:id="@+id/labelNameLast"
+                    android:textColor="#ffffff"
+                    android:layout_row="0"
+                    android:layout_column="0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="MI:"
+                    android:id="@+id/textView4"
+                    android:textColor="#ffffff"
+                    android:layout_row="0"
+                    android:layout_column="1" />
+
+                <EditText
+                    android:layout_width="174dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/editText3"
+                    android:textColor="#ffffff"
+                    android:background="#016691"
+                    android:singleLine="true"
+                    android:layout_row="1"
+                    android:layout_column="0" />
+
+                <EditText
+                    android:layout_width="32dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/textNameLast"
+                    android:textColor="#ffffff"
+                    android:background="#016691"
+                    android:layout_row="1"
+                    android:layout_column="1"
+                    android:singleLine="true"
+                    android:maxLength="1"
+                    android:longClickable="false" />
+            </GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="E-mail address:"
+                android:id="@+id/labelEmail"
+                android:textColor="#ffffff" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/textEmail"
+                android:textColor="#ffffff"
+                android:background="#016691"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Major:"
+                android:id="@+id/labelMajor"
+                android:textColor="#ffffff" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:textColor="#ffffff"
+                android:background="#016691"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Enrolled college:"
+                android:id="@+id/textView3"
+                android:textColor="#ffffff" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerColleges"
+                android:layout_gravity="center_horizontal"
+                android:spinnerMode="dropdown"
+                android:background="#ffffff" />
+
+        </LinearLayout>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="104dp"
+            android:layout_height="64dp"
+            android:text="Change Picture"
+            android:id="@+id/buttonChangePic"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:background="#ff8700"
+            android:textColor="#ffffff" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="123dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_columnSpan="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Bio:"
+                android:id="@+id/labelBio"
+                android:textColor="#ffffff" />
+
+            <EditText
+                android:layout_width="337dp"
+                android:layout_height="85dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/textBio"
+                android:background="#016691"
+                android:gravity="top"
+                android:singleLine="false"
+                android:layout_gravity="top"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="104dp"
+                android:layout_height="wrap_content"
+                android:text="Edit Study Times"
+                android:id="@+id/buttonEditStudy"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:background="#ff8700"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:layout_margin="8dp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="104dp"
+                android:layout_height="wrap_content"
+                android:text="Edit Courses"
+                android:id="@+id/buttonEditCourse"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:background="#ff8700"
+                android:textColor="#ffffff"
+                android:layout_margin="8dp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="104dp"
+                android:layout_height="32dp"
+                android:text="Cancel"
+                android:id="@+id/buttonCancel"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:background="#b4100a"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:layout_margin="8dp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="104dp"
+                android:layout_height="32dp"
+                android:text="Submit"
+                android:id="@+id/buttonSubmit"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:background="#58ce46"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:layout_margin="8dp" />
+
+        </GridLayout>
+    </GridLayout>
+
+</RelativeLayout>

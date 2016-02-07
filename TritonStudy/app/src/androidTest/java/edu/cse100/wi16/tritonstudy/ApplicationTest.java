@@ -1,4 +1,4 @@
-package com.example.john.tritonstudy;
+package edu.cse100.wi16.tritonstudy;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
