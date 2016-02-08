@@ -1,4 +1,6 @@
 <resources>
+    <!-- User fields -->
+
     <!-- Login Screen strings -->
     <string name="title_activity_login">Sign in</string>
     <string name="labelUsername">E-mail:</string>

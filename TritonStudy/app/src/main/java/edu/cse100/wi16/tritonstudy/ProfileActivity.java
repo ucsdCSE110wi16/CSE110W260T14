@@ -6,9 +6,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
+   /* EditText firstName = (EditText)findViewById(R.id.textNameFirst);
+    EditText lastName = (EditText)findViewById(R.id.textNameLast);
+    EditText middleName = (EditText)findViewById(R.id.textNameMiddle);
+    TextView nameStatic = (TextView)findViewById(R.id.nameStatic);
+   */
+    EditText emailAddress = (EditText)findViewById(R.id.textEmail);
+    TextView emailStatic = (TextView)findViewById(R.id.emailStatic);
+
+    EditText major = (EditText)findViewById(R.id.majorText);
+    TextView majorStatic = (TextView)findViewById(R.id.majorStatic);
+
+    EditText bio = (EditText)findViewById(R.id.textBio);
+    TextView bioStatic = (TextView)findViewById(R.id.bioStatic);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +39,16 @@ public class ProfileActivity extends AppCompatActivity {
         dropdown.setAdapter(adapter);
 
         //Submit Button
-        Button submitButton = (Button) findViewById(R.id.buttonSubmit);
+       /* Button submitButton = (Button)findViewById(R.id.buttonSubmit);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                emailStatic.setText(emailAddress.getText().toString());
+                majorStatic.setText(major.getText().toString());
+                bioStatic.setText(bio.getText().toString());
                 startActivity(new Intent(ProfileActivity.this, MainActivity.class));
             }
-        });
+        }); */
     }
 }
