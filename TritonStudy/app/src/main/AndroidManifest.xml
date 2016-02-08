@@ -27,22 +27,19 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!-- Profile Screen Activity -->
+        <!-- View Profile Activity -->
+        <activity android:name=".ProfileActivityStatic"
+            android:label="@string/title_activity_profile"/>
+
+        <!-- Edit Profile Screen Activity -->
         <activity
             android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.ActionBarShowTitle" />
+            android:label="@string/title_activity_profile_edit"/>
 
         <!-- Edit Study Times Activity -->
         <activity
             android:name=".edit_times"
-            android:label="@string/title_activity_edit_times"
-            android:theme="@style/AppTheme.ActionBarShowTitle"/>
-
-        <activity
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.ActionBarShowTitle" />
-        <activity android:name=".ProfileActivityStatic"></activity>
+            android:label="@string/title_activity_edit_times"/>
 
     </application>
 
