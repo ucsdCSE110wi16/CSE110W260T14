@@ -31,5 +31,14 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(new Intent(ProfileActivity.this, MainActivity.class));
             }
         });
+
+        //Edit Times Button
+        Button editTimesButton = (Button) findViewById(R.id.buttonEditStudy);
+
+        editTimesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, edit_times.class));
+            }
+        });
     }
 }
