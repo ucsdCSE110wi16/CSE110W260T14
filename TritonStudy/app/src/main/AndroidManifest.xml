@@ -36,7 +36,7 @@
         <!-- Edit Study Times Activity -->
         <activity
             android:name=".edit_times"
-            android:label="@string/title_activity_profile"
+            android:label="@string/title_activity_edit_times"
             android:theme="@style/AppTheme.ActionBarShowTitle"/>
     </application>
 
