@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.cse100.wi16.tritonstudy">
 
+    <!-- Permissions to use device camera and external storage -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,11 +34,15 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!-- Profile Screen Activity -->
+        <!-- View Profile Activity -->
+        <activity android:name=".ProfileActivityStatic"
+            android:label="@string/title_activity_profile"/>
+
+        <!-- Edit Profile Screen Activity -->
         <activity
             android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.ActionBarShowTitle" />
+            android:label="@string/title_activity_profile_edit"
+            android:theme="@style/AppTheme.ActionBarShowTitle"/>
 
         <!-- Edit Study Times Activity -->
         <activity
@@ -39,12 +50,15 @@
             android:label="@string/title_activity_edit_times"
             android:theme="@style/AppTheme.ActionBarShowTitle"/>
 
+<<<<<<< HEAD
         <activity
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.ActionBarShowTitle" />
 
         <activity android:name=".ProfileActivityStatic"></activity>
 
+=======
+>>>>>>> cfdec26c025423a96bdcae4a0987e3e5fa80985f
     </application>
 
 </manifest>
