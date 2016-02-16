@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.holoeverywhere:support-library:r13" type="repository">
+    <properties maven-id="org.holoeverywhere:support-library:r13" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/holoeverywhere/support-library/r13/support-library-r13.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
