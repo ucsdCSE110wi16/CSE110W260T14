@@ -50,18 +50,6 @@
             android:label="@string/title_activity_edit_times"
             android:theme="@style/AppTheme.ActionBarShowTitle"/>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <activity
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.ActionBarShowTitle" />
-
-        <activity android:name=".ProfileActivityStatic"></activity>
-
-=======
->>>>>>> cfdec26c025423a96bdcae4a0987e3e5fa80985f
-=======
->>>>>>> cfdec26c025423a96bdcae4a0987e3e5fa80985f
     </application>
 
 </manifest>
