@@ -9,9 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -48,6 +50,14 @@ public class edit_times extends FragmentActivity {
 
         hour_start = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
+
+        //=============================================
+        //Drop Down Box (spinner) for Enrolled Colleges
+        //=============================================
+        Spinner dropdown = (Spinner) findViewById(R.id.spinnerLocation);
+        String[] items = new String[]{"Select your location:", "Geisel Library", "John Muir", "Thurgood Marshall", "Earl Warren", "Eleanor Roosevelt", "Sixth"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
 
         if (hour_start == 23)
         {
