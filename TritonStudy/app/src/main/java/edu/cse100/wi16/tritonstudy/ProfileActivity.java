@@ -48,7 +48,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         firstName = (EditText) findViewById(R.id.textNameFirst);
         lastName = (EditText) findViewById(R.id.textNameLast);
-        middleName = (EditText) findViewById(R.id.textNameMiddle);
         nameStatic = (TextView) findViewById(R.id.nameStatic);
 
         emailAddress = (EditText) findViewById(R.id.textEmail);
@@ -88,10 +87,10 @@ public class ProfileActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                emailStatic.setText(emailAddress.getText().toString());
-                majorStatic.setText(major.getText().toString());
-                bioStatic.setText(bio.getText().toString());
-                startActivity(new Intent(ProfileActivity.this, ProfileActivityStatic.class));
+                //emailStatic.setText("Hello");
+               // majorStatic.setText(major.getText().toString());
+              //  bioStatic.setText(bio.getText().toString());
+               /// startActivity(new Intent(ProfileActivity.this, ProfileActivityStatic.class));
             }
         });
 
