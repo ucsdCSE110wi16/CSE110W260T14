@@ -87,7 +87,7 @@ public class ProfileActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //emailStatic.setText("Hello");
+                //
                // majorStatic.setText(major.getText().toString());
               //  bioStatic.setText(bio.getText().toString());
                /// startActivity(new Intent(ProfileActivity.this, ProfileActivityStatic.class));
@@ -184,6 +184,7 @@ public class ProfileActivity extends AppCompatActivity {
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
                     myDrawable = Drawable.createFromStream(inputStream, uri.toString());
+                    viewImage.setImageDrawable(myDrawable);
                 } catch (FileNotFoundException e) {}
             }
         }
