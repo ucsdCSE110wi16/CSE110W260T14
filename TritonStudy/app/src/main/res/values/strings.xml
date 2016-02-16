@@ -24,6 +24,7 @@
     <string name="buttonMap">UCSD Map</string>
 
     <!-- Profile Screen strings -->
+    <string name="title_activity_profile_edit">Edit Profile</string>
     <string name="title_activity_profile">My TritonStudy User Profile</string>
 
     <!-- Strings for Edit Screens -->
