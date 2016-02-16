@@ -22,4 +22,6 @@ public class ProfileActivityStatic extends AppCompatActivity {
         });
     }
 
+
+
 }
