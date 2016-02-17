@@ -158,11 +158,11 @@ public class ProfileActivity extends AppCompatActivity {
                     // set crop properties
                     cropIntent.putExtra("crop", "true");
                     // indicate aspect of desired crop
-                    cropIntent.putExtra("aspectX", 4);
-                    cropIntent.putExtra("aspectY", 3);
+                    cropIntent.putExtra("aspectX", 3);
+                    cropIntent.putExtra("aspectY", 4);
                     // indicate output X and Y
-                    cropIntent.putExtra("outputX", 1280);
-                    cropIntent.putExtra("outputY", 1280);
+                    cropIntent.putExtra("outputX", 300);
+                    cropIntent.putExtra("outputY", 300);
                     // retrieve data on return
                     cropIntent.putExtra("scaleUpIfNeeded", true);
 
@@ -183,9 +183,10 @@ public class ProfileActivity extends AppCompatActivity {
                 uri = data.getData();
                 try {
                     InputStream inputStream = getContentResolver().openInputStream(uri);
-                    myDrawable = Drawable.createFromStream(inputStream, uri.toString());
-                    viewImage.setImageDrawable(myDrawable);
-                } catch (FileNotFoundException e) {}
+                    //myDrawable = Drawable.createFromStream(inputStream, uri.toString());
+                    Bitmap bitmap= BitmapFactory.decodeStream(inputStream );
+                    viewImage.setImageBitmap(bitmap);
+                } catch (IOException e) {}
             }
         }
         else if (resCode == RESULT_CANCELED) {
