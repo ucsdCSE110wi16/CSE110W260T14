@@ -1,13 +1,13 @@
 User Stories
 
 1. As a user,
-   I want to create an account with a password
-   so that I can log in.
+   I want to create a profile
+   so that other users and I can see my profile.
    Priority: 10
 
 2. As a user, 
-   I want to create a profile
-   so that other users and I can see my profile. 
+   I want to be able to log in 
+   so that I can access my profile. 
    Priority: 20
 
 3. As a user,
