@@ -5,56 +5,78 @@ User Story #
 Schedule: 
 
 User Story #1
-(?)   Task: Create a user class that contains valid ucsd email address and password. 
-      Scedule:
+      Task: Create a profile class that is linked to the corresponding user. The profile contains first name, last name, major, college, bio, picture, enrolled classes, study time, status, group list. 
+      Schedule: 3 days
 
-      Task: Create user interface for logging in using registered account, having login button, create new user button, and forgot password button. 
-      Schedule:
+      Task: Create user interface for creating basic profile information. 
+      Schedule: 3 days
 
-      Task: Create user interface for creating new user account. 
-      Schedule:
+      Task: Create user interface for selecting enrolled classes. 
+      Schedule: 2 days
+      
+      Task: Create user interface for enrolled classes confirmation. 
+      Schedule: 1 day
+      
+      Task: Create user interface for email verification page. 
+      Schedule: 1 day
+      
+      Task: Create the schema for storing profile in a database.
+      Schedule: 3 days
 
-(?)   Task: Create user interface for forgot password. 
-      Schedule: 
+      Task: Create Firebase scripts for adding, finding, updating profile records. 
+      Schedule: 8 days
+
+      Task: Create user interface for forgot password. 
+      Schedule: 1 day
+      
+      Task: Send verification email with randomized code.
+      Schedule: 3 days
+
+      Task: Check verification code inputted by user.
+      Schedule: 2 days
 
 User Story #2
-      Task: Create a profile class that is linked to the corresponding user. The profile contains name, major, bio, picture, enrolled classes, study time, status, friend list, group list. 
-      Scedule:
 
-      Task: Create user interface for creating profile. 
-      Schedule: 
+      Task: Create user interface for logging in using registered account, with login button, create new user button, and forgot password button. 
+      Schedule: 2 days
 
-      Task: Create the schema for storing profile in a database.
-      Schedule:
-
-      Task: Create SQL scripts for adding, finding, updating profile records. 
-      Schedule:
+      Task: Update UI for login screen to match the blue color theme.  
+      Schedule: 1 day
+      
+      Task: Create user interface for forgot password. 
+      Schedule: 1 day
+      
+      Task: Check the inputted user email and password if they exist in the database. 
+      Schedule: 2 days
+      
+      Task: Retrieve profile information of the corresponding logged-in user.  
+      Schedule: 5 days
 
 User Story #3
-      Task: Create user interface for entering enrolled classes.
-      Scedule:
+      Task: Create user interface for entering/updating enrolled classes.
+      Schedule: 1 day
 
       Task: Store/update the classes information into the corresponding profile. 
-      Schedule: 
+      Schedule: 4 days
 
       Task: Create user interface for displaying enrolled classes in weekly calendar view.
-      Scedule:
+      Schedule: 3 days
 
 User Story #4
       Task: Create study time class, that contains start time, end time, location, and subject.
-      Scedule:
+      Schedule: 2 days
 
       Task: Create user interface for available study times.
-      Scedule:
+      Schedule: 2 days
 
       Task: Create the schema for storing profile's available study time in a database.
-      Schedule:
+      Schedule: 4 days
 
-      Task: Create SQL scripts for adding, finding, updating profile's available study time records. 
-      Schedule:
+      Task: Create Firebase scripts for adding, finding, updating profile's available study time records. 
+      Schedule: 6 days
 
       Task: Create user interface for displaying available study times in weekly calendar view.
-      Scedule: 
+      Schedule: 4 days
 
 User Story #9
       Task: Allow user to create groups based on classes 
