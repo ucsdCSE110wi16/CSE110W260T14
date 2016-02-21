@@ -1,13 +1,13 @@
 User Stories
 
 1. As a user,
-   I want to create an account with a password
-   so that I can log in.
+   I want to create a profile
+   so that other users and I can see my profile.
    Priority: 10
 
 2. As a user, 
-   I want to create a profile
-   so that other users and I can see my profile. 
+   I want to be able to log in 
+   so that I can access my profile. 
    Priority: 20
 
 3. As a user,
@@ -59,21 +59,6 @@ User Stories
    I want to invite people in my group to study 
    so that I can study on my own schedule.
    Priority: 120
-
-13. As a user,
-   I want to have a list of friends
-   So that I can send invites without having to search for them.
-   Priority: 130
- 
-14. As a user,
-   I want to invite friends to study sessions
-   So that they can study with me
-   Priority: 140
- 
-15. As a user,
-   I want to accept an invitation from a friend on my list
-   So that I can study with them
-   Priority: 150
  
 16. As a user,
    I want to search for a specific user
@@ -115,3 +100,4 @@ User Stories
     So that other users can see where I'm currently studying at.
     Priority: 230
  
+

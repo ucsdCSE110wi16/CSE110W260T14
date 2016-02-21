@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 public class ProfileActivityStatic extends AppCompatActivity {
     TextView emailStatic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_static);
 
@@ -21,7 +21,7 @@ public class ProfileActivityStatic extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivityStatic.this, ProfileActivity.class));
                 emailStatic = (TextView) findViewById(R.id.emailStatic);
-                emailStatic.setText("Hello");
+                emailStatic.setTextKeepState("Hello");
             }
         });
     }
