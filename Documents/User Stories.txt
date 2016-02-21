@@ -85,19 +85,11 @@ User Stories
    So that other users who need a partner can find me.
    Priority: 200
  
-21. As a User,
-    I want to use a an interactive map
-    So that I can see where people are studying
-    Priority: 210
- 
 22. As a User,
     I want to search for study partners
     So that I can see who wants to study in the future.
     Priority: 220
  
-23. As a User,
-    I want to use the map feature to create a study session
-    So that other users can see where I'm currently studying at.
-    Priority: 230
+
  
 
