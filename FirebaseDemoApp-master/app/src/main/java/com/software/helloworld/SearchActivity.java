@@ -8,6 +8,7 @@
  */
 package com.software.helloworld;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -22,9 +23,11 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
+import com.firebase.simplelogin.SimpleLogin;
 
 
 public class SearchActivity extends ActionBarActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class SearchActivity extends ActionBarActivity {
                     Toast.makeText(SearchActivity.this, "No record found", Toast.LENGTH_SHORT).show();
                 else {
                     //Toast.makeText(SearchActivity.this, snapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-                    for (DataSnapshot messageSnapshot: snapshot.getChildren()) {
+                    for (DataSnapshot messageSnapshot : snapshot.getChildren()) {
 //                        String name = (String) messageSnapshot.child("name").getValue();
 
                         Student student = messageSnapshot.getValue(Student.class);
@@ -77,6 +80,11 @@ public class SearchActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void newUser(View button) {
+        Intent intent = new Intent(this,NewUser.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -91,4 +99,5 @@ public class SearchActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

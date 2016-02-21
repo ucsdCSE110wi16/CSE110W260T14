@@ -8,10 +8,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.Map;
+
+
 
 public class MainActivity extends AppCompatActivity {
+
+    Student student = new Student();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         Firebase myFirebaseRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
-        Student student = new Student();
+
 
         student.setName(name);
         student.setStudentId(id);
@@ -57,6 +67,25 @@ public class MainActivity extends AppCompatActivity {
         student.setBio(bio);
         student.setMajor(major);
         student.setPassword(password);
+
+        myFirebaseRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+            @Override
+            public void onSuccess(Map<String, Object> result) {
+
+                result.put("name", student.getName());
+                result.put("studentID", student.getStudentId());
+                result.put("email", student.getEmail());
+                result.put("bio", student.getBio());
+                result.put("major", student.getMajor());
+
+                Toast.makeText(MainActivity.this, "Successfully created user account with uid: " + result.get("uid"), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                Toast.makeText(MainActivity.this, "There was an error", Toast.LENGTH_LONG).show();
+            }
+        });
 
         myFirebaseRef.child(student.getStudentId()).setValue(student);
 

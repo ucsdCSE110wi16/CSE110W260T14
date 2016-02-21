@@ -51,5 +51,14 @@
             android:onClick="addRecord"
             android:layout_width="fill_parent">
         </Button>
+
+        <Button
+            android:id="@+id/AddUser"
+            android:layout_height="wrap_content"
+            android:text="@string/addNewUser"
+            android:onClick="newUser"
+            android:layout_width="fill_parent">
+        </Button>
+
     </LinearLayout>
 </RelativeLayout>
