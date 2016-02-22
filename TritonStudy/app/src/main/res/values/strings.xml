@@ -31,4 +31,11 @@
     <string name="title_activity_edit_times">Edit Study Times</string>
     <string name="title_activity_edit_courses">Edit Courses</string>
 
+    <!-- Strings for Create new user Screens -->
+    <string name="title_activity_create_user_info">Create New User: Basic User Info</string>
+    <string name="title_activity_create_user_classes">Create New User: Select Classes</string>
+    <string name="title_activity_create_user_classes_confirm">Create New User: Confirm Classes</string>
+    <string name="title_activity_create_user_verify">Create New User: Verification</string>
+
+
 </resources>

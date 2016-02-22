@@ -5,8 +5,10 @@
     <!-- Permissions to use device camera and external storage -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -35,21 +37,41 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- View Profile Activity -->
-        <activity android:name=".ProfileActivityStatic"
-            android:label="@string/title_activity_profile"/>
+        <activity
+            android:name=".ProfileActivityStatic"
+            android:label="@string/title_activity_profile" />
 
         <!-- Edit Profile Screen Activity -->
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile_edit"
-            android:theme="@style/AppTheme.ActionBarShowTitle"/>
+            android:theme="@style/AppTheme.ActionBarShowTitle" />
 
         <!-- Edit Study Times Activity -->
         <activity
             android:name=".edit_times"
             android:label="@string/title_activity_edit_times"
-            android:theme="@style/AppTheme.ActionBarShowTitle"/>
+            android:theme="@style/AppTheme.ActionBarShowTitle" />
 
+        <!-- Create new user: User Info (name, email, contact info, etc.) Activity -->
+        <activity
+            android:name=".CreateUserInfo"
+            android:label="@string/title_activity_create_user_info" />
+
+        <!-- Create new user: Select Classes Activity -->
+        <activity
+            android:name=".CreateUserClassesActivity"
+            android:label="@string/title_activity_create_user_classes" />
+
+        <!-- Create new user: Confirm Classes Activity -->
+        <activity
+            android:name=".CreateUserClassesConfirmActivity"
+            android:label="@string/title_activity_create_user_classes_confirm" />
+
+        <!-- Create new user: Verify Account Activity -->
+        <activity
+            android:name=".CreateUserVerify"
+            android:label="@string/title_activity_create_user_verify" />
     </application>
 
 </manifest>

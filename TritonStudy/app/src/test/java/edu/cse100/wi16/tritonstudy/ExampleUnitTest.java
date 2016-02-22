@@ -1,4 +1,4 @@
-package test.java.edu.cse100.wi16.tritonstudy;
+package edu.cse100.wi16.tritonstudy;
 
 import org.junit.Test;
 

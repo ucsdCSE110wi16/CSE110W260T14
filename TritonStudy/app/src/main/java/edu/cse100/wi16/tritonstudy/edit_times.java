@@ -25,6 +25,7 @@ public class edit_times extends FragmentActivity {
     private TextView tvDisplayDate;
     private TextView tvTimeStart;
     private TextView tvTimeEnd;
+    //private Spinner dropdown;
 
     private int year;
     private int month;
@@ -51,14 +52,6 @@ public class edit_times extends FragmentActivity {
         hour_start = c.get(Calendar.HOUR_OF_DAY);
         minute = c.get(Calendar.MINUTE);
 
-        //=============================================
-        //Drop Down Box (spinner) for Enrolled Colleges
-        //=============================================
-        Spinner dropdown = (Spinner) findViewById(R.id.spinnerLocation);
-        String[] items = new String[]{"Select your location:", "Geisel Library", "John Muir", "Thurgood Marshall", "Earl Warren", "Eleanor Roosevelt", "Sixth"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        dropdown.setAdapter(adapter);
-
         if (hour_start == 23)
         {
             hour_end = 23;
@@ -72,6 +65,31 @@ public class edit_times extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_times);
+
+        //=============================================
+        //Drop Down Box (spinner) for Study Locations
+        //=============================================
+        Spinner spLocs = (Spinner) findViewById(R.id.spinnerLocation);
+        String[] strLocs = new String[]{"Select your location:", "Geisel Library", "Price Center East", "Price Center West", "The Old Student Center",
+                "Biomedical Library", "Galbraith Hall", "North Break (The Village)", "Marshall: P Hall Res Lounge", "Marshall: Q Hall Res Lounge",
+                "Marshall: R Hall Res Lounge", "Marshall: U Hall Res Lounge", "Marshall: Fireside Lounge", "Marshall: Ocean View Lounge",
+                "Muir: Tioga & Tenaya Res Hall Lounges", "Muir: Tioga Hall 11th Floor Mtg Rm", "Muir: Tuolumne Apts Lounge", "Muir: Tamarack Apts Lounges",
+                "Revelle: Blake Hall: Commuter Lounge", "Revelle: Blake Hall: College Center", "Revelle: Blake Hall: Blake 4 Lounge",
+                "Muir: Argo Res Hall Lounges", "Muir: Fleet Res Lounge Halls", "Galbraith Hall: The Think Tank", "Galbraith Hall: Barnwood",
+                "Muir: Keeling 1 Lounge", "Muir: Keeling 3 Lounge", "ERC: Africa Hall", "ERC: Asia Hall", "ERC: Europe Hall", "ERC: Latin Americaa Hall",
+                "ERC: North America Hall", "I-House: Asante House", "I-House: Cuzco House", "I-House: Kathmandu House", "ERC: Commuter Lounge",
+                "Sixth: College Lodge", "Sixth: Dogg House", "Sixth: Commuter Center", "Sixth: Digital Playroom", "Warren: The Courtroom", "Warren: JK Wood Lounge",
+                "Warren: Harlan Res Hall Lounges", "Warren: Frankfurt Res Hall Lounges", "Warren: Stewart Res Hall Lounges", "Warren: CSE Study Lounge"};
+        ArrayAdapter<String> adLocs = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, strLocs);
+        spLocs.setAdapter(adLocs);
+
+        //=============================================
+        //Drop Down Box (spinner) for Classes (debug)
+        //=============================================
+        Spinner spClasses = (Spinner) findViewById(R.id.spinnerClass);
+        String[] strClasses = new String[]{"Select your class:", "CSE 110", "BIOL 100", "MATH 100B", "LIST 1CX"};
+        ArrayAdapter<String> adClasses = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, strClasses);
+        spClasses.setAdapter(adClasses);
 
         //Back Button
         Button backButton = (Button) findViewById(R.id.buttonBack);

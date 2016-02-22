@@ -24,6 +24,14 @@ public class ProfileActivityStatic extends AppCompatActivity {
                 emailStatic.setTextKeepState("Hello");
             }
         });
+
+        Button buttonBack = (Button) findViewById(R.id.buttonBack);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivityStatic.this, MainActivity.class));
+            }
+        });
     }
 
 

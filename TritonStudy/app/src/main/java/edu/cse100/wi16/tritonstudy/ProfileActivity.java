@@ -33,7 +33,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class ProfileActivity extends AppCompatActivity {
-    EditText firstName, lastName, middleName, emailAddress, major, bio;
+    EditText firstName, lastName, emailAddress, major, bio;
     TextView nameStatic, emailStatic, majorStatic, bioStatic;
 
     int CROP_IMAGE = 1;
