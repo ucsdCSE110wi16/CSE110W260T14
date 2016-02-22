@@ -27,7 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewUser" />
-        <activity android:name=".LogInUser"></activity>
+        <activity android:name=".LogInUser" />
+        <activity android:name=".ShowProfile"></activity>
     </application>
 
 </manifest>

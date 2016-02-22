@@ -33,6 +33,7 @@ public class SearchActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        Firebase.setAndroidContext(this);
 
     }
 
@@ -75,13 +76,19 @@ public class SearchActivity extends ActionBarActivity {
         });
     }
 
-    public void addRecord(View button) {
+    public void newUser(View button) {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
 
-    public void newUser(View button) {
-        Intent intent = new Intent(this,NewUser.class);
+    public void logInUser(View button) {
+        Intent intent = new Intent(this,LogInUser.class);
+        startActivity(intent);
+    }
+
+
+    public void showProfile(View button) {
+        Intent intent = new Intent(this,ShowProfile.class);
         startActivity(intent);
     }
 

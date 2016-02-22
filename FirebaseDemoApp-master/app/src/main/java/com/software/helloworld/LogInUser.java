@@ -2,6 +2,9 @@ package com.software.helloworld;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
@@ -16,18 +19,41 @@ public class LogInUser extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in_user);
+
+        ref.addAuthStateListener(new Firebase.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(AuthData authData) {
+                if (authData != null) {
+                    // user is logged in
+                } else {
+                    // user is not logged in
+                }
+            }
+        });
     }
 
-    // Create a handler to handle the result of the authentication
-    Firebase.AuthResultHandler authResultHandler = new Firebase.AuthResultHandler() {
-        @Override
-        public void onAuthenticated(AuthData authData) {
-            // Authenticated successfully with payload authData
-        }
-        @Override
-        public void onAuthenticationError(FirebaseError firebaseError) {
-            // Authenticated failed with error firebaseError
-        }
-    };
+
+    public void logIn(View button){
+
+        EditText etEmail = (EditText) findViewById(R.id.logIn_email);
+        EditText etPassword = (EditText) findViewById(R.id.logIn_password);
+
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+
+
+
+        ref.authWithPassword(email, password, new Firebase.AuthResultHandler() {
+            @Override
+            public void onAuthenticated(AuthData authData) {
+                Toast.makeText(LogInUser.this, "Successfully logged in user account  with uid: " + authData.getUid().toString() , Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onAuthenticationError(FirebaseError firebaseError) {
+                Toast.makeText(LogInUser.this, "Failed to log in user", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
 
 }

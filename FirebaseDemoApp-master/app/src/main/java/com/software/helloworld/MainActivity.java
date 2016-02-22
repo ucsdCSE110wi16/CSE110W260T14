@@ -50,33 +50,25 @@ public class MainActivity extends AppCompatActivity {
         EditText etMajor = (EditText) findViewById(R.id.EditTextMajor);
         EditText etPassword = (EditText) findViewById(R.id.EditTextPassword);
 
-        String name = etName.getText().toString();
-        String id = etId.getText().toString();
         String email = etEmail.getText().toString();
-        String bio = etBio.getText().toString();
-        String major = etMajor.getText().toString();
         String password = etPassword.getText().toString();
 
-        Firebase myFirebaseRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        final Firebase myFirebaseRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
-
-
-        student.setName(name);
-        student.setStudentId(id);
-        student.setEmail(email);
-        student.setBio(bio);
-        student.setMajor(major);
-        student.setPassword(password);
+        student.setName(etName.getText().toString());
+        student.setStudentId(etId.getText().toString());
+        student.setEmail(etEmail.getText().toString());
+        student.setBio(etBio.getText().toString());
+        student.setMajor(etMajor.getText().toString());
+        student.setPassword(etPassword.getText().toString());
 
         myFirebaseRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
 
-                result.put("name", student.getName());
-                result.put("studentID", student.getStudentId());
-                result.put("email", student.getEmail());
-                result.put("bio", student.getBio());
-                result.put("major", student.getMajor());
+                String uid = result.get("uid").toString();
+
+                myFirebaseRef.child(uid).setValue(student);
 
                 Toast.makeText(MainActivity.this, "Successfully created user account with uid: " + result.get("uid"), Toast.LENGTH_LONG).show();
             }
@@ -87,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        myFirebaseRef.child(student.getStudentId()).setValue(student);
+
 
         Intent output = new Intent();
         setResult(RESULT_OK, output);

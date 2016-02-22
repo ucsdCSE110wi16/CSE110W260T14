@@ -34,7 +34,7 @@ public class NewUser extends AppCompatActivity {
         ref.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
-                System.out.println("Successfully created user account with uid: " + result.get("uid"));
+
                 Toast.makeText(NewUser.this, "Successfully created user account with uid: " + result.get("uid"), Toast.LENGTH_LONG).show();
             }
             @Override

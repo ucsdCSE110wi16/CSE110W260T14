@@ -27,36 +27,44 @@
             android:id="@+id/TextViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/formTitle"
+            android:text="Firebase Demo"
             android:textSize="10pt">
         </TextView>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/studentId"
-            android:ems="10"
-            android:id="@+id/EditTextId" />
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/studentId"-->
+            <!--android:ems="10"-->
+            <!--android:id="@+id/EditTextId" />-->
+        <!--<Button-->
+            <!--android:id="@+id/Search"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/search"-->
+            <!--android:onClick="search"-->
+            <!--android:layout_width="fill_parent">-->
+        <!--</Button>-->
         <Button
-            android:id="@+id/Search"
+            android:id="@+id/NewUser"
             android:layout_height="wrap_content"
-            android:text="@string/search"
-            android:onClick="search"
-            android:layout_width="fill_parent">
-        </Button>
-        <Button
-            android:id="@+id/AddRecord"
-            android:layout_height="wrap_content"
-            android:text="@string/addNew"
-            android:onClick="addRecord"
+            android:text="New User"
+            android:onClick="newUser"
             android:layout_width="fill_parent">
         </Button>
 
         <Button
-            android:id="@+id/AddUser"
+            android:id="@+id/LogIn"
             android:layout_height="wrap_content"
-            android:text="@string/addNewUser"
-            android:onClick="newUser"
+            android:text="Log In"
+            android:onClick="logInUser"
+            android:layout_width="fill_parent">
+        </Button>
+
+        <Button
+            android:id="@+id/ShowProfile"
+            android:layout_height="wrap_content"
+            android:text="Show profile"
+            android:onClick="showProfile"
             android:layout_width="fill_parent">
         </Button>
 

@@ -9,4 +9,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.software.helloworld.LogInUser">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/TextViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Log in User"
+            android:textSize="10pt">
+        </TextView>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="@string/emailAddress"
+            android:ems="10"
+            android:id="@+id/logIn_email" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:ems="10"
+            android:id="@+id/logIn_password" />
+
+        <Button
+            android:id="@+id/LogIn_Button_LogIn"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:onClick="logIn"
+            android:layout_width="fill_parent">
+        </Button>
+
+
+    </LinearLayout>
 </RelativeLayout>
