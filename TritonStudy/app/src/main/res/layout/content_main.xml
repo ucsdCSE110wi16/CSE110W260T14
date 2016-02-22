@@ -69,31 +69,6 @@
                 android:layout_margin="8dp"
                 android:layout_gravity="right" />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="112dp"
-                android:layout_height="64dp"
-                android:text="@string/buttonNearby"
-                android:id="@+id/buttonNearby"
-                android:layout_row="1"
-                android:layout_column="0"
-                android:textColor="#ffffff"
-                android:background="#ff8700"
-                android:layout_margin="8dp"
-                android:layout_gravity="center_vertical" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="112dp"
-                android:layout_height="64dp"
-                android:text="@string/buttonMap"
-                android:id="@+id/buttonMap"
-                android:layout_row="1"
-                android:layout_column="1"
-                android:textColor="#ffffff"
-                android:background="#ff8700"
-                android:layout_margin="8dp"
-                android:layout_gravity="right" />
         </GridLayout>
     </LinearLayout>
 </RelativeLayout>
