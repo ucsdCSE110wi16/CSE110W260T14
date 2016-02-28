@@ -49,6 +49,14 @@
             android:layout_width="fill_parent">
         </Button>
 
+        <Button
+            android:id="@+id/MainMenu"
+            android:layout_height="wrap_content"
+            android:text="Main Menu"
+            android:onClick="MainMenu"
+            android:layout_width="fill_parent">
+        </Button>
+
 
     </LinearLayout>
 </RelativeLayout>

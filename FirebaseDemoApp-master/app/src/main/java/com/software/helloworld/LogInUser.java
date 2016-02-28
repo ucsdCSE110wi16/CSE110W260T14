@@ -1,5 +1,6 @@
 package com.software.helloworld;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,12 +8,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 public class LogInUser extends AppCompatActivity {
 
-    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com");
+    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,12 @@ public class LogInUser extends AppCompatActivity {
     }
 
 
+    public void MainMenu(View button){
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
+
+
     public void logIn(View button){
 
         EditText etEmail = (EditText) findViewById(R.id.logIn_email);
@@ -45,10 +54,28 @@ public class LogInUser extends AppCompatActivity {
 
         ref.authWithPassword(email, password, new Firebase.AuthResultHandler() {
             @Override
-            public void onAuthenticated(AuthData authData) {
-                Toast.makeText(LogInUser.this, "Successfully logged in user account  with uid: " + authData.getUid().toString() , Toast.LENGTH_LONG).show();
-            }
-            @Override
+            public void onAuthenticated(final AuthData authData) {
+                ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        for (DataSnapshot studentSnapshot : snapshot.getChildren()) {
+                            Student authStudent = studentSnapshot.getValue(Student.class);
+
+//                            Student authStudent = snapshot.child(authData.).getValue(Student.class);
+                            Toast.makeText(LogInUser.this, "User " + authStudent.getName() + " is logged in", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                        @Override
+                        public void onCancelled (FirebaseError firebaseError){
+                        }
+                    }
+
+                    );
+
+
+                }
+
+                @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
                 Toast.makeText(LogInUser.this, "Failed to log in user", Toast.LENGTH_LONG).show();
             }

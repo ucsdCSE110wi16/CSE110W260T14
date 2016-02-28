@@ -16,74 +16,74 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:weightSum="1">
+    <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:weightSum="1">-->
 
-        <TextView
-            android:id="@+id/TextViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="@string/formTitle"
-            android:textSize="10pt">
-        </TextView>
-        <EditText
-            android:id="@+id/EditTextName"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:inputType="textPersonName"
-            android:layout_width="fill_parent">
-        </EditText>
+        <!--<TextView-->
+            <!--android:id="@+id/TextViewTitle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="50dp"-->
+            <!--android:text="@string/formTitle"-->
+            <!--android:textSize="10pt">-->
+        <!--</TextView>-->
+        <!--<EditText-->
+            <!--android:id="@+id/EditTextName"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/name"-->
+            <!--android:inputType="textPersonName"-->
+            <!--android:layout_width="fill_parent">-->
+        <!--</EditText>-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/studentId"
-            android:ems="10"
-            android:id="@+id/EditTextId" />
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="@string/studentId"-->
+            <!--android:ems="10"-->
+            <!--android:id="@+id/EditTextId" />-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/emailAddress"
-            android:ems="10"
-            android:id="@+id/EditTextEmail" />
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:inputType="textEmailAddress"-->
+            <!--android:hint="@string/emailAddress"-->
+            <!--android:ems="10"-->
+            <!--android:id="@+id/EditTextEmail" />-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textShortMessage"
-            android:hint="@string/major"
-            android:ems="10"
-            android:id="@+id/EditTextMajor" />
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:inputType="textShortMessage"-->
+            <!--android:hint="@string/major"-->
+            <!--android:ems="10"-->
+            <!--android:id="@+id/EditTextMajor" />-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:inputType="textMultiLine"
-            android:hint="@string/bio"
-            android:ems="10"
-            android:id="@+id/EditTextBio" />
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:inputType="textMultiLine"-->
+            <!--android:hint="@string/bio"-->
+            <!--android:ems="10"-->
+            <!--android:id="@+id/EditTextBio" />-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            android:ems="10"
-            android:id="@+id/EditTextPassword" />
+        <!--<EditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:inputType="textPassword"-->
+            <!--android:hint="@string/password"-->
+            <!--android:ems="10"-->
+            <!--android:id="@+id/EditTextPassword" />-->
 
-        <Button
-            android:id="@+id/Submit"
-            android:layout_height="wrap_content"
-            android:text="@string/submit"
-            android:onClick="submit"
-            android:layout_width="fill_parent">
-        </Button>
+        <!--<Button-->
+            <!--android:id="@+id/Submit"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/submit"-->
+            <!--android:onClick="submit"-->
+            <!--android:layout_width="fill_parent">-->
+        <!--</Button>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 </RelativeLayout>

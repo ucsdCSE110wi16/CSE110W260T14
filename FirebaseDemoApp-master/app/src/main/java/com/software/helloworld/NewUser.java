@@ -14,6 +14,10 @@ import java.util.Map;
 
 public class NewUser extends AppCompatActivity {
 
+    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+    Student student = new Student();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,29 +27,41 @@ public class NewUser extends AppCompatActivity {
 
     public void submit(View button) {
 
-        EditText etEmail = (EditText) findViewById(R.id.EditTextEmail);
-        EditText etPassword = (EditText) findViewById(R.id.EditTextPassword);
 
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
 
-        Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        EditText etName = (EditText) findViewById(R.id.et_NewUserName);
+        EditText etId = (EditText) findViewById(R.id.et_NewUserId);
+        EditText etEmail = (EditText) findViewById(R.id.et_NewUserEmail);
+        EditText etBio = (EditText) findViewById(R.id.et_NewUserBio);
+        EditText etMajor = (EditText) findViewById(R.id.et_NewUserMajor);
+        EditText etPassword = (EditText) findViewById(R.id.et_NewUserPassword);
+
+        student.setName(etName.getText().toString());
+        student.setStudentId(etId.getText().toString());
+        student.setEmail(etEmail.getText().toString());
+        student.setBio(etBio.getText().toString());
+        student.setMajor(etMajor.getText().toString());
+        student.setPassword(etPassword.getText().toString());
+
+        String email = student.getEmail();
+        String password = student.getPassword();
+        ref.child("users/"+student.getName());
+
 
         ref.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
 
-                Toast.makeText(NewUser.this, "Successfully created user account with uid: " + result.get("uid"), Toast.LENGTH_LONG).show();
+                ref.child("users/"+student.getName()).setValue(student);
+
+                System.out.println("Successfully created user account for " +student.getName());
+                Toast.makeText(NewUser.this, "Successfully created user account for " + student.getName(), Toast.LENGTH_LONG).show();
             }
             @Override
             public void onError(FirebaseError firebaseError) {
-                Toast.makeText(NewUser.this, "There was an error", Toast.LENGTH_LONG).show();
+                Toast.makeText(NewUser.this, "Shit is Broke!", Toast.LENGTH_LONG).show();
             }
         });
 
-    }
-    public void back(){
-        Intent intent = new Intent(this, SearchActivity.class);
-        startActivity(intent);
     }
 }

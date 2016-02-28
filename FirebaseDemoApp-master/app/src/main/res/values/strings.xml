@@ -12,4 +12,8 @@
     <string name="bio">Bio</string>
     <string name="password">Password</string>
     <string name="addNewUser">Add User</string>
+    <string name="loggedIn">You\'re logged in</string>
+    <string name="loggedOut">You\'re logged out</string>
+    <string name="NewUserTitle">New User Form</string>
+
 </resources>

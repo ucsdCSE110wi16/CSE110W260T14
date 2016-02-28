@@ -30,6 +30,7 @@
             android:text="Logged In User"
             android:textSize="10pt">
         </TextView>
+
         <TextView
             android:id="@+id/show_profile_Name"
             android:layout_height="25dp"
@@ -44,25 +45,28 @@
             android:id="@+id/show_profile_Id">
         </TextView>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:ems="10"
-            android:id="@+id/show_profile_Email" />
+            android:id="@+id/show_profile_Email">
+        </TextView>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:inputType="textShortMessage"
             android:ems="10"
-            android:id="@+id/show_profile_major" />
+            android:id="@+id/show_profile_major">
+        </TextView>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/show_profile_Bio" />
+            android:id="@+id/show_profile_Bio">
+        </TextView>
 
     </LinearLayout>
 </RelativeLayout>

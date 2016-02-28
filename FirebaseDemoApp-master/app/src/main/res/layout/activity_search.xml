@@ -61,12 +61,30 @@
         </Button>
 
         <Button
+            android:id="@+id/LogOut"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:onClick="logOutUser"
+            android:layout_width="fill_parent">
+            <!--android:visibility="invisible">-->
+
+        </Button>
+
+        <Button
             android:id="@+id/ShowProfile"
             android:layout_height="wrap_content"
             android:text="Show profile"
             android:onClick="showProfile"
             android:layout_width="fill_parent">
         </Button>
+
+        <TextView
+            android:id="@+id/AuthStatus"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/loggedOut"
+            />
+
 
     </LinearLayout>
 </RelativeLayout>

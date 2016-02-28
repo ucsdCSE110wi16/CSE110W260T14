@@ -15,9 +15,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -25,8 +28,14 @@ import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.firebase.simplelogin.SimpleLogin;
 
+import org.w3c.dom.Text;
+
 
 public class SearchActivity extends ActionBarActivity {
+
+    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+
+
 
 
     @Override
@@ -34,6 +43,27 @@ public class SearchActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         Firebase.setAndroidContext(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        ref.addAuthStateListener(new Firebase.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(AuthData authData) {
+                TextView t;
+                t = (TextView) findViewById(R.id.AuthStatus);
+                if (authData != null) {
+                    String loggedIn = "You're logged In";
+                    t.setText(loggedIn);
+                } else {
+                    String loggedIn = "You're logged Out";
+                    t.setText(loggedIn);
+                }
+            }
+        });
+
 
     }
 
@@ -46,38 +76,38 @@ public class SearchActivity extends ActionBarActivity {
 
     public void search(View button)
     {
-        EditText etId = (EditText) findViewById(R.id.EditTextId);
-        String idToSearch = etId.getText().toString();
-
-        Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-
-        Query queryRef = ref.orderByChild("studentId").equalTo(idToSearch);
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-
-                if (snapshot == null || snapshot.getValue() == null)
-                    Toast.makeText(SearchActivity.this, "No record found", Toast.LENGTH_SHORT).show();
-                else {
-                    //Toast.makeText(SearchActivity.this, snapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-                    for (DataSnapshot messageSnapshot : snapshot.getChildren()) {
-//                        String name = (String) messageSnapshot.child("name").getValue();
-
-                        Student student = messageSnapshot.getValue(Student.class);
-
-                        Toast.makeText(SearchActivity.this, student.getName() + "'s Major is " + student.getMajor(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(FirebaseError error) {
-            }
-        });
+//        EditText etId = (EditText) findViewById(R.id.EditTextId);
+//        String idToSearch = etId.getText().toString();
+//
+//
+//
+//        Query queryRef = ref.orderByChild("studentId").equalTo(idToSearch);
+//        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot snapshot) {
+//
+//                if (snapshot == null || snapshot.getValue() == null)
+//                    Toast.makeText(SearchActivity.this, "No record found", Toast.LENGTH_SHORT).show();
+//                else {
+//                    //Toast.makeText(SearchActivity.this, snapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
+//                    for (DataSnapshot messageSnapshot : snapshot.getChildren()) {
+////                        String name = (String) messageSnapshot.child("name").getValue();
+//
+//                        Student student = messageSnapshot.getValue(Student.class);
+//
+//                        Toast.makeText(SearchActivity.this, student.getName() + "'s Major is " + student.getMajor(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(FirebaseError error) {
+//            }
+//        });
     }
 
     public void newUser(View button) {
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,NewUser.class);
         startActivity(intent);
     }
 
@@ -86,9 +116,21 @@ public class SearchActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void logOutUser(View button) {
+        ref.unauth();
+        AuthData authData = ref.getAuth();
+        if (authData != null) {
+            Toast.makeText(SearchActivity.this, "Failed to log out", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(SearchActivity.this, "Successfully logged out user", Toast.LENGTH_LONG).show();
+        }
 
-    public void showProfile(View button) {
-        Intent intent = new Intent(this,ShowProfile.class);
+
+    }
+
+
+    public void showProfile(View button){
+        Intent intent = new Intent(this, ShowProfile.class);
         startActivity(intent);
     }
 
