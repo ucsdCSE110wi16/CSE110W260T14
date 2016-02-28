@@ -22,6 +22,7 @@
         android:layout_height="fill_parent"
         android:weightSum="1">
 
+
         <TextView
             android:id="@+id/TextViewTitle"
             android:layout_width="wrap_content"
@@ -32,10 +33,27 @@
         </TextView>
 
         <TextView
+            android:id="@+id/show_profile_title_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Name"
+            android:textSize="7pt">
+        </TextView>
+
+        <TextView
             android:id="@+id/show_profile_Name"
             android:layout_height="25dp"
             android:inputType="textPersonName"
             android:layout_width="fill_parent">
+        </TextView>
+
+        <TextView
+            android:id="@+id/show_profile_title_Id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student ID"
+            android:textSize="7pt">
         </TextView>
 
         <TextView
@@ -46,10 +64,26 @@
         </TextView>
 
         <TextView
+            android:id="@+id/show_profile_title_Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="7pt">
+        </TextView>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:ems="10"
             android:id="@+id/show_profile_Email">
+        </TextView>
+
+        <TextView
+            android:id="@+id/show_profile_title_major"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Major"
+            android:textSize="7pt">
         </TextView>
 
         <TextView
@@ -58,6 +92,14 @@
             android:inputType="textShortMessage"
             android:ems="10"
             android:id="@+id/show_profile_major">
+        </TextView>
+
+        <TextView
+            android:id="@+id/show_profile_title_Bio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bio"
+            android:textSize="7pt">
         </TextView>
 
         <TextView

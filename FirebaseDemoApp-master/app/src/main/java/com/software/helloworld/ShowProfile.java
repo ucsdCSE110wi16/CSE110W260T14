@@ -21,7 +21,7 @@ public class ShowProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_show_profile);
         Firebase.setAndroidContext(this);
     }
 
@@ -45,8 +45,22 @@ public class ShowProfile extends AppCompatActivity {
                         public void onDataChange(DataSnapshot snapshot) {
                             for (DataSnapshot studentSnapshot : snapshot.getChildren()) {
                                 Student authStudent = studentSnapshot.getValue(Student.class);
+
+                                TextView nameText = (TextView)findViewById(R.id.show_profile_Name);
+                                nameText.setText(authStudent.getName(), TextView.BufferType.EDITABLE);
+
+                                TextView idText = (TextView)findViewById(R.id.show_profile_Id);
+                                idText.setText(authStudent.getStudentId(), TextView.BufferType.EDITABLE);
+
                                 TextView emailText = (TextView)findViewById(R.id.show_profile_Email);
                                 emailText.setText(authStudent.getEmail(), TextView.BufferType.EDITABLE);
+
+                                TextView majorText = (TextView)findViewById(R.id.show_profile_major);
+                                majorText.setText(authStudent.getMajor(), TextView.BufferType.EDITABLE);
+
+                                TextView bioText = (TextView)findViewById(R.id.show_profile_Bio);
+                                bioText.setText(authStudent.getBio(), TextView.BufferType.EDITABLE);
+
                             }
                         }
 
