@@ -93,7 +93,7 @@
             android:singleLine="true"
             android:layout_margin="6dp"
             android:text="Phone # (Optional)"
-            android:inputType="phone" />
+            android:inputType="text" />
 
         <EditText
             android:layout_width="256dp"
@@ -106,7 +106,7 @@
             android:singleLine="true"
             android:layout_margin="6dp"
             android:text="Major (Optional)"
-            android:inputType="phone" />
+            android:inputType="text" />
 
         <EditText
             android:layout_width="256dp"
@@ -118,8 +118,8 @@
             android:background="#016691"
             android:singleLine="true"
             android:layout_margin="6dp"
-            android:inputType="phone|textPassword"
-            android:text="Password" />
+            android:text="Password"
+            android:inputType="text" />
 
         <EditText
             android:layout_width="256dp"
@@ -131,8 +131,8 @@
             android:background="#016691"
             android:singleLine="true"
             android:layout_margin="6dp"
-            android:inputType="phone|textPassword"
-            android:text="Confirm Password" />
+            android:text="Confirm Password"
+            android:inputType="text" />
 
         <GridLayout
             android:layout_width="match_parent"

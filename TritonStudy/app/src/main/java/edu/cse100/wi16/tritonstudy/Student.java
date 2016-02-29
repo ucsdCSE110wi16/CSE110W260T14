@@ -7,17 +7,14 @@ public class Student {
     String name;
     String studentId;
     String email;
-    String bio;
     String major;
     String password;
+    String phoneNumber;
 
-    public String getName() {
-        return name;
-    }
+    public String getName() {return name;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) {this.name = name;}
+
 
     public String getStudentId() {
         return studentId;
@@ -27,6 +24,7 @@ public class Student {
         this.studentId = studentId;
     }
 
+
     public String getEmail() {
         return email;
     }
@@ -35,13 +33,7 @@ public class Student {
         this.email = email;
     }
 
-    public String getBio() {
-        return bio;
-    }
 
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
 
     public String getMajor() {
         return major;
@@ -51,13 +43,20 @@ public class Student {
         this.major= major;
     }
 
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
-        this.password= password;
+        this.password = password;
     }
+
+
+    public String getPhoneNumber() {return phoneNumber;}
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber;}
+
 
     public Student(){
 

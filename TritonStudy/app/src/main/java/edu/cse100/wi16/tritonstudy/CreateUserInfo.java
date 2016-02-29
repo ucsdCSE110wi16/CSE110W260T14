@@ -27,22 +27,24 @@ public class CreateUserInfo extends AppCompatActivity {
         setContentView(R.layout.activity_create_user_info);
         Firebase.setAndroidContext(this);
         final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-        //Next Button
+
+        //Submit Button
         Button submitButton = (Button) findViewById(R.id.buttonNext);
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 //code to push to firebase
                 EditText etName = (EditText) findViewById(R.id.editTextNameFirst);
                 EditText etId = (EditText) findViewById(R.id.editTextID);
                 EditText etEmail = (EditText) findViewById(R.id.editTextEmail);
-                EditText etBio = (EditText) findViewById(R.id.editTextNameFirst);
+                EditText etPhone = (EditText) findViewById(R.id.editTextPhone);
                 EditText etMajor = (EditText) findViewById(R.id.editTextMajor);
                 EditText etPassword = (EditText) findViewById(R.id.editTextPassword);
 
                 student.setName(etName.getText().toString());
                 student.setStudentId(etId.getText().toString());
                 student.setEmail(etEmail.getText().toString());
-                student.setBio(etBio.getText().toString());
+                student.setPhoneNumber(etPhone.getText().toString());
                 student.setMajor(etMajor.getText().toString());
                 student.setPassword(etPassword.getText().toString());
 
