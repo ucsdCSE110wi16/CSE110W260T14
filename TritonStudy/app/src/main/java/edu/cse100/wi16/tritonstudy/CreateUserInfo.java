@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class CreateUserInfo extends AppCompatActivity {
 
-
+    Firebase ref;
     Student student = new Student();
 
     @Override
@@ -26,7 +26,7 @@ public class CreateUserInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user_info);
         Firebase.setAndroidContext(this);
-        final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
         //Submit Button
         Button submitButton = (Button) findViewById(R.id.buttonNext);
