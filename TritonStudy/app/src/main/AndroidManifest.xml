@@ -72,6 +72,14 @@
         <activity
             android:name=".CreateUserVerify"
             android:label="@string/title_activity_create_user_verify" />
+
+        <!-- Create group: Main -->
+        <activity
+            android:name=".GroupCreateActivity"
+            android:label="Create New Group" />
+        <activity
+            android:name=".StudyEventCreateActivity"
+            android:label="Create New Study Event" />
     </application>
 
 </manifest>

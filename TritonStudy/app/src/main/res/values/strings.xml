@@ -37,5 +37,9 @@
     <string name="title_activity_create_user_classes_confirm">Create New User: Confirm Classes</string>
     <string name="title_activity_create_user_verify">Create New User: Verification</string>
 
+    <!-- Strings for Hamburger menu items -->
+    <string name="bmenu_main">Main menu</string>
+    <string name="bmenu_profile">Profile</string>
+    <string name="bmenu_logout">Log out</string>
 
 </resources>
