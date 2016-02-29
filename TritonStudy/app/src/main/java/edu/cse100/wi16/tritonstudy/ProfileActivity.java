@@ -24,15 +24,22 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+
 public class ProfileActivity extends AppCompatActivity {
+
+    //Firebase reference
+    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/users");
+
     EditText firstName, lastName, emailAddress, major, bio;
     TextView nameStatic, emailStatic, majorStatic, bioStatic;
 
@@ -46,21 +53,27 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        firstName = (EditText) findViewById(R.id.textNameFirst);
-        lastName = (EditText) findViewById(R.id.textNameLast);
-        nameStatic = (TextView) findViewById(R.id.nameStatic);
-
-        emailAddress = (EditText) findViewById(R.id.textEmail);
-        emailStatic = (TextView) findViewById(R.id.emailStatic);
-
-        major = (EditText) findViewById(R.id.majorText);
-        majorStatic = (TextView) findViewById(R.id.majorStatic);
-
-        bio = (EditText) findViewById(R.id.textBio);
-        bioStatic = (TextView) findViewById(R.id.bioStatic);
+        Firebase.setAndroidContext(this);
+        Student student = new Student();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        //Submit Button
+        Button submitButton = (Button) findViewById(R.id.buttonSubmit);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                firstName = (EditText) findViewById(R.id.textNameFirst);
+                lastName = (EditText) findViewById(R.id.textNameLast);
+                emailAddress = (EditText) findViewById(R.id.textEmail);
+                major = (EditText) findViewById(R.id.majorText);
+                bio = (EditText) findViewById(R.id.textBio);
+
+
+
+            }
+        });
 
         viewImage = (ImageView)findViewById(R.id.profilePicture);
         b = (Button)findViewById(R.id.buttonChangePic);
@@ -80,19 +93,6 @@ public class ProfileActivity extends AppCompatActivity {
         String[] items = new String[]{"Select your college:", "Revelle", "John Muir", "Thurgood Marshall", "Earl Warren", "Eleanor Roosevelt", "Sixth"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
-
-        //Submit Button
-        Button submitButton = (Button) findViewById(R.id.buttonSubmit);
-
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                //
-               // majorStatic.setText(major.getText().toString());
-              //  bioStatic.setText(bio.getText().toString());
-               /// startActivity(new Intent(ProfileActivity.this, ProfileActivityStatic.class));
-            }
-        });
 
         //Cancel Button - returns to the Main Screen
         Button cancelButton = (Button) findViewById(R.id.buttonCancel);
