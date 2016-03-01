@@ -10,6 +10,12 @@ public class Student {
     String major;
     String password;
     String phoneNumber;
+    String bio;
+
+    public String getBio() {return bio;}
+
+    public void setBio(String bio) {this.bio = bio;}
+
 
     public String getName() {return name;}
 
