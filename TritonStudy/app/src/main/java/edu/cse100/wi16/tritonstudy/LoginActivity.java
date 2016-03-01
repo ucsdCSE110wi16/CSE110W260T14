@@ -53,7 +53,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onAuthenticated(final AuthData authData) {
 
-                        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        Toast.makeText(LoginActivity.this, "User " + authData.getProviderData().get("email") + " is logged in",
+                                Toast.LENGTH_LONG).show();
+
+
+                       /* ref.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot snapshot) {
                                 for (DataSnapshot studentSnapshot : snapshot.getChildren()) {
@@ -61,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //                                  Student authStudent = snapshot.child(authData.).getValue(Student.class);
                                     Toast.makeText(LoginActivity.this, "User " + authStudent.getName() + " is logged in",
-                                                   Toast.LENGTH_LONG).show();
+                                            Toast.LENGTH_LONG).show();
                                 }
                             }
 
@@ -69,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                             public void onCancelled (FirebaseError firebaseError){
                             }
 
-                        });
+                        });*/
 
 
                     }
