@@ -35,30 +35,26 @@
                 android:layout_column="0"
                 android:layout_rowSpan="2" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="188dp"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/editText2"
-                android:background="#016691"
-                android:gravity="top"
-                android:singleLine="false"
-                android:textColor="#ffffff"
-                android:text="List of various classes pulled from an online database we create will go here..." />
+            <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/createUser_spinner_class1" />
 
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="135dp"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/editText3"
-                android:background="#016691"
-                android:gravity="top"
-                android:singleLine="false"
-                android:textColor="#ffffff"
-                android:text="List of classes selected by the user from the list above will appear here..."
-                android:layout_gravity="center_horizontal" />
+                android:layout_height="wrap_content"
+                android:id="@+id/createUser_spinner_class2" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/createUser_spinner_class3" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/createUser_spinner_class4" />
+
 
         </LinearLayout>
 
