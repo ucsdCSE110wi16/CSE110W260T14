@@ -15,7 +15,6 @@ public class Student {
 
     public void setBio(String bio) {this.bio = bio;}
 
-
     public String getName() {return name;}
 
     public void setName(String name) {this.name = name;}

@@ -42,7 +42,6 @@ public class CreateUserInfo extends AppCompatActivity {
                 EditText etPassword = (EditText) findViewById(R.id.editTextPassword);
 
                 student.setName(etName.getText().toString());
-                student.setStudentId(etId.getText().toString());
                 student.setEmail(etEmail.getText().toString());
                 student.setPhoneNumber(etPhone.getText().toString());
                 student.setMajor(etMajor.getText().toString());
