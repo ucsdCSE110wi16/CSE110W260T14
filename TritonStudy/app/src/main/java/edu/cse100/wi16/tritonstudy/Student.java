@@ -5,7 +5,6 @@ package edu.cse100.wi16.tritonstudy;
  */
 public class Student {
     String name;
-    String studentId;
     String email;
     String major;
     String password;
@@ -20,16 +19,6 @@ public class Student {
     public String getName() {return name;}
 
     public void setName(String name) {this.name = name;}
-
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
 
     public String getEmail() {
         return email;
