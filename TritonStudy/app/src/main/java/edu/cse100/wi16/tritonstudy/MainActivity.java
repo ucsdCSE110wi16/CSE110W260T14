@@ -80,9 +80,6 @@ public class MainActivity extends AppCompatActivity
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            String uid = authData.getUid().toString();
-                            String name = dataSnapshot.child("name").getValue().toString();
-
                             TextView mGreeting = (TextView)findViewById(R.id.main_greeting);
                             mGreeting.setText("Hello, " + dataSnapshot.child("name").getValue().toString()
                                     , TextView.BufferType.EDITABLE);
