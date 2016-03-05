@@ -64,11 +64,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                firstName = (EditText) findViewById(R.id.textNameFirst);
-                lastName = (EditText) findViewById(R.id.textNameLast);
-                emailAddress = (EditText) findViewById(R.id.textEmail);
-                major = (EditText) findViewById(R.id.majorText);
-                bio = (EditText) findViewById(R.id.textBio);
+// TODO
+//                firstName = (EditText) findViewById(R.id.textNameFirst);
+//                lastName = (EditText) findViewById(R.id.textNameLast);
+//                emailAddress = (EditText) findViewById(R.id.textEmail);
+//                major = (EditText) findViewById(R.id.majorText);
+//                bio = (EditText) findViewById(R.id.textBio);
 
 
 
@@ -89,7 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
         //=============================================
         //Drop Down Box (spinner) for Enrolled Colleges
         //=============================================
-        Spinner dropdown = (Spinner) findViewById(R.id.spinnerColleges);
+        Spinner dropdown = (Spinner) findViewById(R.id.dynamicProfile_spinner_college);
         String[] items = new String[]{"Select your college:", "Revelle", "John Muir", "Thurgood Marshall", "Earl Warren", "Eleanor Roosevelt", "Sixth"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
@@ -112,6 +113,54 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d("Method", "onStart");
+
+        final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        ref.addAuthStateListener(new Firebase.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(final AuthData authData) {
+                if (authData != null) {
+                    Log.d("STATE", "User is authenticated");
+
+                    Firebase userRef = ref.child("users/" + authData.getUid());
+
+                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            EditText eName = (EditText)findViewById(R.id.dynamicProfile_editText_name);
+                            eName.setText(dataSnapshot.child("name").getValue().toString()
+                                    , EditText.BufferType.EDITABLE);
+//
+                            EditText tEmail = (EditText)findViewById(R.id.dynamicProfile_editText_email);
+                            tEmail.setText(dataSnapshot.child("email").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+
+                            EditText tMajor = (EditText)findViewById(R.id.dynamicProfile_editText_major);
+                            tMajor.setText(dataSnapshot.child("major").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+
+                            EditText tBio = (EditText)findViewById(R.id.dynamicProfile_editText_bio);
+                            tBio.setText(dataSnapshot.child("bio").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
+                        }
+                    });
+                } else {
+                    // user is not logged in
+                }
+            }
+        });
     }
 
     public void selectPicture() {
