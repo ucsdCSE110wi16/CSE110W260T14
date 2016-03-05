@@ -38,8 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Name:"
-                android:id="@+id/labelNameFirst"
+                android:text="Name"
+                android:id="@+id/dynamicProfile_textView_Name"
                 android:textColor="#ffffff" />
 
             <EditText
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/profile_editText_name"
+                android:id="@+id/dynamicProfile_editText_name"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#ffffff"
                 android:background="#016691"
@@ -57,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="E-mail address:"
-                android:id="@+id/labelEmail"
+                android:text="Email"
+                android:id="@+id/dynamicProfile_textView_email"
                 android:textColor="#ffffff" />
 
             <EditText
@@ -66,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/textEmail"
+                android:id="@+id/dynamicProfile_editText_email"
                 android:textColor="#ffffff"
                 android:background="#016691"
                 android:singleLine="true" />
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Major:"
-                android:id="@+id/labelMajor"
+                android:id="@+id/dynamicProfile_textView_major"
                 android:textColor="#ffffff" />
 
             <EditText
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/majorText"
+                android:id="@+id/dynamicProfile_editText_major"
                 android:textColor="#ffffff"
                 android:background="#016691"
                 android:singleLine="true" />
@@ -94,13 +94,13 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Enrolled college:"
-                android:id="@+id/textView3"
+                android:id="@+id/dynamicProfile_textView_college"
                 android:textColor="#ffffff" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinnerColleges"
+                android:id="@+id/dynamicProfile_spinner_college"
                 android:layout_gravity="center_horizontal"
                 android:spinnerMode="dropdown"
                 android:background="#ffffff" />
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Bio:"
-                android:id="@+id/labelBio"
+                android:id="@+id/dynamicProfile_textView_Bio"
                 android:textColor="#ffffff" />
 
             <EditText
@@ -140,7 +140,7 @@
                 android:layout_height="85dp"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:id="@+id/textBio"
+                android:id="@+id/dynamicProfile_editText_bio"
                 android:background="#016691"
                 android:gravity="top"
                 android:singleLine="false"
