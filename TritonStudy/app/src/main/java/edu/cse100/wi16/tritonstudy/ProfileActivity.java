@@ -1,5 +1,6 @@
 package edu.cse100.wi16.tritonstudy;
 
+
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -28,6 +29,8 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
@@ -36,12 +39,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 public class ProfileActivity extends AppCompatActivity {
-
-    //Firebase reference
-    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/users");
-
-    EditText firstName, lastName, emailAddress, major, bio;
-    TextView nameStatic, emailStatic, majorStatic, bioStatic;
+    private Firebase mRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
     int CROP_IMAGE = 1;
     int SET_BACKGROUND = 2;
@@ -53,23 +51,98 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Firebase.setAndroidContext(this);
-        Student student = new Student();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Firebase.setAndroidContext(this);
+        mRef.addAuthStateListener(new Firebase.AuthStateListener() {
+
+            // @Override
+            public void onAuthStateChanged(final AuthData authData) {
+                if (authData != null) {
+                    Log.d("STATE", "User is authenticated");
+
+                    Firebase userRef = mRef.child("users/" + authData.getUid());
+
+                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            EditText eName = (EditText) findViewById(R.id.dynamicProfile_editText_name);
+                            eName.setText(dataSnapshot.child("name").getValue().toString()
+                                    , EditText.BufferType.EDITABLE);
+
+                            EditText eEmail = (EditText) findViewById(R.id.dynamicProfile_editText_email);
+                            eEmail.setText(dataSnapshot.child("email").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+
+                            EditText eMajor = (EditText) findViewById(R.id.dynamicProfile_editText_major);
+                            eMajor.setText(dataSnapshot.child("major").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+
+                            EditText eBio = (EditText) findViewById(R.id.dynamicProfile_editText_bio);
+                            eBio.setText(dataSnapshot.child("bio").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
+                        }
+                    });
+                } else {
+                    // user is not logged in
+                }
+            }
+        });
 
         //Submit Button
         Button submitButton = (Button) findViewById(R.id.buttonSubmit);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-// TODO
-//                firstName = (EditText) findViewById(R.id.textNameFirst);
-//                lastName = (EditText) findViewById(R.id.textNameLast);
-//                emailAddress = (EditText) findViewById(R.id.textEmail);
-//                major = (EditText) findViewById(R.id.majorText);
-//                bio = (EditText) findViewById(R.id.textBio);
+
+                EditText eName = (EditText) findViewById(R.id.dynamicProfile_editText_name);
+                final EditText eEmail = (EditText) findViewById(R.id.dynamicProfile_editText_email);
+                EditText eMajor = (EditText) findViewById(R.id.dynamicProfile_editText_major);
+                EditText eBio = (EditText) findViewById(R.id.dynamicProfile_editText_bio);
+
+                final String mName = eName.getText().toString();
+                final String mEmail = eEmail.getText().toString();
+                final String mMajor = eMajor.getText().toString();
+                final String mBio = eBio.getText().toString();
+
+                String uid = mRef.getAuth().getUid().toString();
+                Log.d("Variable", "UID is: " + uid);
+
+                Firebase userRef = mRef.child("users/"+uid);
+//                Log.d("Variable", userRef.toString());
+
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("name", mName);
+
+                Log.d("Email", mRef.getAuth().getProviderData().get("email").toString());
+                Log.d("Password", mRef.getAuth().getProvider().toString());
+
+                mRef.changeEmail(mRef.getAuth().getProviderData().get("email").toString(),
+                        mRef.getAuth().getProvider().toString(), mEmail, new Firebase.ResultHandler() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d("STATE", "Email changed to" + eEmail);
+                    }
+                    @Override
+                    public void onError(FirebaseError firebaseError) {
+                        Log.d("ERROR", "Email unchanged! ");
+                    }
+                });
+
+                map.put("major",mMajor);
+                map.put("bio", mBio);
+
+                Log.d("Auth State", String.valueOf((mRef.getAuth())));
+
+                userRef.updateChildren(map);
 
 
 
@@ -80,7 +153,7 @@ public class ProfileActivity extends AppCompatActivity {
         b = (Button)findViewById(R.id.buttonChangePic);
 
         //Change Pic Button
-         b.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selectPicture();
@@ -110,55 +183,6 @@ public class ProfileActivity extends AppCompatActivity {
         editTimesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this, edit_times.class));
-            }
-        });
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.d("Method", "onStart");
-
-        final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-        ref.addAuthStateListener(new Firebase.AuthStateListener() {
-
-            @Override
-            public void onAuthStateChanged(final AuthData authData) {
-                if (authData != null) {
-                    Log.d("STATE", "User is authenticated");
-
-                    Firebase userRef = ref.child("users/" + authData.getUid());
-
-                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-
-                            EditText eName = (EditText)findViewById(R.id.dynamicProfile_editText_name);
-                            eName.setText(dataSnapshot.child("name").getValue().toString()
-                                    , EditText.BufferType.EDITABLE);
-//
-                            EditText tEmail = (EditText)findViewById(R.id.dynamicProfile_editText_email);
-                            tEmail.setText(dataSnapshot.child("email").getValue().toString()
-                                    , TextView.BufferType.EDITABLE);
-
-                            EditText tMajor = (EditText)findViewById(R.id.dynamicProfile_editText_major);
-                            tMajor.setText(dataSnapshot.child("major").getValue().toString()
-                                    , TextView.BufferType.EDITABLE);
-
-                            EditText tBio = (EditText)findViewById(R.id.dynamicProfile_editText_bio);
-                            tBio.setText(dataSnapshot.child("bio").getValue().toString()
-                                    , TextView.BufferType.EDITABLE);
-                        }
-
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
-                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
-                        }
-                    });
-                } else {
-                    // user is not logged in
-                }
             }
         });
     }
@@ -264,4 +288,33 @@ public class ProfileActivity extends AppCompatActivity {
 
         return finalBmp;
     }*/
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
