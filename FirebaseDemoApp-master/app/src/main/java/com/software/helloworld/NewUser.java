@@ -52,7 +52,10 @@ public class NewUser extends AppCompatActivity {
             @Override
             public void onSuccess(Map<String, Object> result) {
 
-                ref.child("users/"+student.getName()).setValue(student);
+                String uid = result.get("uid").toString();
+                ref.child("users").child(uid).setValue(student);
+
+//                ref.child("users/"+student.getName()).setValue(student);
 
                 System.out.println("Successfully created user account for " +student.getName());
                 Toast.makeText(NewUser.this, "Successfully created user account for " + student.getName(), Toast.LENGTH_LONG).show();

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +59,42 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d("STATE", "onStart");
+
+        final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        ref.addAuthStateListener(new Firebase.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(final AuthData authData) {
+                if (authData != null) {
+                    Log.d("STATE", "User is authenticated");
+
+                    Firebase userRef = ref.child("users/" + authData.getUid());
+
+                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            TextView mGreeting = (TextView)findViewById(R.id.main_greeting);
+                            mGreeting.setText("Hello, " + dataSnapshot.child("name").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
+                        }
+                    });
+                } else {
+                    // user is not logged in
+                }
+            }
+        });
     }
 
     @Override

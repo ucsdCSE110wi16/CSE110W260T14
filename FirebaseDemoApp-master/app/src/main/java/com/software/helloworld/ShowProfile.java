@@ -1,7 +1,9 @@
+
 package com.software.helloworld;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,10 +14,9 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-public class ShowProfile extends AppCompatActivity {
+import java.util.Map;
 
-    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/users");
-    Student authStudent = new Student();
+public class ShowProfile extends AppCompatActivity {
 
 
     @Override
@@ -28,57 +29,59 @@ public class ShowProfile extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        Log.d("STATE", "onStart");
 
-
+        final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
         ref.addAuthStateListener(new Firebase.AuthStateListener() {
+
             @Override
-            public void onAuthStateChanged(AuthData authData) {
-
-
-
-
-
+            public void onAuthStateChanged(final AuthData authData) {
                 if (authData != null) {
-
-                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                    Log.d("STATE", "authData !=null");
+                    Firebase userRef = ref.child("users/"+authData.getUid());
+                    Log.d("VARIABLE", userRef.toString());
+                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onDataChange(DataSnapshot snapshot) {
-                            for (DataSnapshot studentSnapshot : snapshot.getChildren()) {
-                                Student authStudent = studentSnapshot.getValue(Student.class);
+                        public void onDataChange(DataSnapshot dataSnapshot) {
 
-                                TextView nameText = (TextView)findViewById(R.id.show_profile_Name);
-                                nameText.setText(authStudent.getName(), TextView.BufferType.EDITABLE);
+                            String uid = authData.getUid().toString();
+                            Log.d("VARIABLE", "uid is: " + uid);
+                            Log.d("Attempt 01", "name is: " + dataSnapshot.child("name").getValue().toString());
+                            Log.d("Attempt 01", "password is: " + dataSnapshot.child("password").getValue().toString());
 
-                                TextView idText = (TextView)findViewById(R.id.show_profile_Id);
-                                idText.setText(authStudent.getStudentId(), TextView.BufferType.EDITABLE);
+                            TextView nameText = (TextView)findViewById(R.id.show_profile_Name);
+                            nameText.setText(dataSnapshot.child("name").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
 
-                                TextView emailText = (TextView)findViewById(R.id.show_profile_Email);
-                                emailText.setText(authStudent.getEmail(), TextView.BufferType.EDITABLE);
+                            TextView idText = (TextView)findViewById(R.id.show_profile_Id);
+                            idText.setText(dataSnapshot.child("password").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
 
-                                TextView majorText = (TextView)findViewById(R.id.show_profile_major);
-                                majorText.setText(authStudent.getMajor(), TextView.BufferType.EDITABLE);
+                            TextView emailText = (TextView)findViewById(R.id.show_profile_Email);
+                            emailText.setText(dataSnapshot.child("email").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
 
-                                TextView bioText = (TextView)findViewById(R.id.show_profile_Bio);
-                                bioText.setText(authStudent.getBio(), TextView.BufferType.EDITABLE);
+                            TextView majorText = (TextView)findViewById(R.id.show_profile_major);
+                            majorText.setText(dataSnapshot.child("major").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
 
-                            }
+                            TextView bioText = (TextView)findViewById(R.id.show_profile_Bio);
+                            bioText.setText(dataSnapshot.child("bio").getValue().toString()
+                                    , TextView.BufferType.EDITABLE);
+
                         }
 
                         @Override
                         public void onCancelled(FirebaseError firebaseError) {
+                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
                         }
                     });
+                }
 
-
-
-
-
-                } else {
-
+                else {
+                    // user is not logged in
                 }
             }
         });
-
-
     }
 }

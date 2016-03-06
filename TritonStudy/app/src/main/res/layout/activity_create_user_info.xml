@@ -56,18 +56,6 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp" />
 
-        <EditText
-            android:layout_width="256dp"
-            android:layout_height="26dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editTextID"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#ffffff"
-            android:background="#016691"
-            android:singleLine="true"
-            android:layout_margin="6dp"
-            android:hint="Student ID" />
 
         <EditText
             android:layout_width="256dp"
@@ -150,6 +138,7 @@
                 android:layout_row="0"
                 android:layout_column="2"
                 android:background="#ff8700"
+                android:onClick="submit"
                 android:textColor="#ffffff" />
         </GridLayout>
 
