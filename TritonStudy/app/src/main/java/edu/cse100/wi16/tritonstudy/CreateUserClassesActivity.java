@@ -23,7 +23,7 @@ public class CreateUserClassesActivity extends AppCompatActivity {
     Student student; // created here so all methods can access
 
     // define firebase reference location
-    Firebase ref = new Firebase("https://burner340857.firebaseio.com/");
+    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
