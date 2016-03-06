@@ -20,40 +20,25 @@ import java.util.Map;
 public class CreateUserClassesActivity extends AppCompatActivity {
 
 
-    Student student;
-    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+    Student student; // created here so all methods can access
+
+    // define firebase reference location
+    Firebase ref = new Firebase("https://burner340857.firebaseio.com/");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //receive
-        student = (Student)getIntent().getParcelableExtra(CreateUserInfo.PAR_KEY);
-
-        Log.d("TEST", student.getName());
-
-
-
-
         setContentView(R.layout.activity_create_user_classes);
 
-//        //Next Button
-//        Button nextButton = (Button) findViewById(R.id.buttonNext);
-//        nextButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//
-//                startActivity(new Intent(CreateUserClassesActivity.this, CreateUserClassesConfirmActivity.class));
-//            }
-//        });
+        Firebase.setAndroidContext(this); //required for firebase
 
-        //Back Button
-        Button backButton = (Button) findViewById(R.id.buttonBack);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(CreateUserClassesActivity.this, CreateUserInfo.class));
-            }
-        });
+        // receive student object from CreateUserInfo
+        student = (Student)getIntent().getParcelableExtra(CreateUserInfo.PAR_KEY);
+
+        setSpinnerValues();
+    }
+
+    private void setSpinnerValues(){
 
         Spinner spClass1 = (Spinner) findViewById(R.id.createUser_spinner_class1);
         String[] arrayCSEcourses = new String[]{"Choose Course","CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
@@ -61,6 +46,7 @@ public class CreateUserClassesActivity extends AppCompatActivity {
                 "CSE 110", "CSE 120", "CSE 127", "CSE 130", "CSE 131", "CSE 136", "CSE 140",
                 "CSE 140L", "CSE 141", "CSE 141L", "CSE 148", "CSE 150", "CSE 152",
                 "CSE 167", "CSE 168", "CSE 169", "CSE 182"};
+
         ArrayAdapter<String> adClass1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass1.setAdapter(adClass1);
 
@@ -76,22 +62,9 @@ public class CreateUserClassesActivity extends AppCompatActivity {
         ArrayAdapter<String> adClass4 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass4.setAdapter(adClass4);
 
-        //Skip Button
-        Button skipButton = (Button) findViewById(R.id.buttonSkip);
-        skipButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(CreateUserClassesActivity.this, CreateUserVerify.class));
-
-
-
-            }
-        });
-
-
     }
 
-    public void next(View v){
-
+    private void getSpinnerValues(){
         Spinner spClass1 =(Spinner) findViewById(R.id.createUser_spinner_class1);
         student.setClass1(spClass1.getSelectedItem().toString());
         Log.d("Student Class 1", student.getClass1());
@@ -104,46 +77,58 @@ public class CreateUserClassesActivity extends AppCompatActivity {
 
         Spinner spClass4 =(Spinner) findViewById(R.id.createUser_spinner_class4);
         student.setClass4(spClass4.getSelectedItem().toString());
+    }
 
+    public void nextButton(View v){
 
+        getSpinnerValues();
+
+        // debug
+        Log.d("DIVIDER", "//////////////////////////////////////////");
+        Log.d("Student Class 1", student.getClass1());
         Log.d("Student Class 2", student.getClass2());
         Log.d("Student Class 3", student.getClass3());
         Log.d("Student Class 4", student.getClass4());
 
         String email = student.getEmail();
+        Log.d("EMAIL", student.getEmail());
+
         String password = student.getPassword();
+        Log.d("PASSWORD", student.getPassword());
 
         ref.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
+                Log.d("DIVIDER", "//////////////////////////////////////////");
+                Log.d("USER CREATED", "Successfully created user account for "+ student.getName());
 
+                //preserve UID
                 String uid = result.get("uid").toString();
 
+                Log.d("name", student.getName());
                 Log.d("ref", ref.toString());
-                Log.d("users", ref.child("users").toString());
-                Log.d("uid", ref.child("users").child(uid).toString());
+                Log.d("users", ref.child("users/").toString());
+                Log.d("uid", ref.child("users/").child(uid).toString());
 
-//                Map<String, Object> map = new Map<String, Object>();
-                HashMap<String, Object> map = new HashMap<String, Object>();
+                // save value to firebase
+                ref.child("users").child(uid).setValue(student);
 
-                map.put("name", student.getName());
-                map.put("email", student.getEmail());
-                map.put("password", student.getPassword());
-                map.put("major", student.getMajor());
-                map.put("bio", student.getBio());
-                map.put("class1", student.getClass1());
-                map.put("class2", student.getClass2());
-                map.put("class3", student.getClass3());
-                map.put("class4", student.getClass4());
+//                // save value to firebase
+//                ref.child("users").child(uid).setValue(student);
+
+//                Map<String, Object> map = new HashMap<String, Object>();//
+//                result.put("name", student.getName());
+//                result.put("email", student.getEmail());
+//                result.put("password", student.getPassword());
+//                result.put("major", student.getMajor());
+//                result.put("bio", student.getBio());
+//                result.put("class1", student.getClass1());
+//                result.put("class2", student.getClass2());
+//                result.put("class3", student.getClass3());
+//                result.put("class4", student.getClass4());
 
 
 
-                ref.child("users").child(uid).setValue(map);
-
-//                ref.child("users/"+student.getName()).setValue(student);
-
-                System.out.println("Successfully created user account for " + student.getName());
-                Toast.makeText(CreateUserClassesActivity.this, "Successfully created user account for " + student.getName(), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -155,7 +140,14 @@ public class CreateUserClassesActivity extends AppCompatActivity {
 
         startActivity(new Intent(CreateUserClassesActivity.this, LoginActivity.class));
 
-
-
     }
+
+    public void backButton (View v){
+        startActivity(new Intent(CreateUserClassesActivity.this, CreateUserInfo.class));
+    }
+
+    public void skipButton (View v){
+        startActivity(new Intent(CreateUserClassesActivity.this, CreateUserVerify.class));
+    }
+
 }
