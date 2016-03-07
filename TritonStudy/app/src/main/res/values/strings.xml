@@ -36,6 +36,7 @@
     <string name="title_activity_create_user_classes">Create New User: Select Classes</string>
     <string name="title_activity_create_user_classes_confirm">Create New User: Confirm Classes</string>
     <string name="title_activity_create_user_verify">Create New User: Verification</string>
+    <string name="title_activity_test_receive_results">testReceiveResults</string>
 
 
 </resources>

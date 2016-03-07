@@ -73,7 +73,11 @@
             android:name=".CreateUserVerify"
             android:label="@string/title_activity_create_user_verify" />
         <activity android:name=".EditEmailPassword" />
-        <activity android:name=".Search"></activity>
+        <activity android:name=".Search" />
+        <activity
+            android:name=".testReceiveResults"
+            android:label="@string/title_activity_test_receive_results"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
