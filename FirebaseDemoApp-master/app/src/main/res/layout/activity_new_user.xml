@@ -35,17 +35,17 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/studentId"
-            android:ems="10"
-            android:id="@+id/et_NewUserId" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="@string/emailAddress"
             android:ems="10"
             android:id="@+id/et_NewUserEmail" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:ems="10"
+            android:id="@+id/et_NewUserPhone"/>
 
         <EditText
             android:layout_width="match_parent"

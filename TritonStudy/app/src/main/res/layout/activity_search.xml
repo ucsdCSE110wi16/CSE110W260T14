@@ -53,3 +53,25 @@
     </LinearLayout>
 
 </RelativeLayout>
+=======
+    android:background="#2b92b9"
+    tools:context="edu.cse100.wi16.tritonstudy.Search">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search_spinner" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search for Names"
+        android:id="@+id/SearchProfiles_SearchButton"
+        android:onClick="onSearchButtonClick"
+        android:layout_below="@+id/search_spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="59dp"
+        android:layout_marginStart="59dp" />
+
+</RelativeLayout>

@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,7 @@ import org.w3c.dom.Text;
 public class SearchActivity extends ActionBarActivity {
 
     Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+    TextView t;
 
 
 
@@ -48,23 +50,42 @@ public class SearchActivity extends ActionBarActivity {
     @Override
     public void onStart() {
         super.onStart();
+        Log.d("STATE", "onStart");
 
+        final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
         ref.addAuthStateListener(new Firebase.AuthStateListener() {
+
             @Override
-            public void onAuthStateChanged(AuthData authData) {
-                TextView t;
-                t = (TextView) findViewById(R.id.AuthStatus);
+            public void onAuthStateChanged(final AuthData authData) {
                 if (authData != null) {
-                    String loggedIn = "You're logged In";
-                    t.setText(loggedIn);
+                    Log.d("STATE", "User is authenticated");
+
+                    Firebase userRef = ref.child("users/" + authData.getUid());
+                    Log.d("User Ref", userRef.toString());
+
+                    t = (TextView) findViewById(R.id.AuthStatus);
+
+                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            Log.d("SnapShot Name", dataSnapshot.child("name").getValue().toString());
+
+                            String loggedIn = dataSnapshot.child("name").getValue().toString()
+                            + " is logged in.";
+                            t.setText(loggedIn);
+                        }
+
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
+                        }
+                    });
                 } else {
-                    String loggedIn = "You're logged Out";
-                    t.setText(loggedIn);
+                    // user is not logged in
                 }
             }
         });
-
-
     }
 
     @Override
@@ -74,36 +95,12 @@ public class SearchActivity extends ActionBarActivity {
         return true;
     }
 
-    public void search(View button)
+    public void onSearchButtonClick(View button)
     {
-//        EditText etId = (EditText) findViewById(R.id.EditTextId);
-//        String idToSearch = etId.getText().toString();
-//
-//
-//
-//        Query queryRef = ref.orderByChild("studentId").equalTo(idToSearch);
-//        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot snapshot) {
-//
-//                if (snapshot == null || snapshot.getValue() == null)
-//                    Toast.makeText(SearchActivity.this, "No record found", Toast.LENGTH_SHORT).show();
-//                else {
-//                    //Toast.makeText(SearchActivity.this, snapshot.getValue().toString(), Toast.LENGTH_SHORT).show();
-//                    for (DataSnapshot messageSnapshot : snapshot.getChildren()) {
-////                        String name = (String) messageSnapshot.child("name").getValue();
-//
-//                        Student student = messageSnapshot.getValue(Student.class);
-//
-//                        Toast.makeText(SearchActivity.this, student.getName() + "'s Major is " + student.getMajor(), Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError error) {
-//            }
-//        });
+        Intent intent = new Intent(this,SearchProfiles.class);
+        startActivity(intent);
+
+
     }
 
     public void newUser(View button) {
@@ -123,6 +120,8 @@ public class SearchActivity extends ActionBarActivity {
             Toast.makeText(SearchActivity.this, "Failed to log out", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(SearchActivity.this, "Successfully logged out user", Toast.LENGTH_LONG).show();
+            String logOut = "No one is logged in";
+            t.setText(logOut);
         }
 
 

@@ -72,7 +72,7 @@
         <activity
             android:name=".CreateUserVerify"
             android:label="@string/title_activity_create_user_verify" />
-        <activity android:name=".EditEmailPassword" />
+        <activity android:name=".EditEmailPassword"></activity>
         <activity
             android:name=".SearchActivity"
             android:label="Search"/>

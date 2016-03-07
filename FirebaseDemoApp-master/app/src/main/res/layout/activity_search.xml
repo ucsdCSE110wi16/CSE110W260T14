@@ -53,6 +53,22 @@
         </Button>
 
         <Button
+            android:id="@+id/ShowProfile"
+            android:layout_height="wrap_content"
+            android:text="Show profile"
+            android:onClick="showProfile"
+            android:layout_width="fill_parent">
+        </Button>
+
+        <Button
+            android:id="@+id/SearchProfiles"
+            android:layout_height="wrap_content"
+            android:text="Search "
+            android:onClick="onSearchButtonClick"
+            android:layout_width="fill_parent">
+        </Button>
+
+        <Button
             android:id="@+id/LogIn"
             android:layout_height="wrap_content"
             android:text="Log In"
@@ -70,13 +86,7 @@
 
         </Button>
 
-        <Button
-            android:id="@+id/ShowProfile"
-            android:layout_height="wrap_content"
-            android:text="Show profile"
-            android:onClick="showProfile"
-            android:layout_width="fill_parent">
-        </Button>
+
 
         <TextView
             android:id="@+id/AuthStatus"
