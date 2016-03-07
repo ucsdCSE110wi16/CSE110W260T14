@@ -55,27 +55,6 @@ public class LoginActivity extends AppCompatActivity {
 
                         Toast.makeText(LoginActivity.this, "User " + authData.getProviderData().get("email") + " is logged in",
                                 Toast.LENGTH_LONG).show();
-
-
-                       /* ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot snapshot) {
-                                for (DataSnapshot studentSnapshot : snapshot.getChildren()) {
-                                    Student authStudent = studentSnapshot.getValue(Student.class);
-
-//                                  Student authStudent = snapshot.child(authData.).getValue(Student.class);
-                                    Toast.makeText(LoginActivity.this, "User " + authStudent.getName() + " is logged in",
-                                            Toast.LENGTH_LONG).show();
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled (FirebaseError firebaseError){
-                            }
-
-                        });*/
-
-
                     }
 
                     @Override

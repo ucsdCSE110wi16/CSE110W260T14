@@ -74,11 +74,15 @@ public class MainActivity extends AppCompatActivity
                 if (authData != null) {
                     Log.d("STATE", "User is authenticated");
 
+
                     Firebase userRef = ref.child("users/" + authData.getUid());
+                    Log.d("User Ref", userRef.toString());
 
                     userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            Log.d("SnapShot Name", dataSnapshot.child("name").getValue().toString());
 
                             TextView mGreeting = (TextView)findViewById(R.id.main_greeting);
                             mGreeting.setText("Hello, " + dataSnapshot.child("name").getValue().toString()
@@ -105,6 +109,10 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void onSearchButtonPress(){
+
     }
 
     @Override

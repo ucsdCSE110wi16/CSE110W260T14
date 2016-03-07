@@ -42,7 +42,7 @@ public class LogInUser extends AppCompatActivity {
     }
 
 
-    public void logIn(View button){
+    public void logIn(View button) {
 
         EditText etEmail = (EditText) findViewById(R.id.logIn_email);
         EditText etPassword = (EditText) findViewById(R.id.logIn_password);
@@ -51,36 +51,21 @@ public class LogInUser extends AppCompatActivity {
         String password = etPassword.getText().toString();
 
 
-
         ref.authWithPassword(email, password, new Firebase.AuthResultHandler() {
+
             @Override
             public void onAuthenticated(final AuthData authData) {
-                ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot snapshot) {
-                        for (DataSnapshot studentSnapshot : snapshot.getChildren()) {
-                            Student authStudent = studentSnapshot.getValue(Student.class);
 
-//                            Student authStudent = snapshot.child(authData.).getValue(Student.class);
-                            Toast.makeText(LogInUser.this, "User " + authStudent.getName() + " is logged in", Toast.LENGTH_LONG).show();
-                        }
-                    }
-                        @Override
-                        public void onCancelled (FirebaseError firebaseError){
-                        }
-                    }
+                Toast.makeText(LogInUser.this, "User " + authData.getProviderData().get("email") + " is logged in",
+                        Toast.LENGTH_LONG).show();
+            }
 
-                    );
-
-
-                }
-
-                @Override
+            @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
                 Toast.makeText(LogInUser.this, "Failed to log in user", Toast.LENGTH_LONG).show();
             }
+
         });
+
     }
-
-
 }

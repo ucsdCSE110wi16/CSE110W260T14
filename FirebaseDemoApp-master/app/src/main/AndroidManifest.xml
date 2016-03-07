@@ -28,7 +28,8 @@
         </activity>
         <activity android:name=".NewUser" />
         <activity android:name=".LogInUser" />
-        <activity android:name=".ShowProfile"></activity>
+        <activity android:name=".ShowProfile" />
+        <activity android:name=".SearchProfiles"></activity>
     </application>
 
 </manifest>
