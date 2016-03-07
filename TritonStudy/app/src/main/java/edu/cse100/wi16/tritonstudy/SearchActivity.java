@@ -26,7 +26,6 @@ public class SearchActivity extends AppCompatActivity
 {
     Vector searchResults = new Vector(1,1);
 
-
     /*String[] arrayCSEcourses = new String[]{"Choose Course","CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
             "CSE 12", "CSE 15L", "CSE 30", "CSE 20", "CSE 21", "CSE 100", "CSE 101", "CSE 105",
             "CSE 110", "CSE 120", "CSE 127", "CSE 130", "CSE 131", "CSE 136", "CSE 140",
@@ -41,6 +40,8 @@ public class SearchActivity extends AppCompatActivity
     Spinner spClass;
     ArrayAdapter<String> adClass1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -51,41 +52,13 @@ public class SearchActivity extends AppCompatActivity
         //adClass1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         //spClass.setAdapter(adClass1);
 
-
-        /*final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-        ref.addAuthStateListener(new Firebase.AuthStateListener() {
-
-            @Override
-            public void onAuthStateChanged(final AuthData authData) {
-                if (authData != null) {
-                    Log.d("STATE", "User is authenticated");
-
-                    Firebase userRef = ref.child("users/" + authData.getUid());
-
-                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-
-                            //TextView mGreeting = (TextView) findViewById(R.id.main_greeting);
-                            //mGreeting.setText("Hello, " + dataSnapshot.child("name").getValue().toString()
-                            //        , TextView.BufferType.EDITABLE);
-                        }
-
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
-                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
-                        }
-                    });
-                } else {
-                    // user is not logged in
-                }
-            }
-        });*/
-
         //DEBUG: Add test values to the search results vector
         searchResults.add("CSE 3");
         searchResults.add("CSE 7");
-        //searchResults.add("CSE 140");
+        searchResults.add("CSE 140");
+        searchResults.add("CSE 140L");
+        searchResults.add("CSE 101");
+        searchResults.add("CSE 110");
 
         //search Button
         Button search = (Button) findViewById(R.id.buttonSearch);
@@ -138,6 +111,6 @@ public class SearchActivity extends AppCompatActivity
         //Update Search results count via TextView display, counter provided by the ArrayList
         //building FOR EACH-IN loop
         TextView searchStatus = (TextView) findViewById(R.id.textSearchStatus);
-        searchStatus.setText("Search Results [" + Integer.toString(i) + " match(es)]:", TextView.BufferType.EDITABLE);
+        searchStatus.setText("Matches found: " + Integer.toString(i), TextView.BufferType.EDITABLE);
     }
 }
