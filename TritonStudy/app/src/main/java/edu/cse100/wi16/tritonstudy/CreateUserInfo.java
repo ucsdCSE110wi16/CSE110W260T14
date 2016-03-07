@@ -89,8 +89,8 @@ public class CreateUserInfo extends AppCompatActivity {
         EditText etEmail = (EditText) findViewById(R.id.editTextEmail);
         EditText etPhone = (EditText) findViewById(R.id.editTextPhone);
         EditText etMajor = (EditText) findViewById(R.id.editTextMajor);
-        //EditText etBio= (EditText) findViewById(R.id.editText);
         EditText etPassword = (EditText) findViewById(R.id.editTextPassword);
+        EditText etBio = (EditText) findViewById(R.id.editTextBio);
 
         Student student = new Student();
         student.setName(etName.getText().toString());
@@ -98,6 +98,7 @@ public class CreateUserInfo extends AppCompatActivity {
         student.setPhoneNumber(etPhone.getText().toString());
         student.setMajor(etMajor.getText().toString());
         student.setPassword(etPassword.getText().toString());
+        student.setBio(etBio.getText().toString());
 
         Intent mIntent = new Intent(this,CreateUserClassesActivity.class);
         Bundle mBundle = new Bundle();

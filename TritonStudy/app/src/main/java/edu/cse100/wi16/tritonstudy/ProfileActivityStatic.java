@@ -73,8 +73,8 @@ public class ProfileActivityStatic extends AppCompatActivity {
                                     , TextView.BufferType.EDITABLE);
 
                             TextView tBio = (TextView)findViewById(R.id.profileStaticBio);
-                            tBio.setText(dataSnapshot.child("bio").getValue().toString()
-                                    , TextView.BufferType.EDITABLE);
+                            tBio.setText(dataSnapshot.child("bio").getValue().toString(),
+                                    TextView.BufferType.EDITABLE);
                         }
 
                         @Override
