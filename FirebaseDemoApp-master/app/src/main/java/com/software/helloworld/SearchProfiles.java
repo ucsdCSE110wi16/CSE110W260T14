@@ -63,10 +63,6 @@ public class SearchProfiles extends AppCompatActivity {
                 Log.d("Debug", "There are " + snapshot.getChildrenCount() + " children");
 
                 Vector searchResults = new Vector(1,1);
-                searchResults.add("Ed");
-                searchResults.add("John");
-
-
 
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Student student = child.getValue(Student.class);

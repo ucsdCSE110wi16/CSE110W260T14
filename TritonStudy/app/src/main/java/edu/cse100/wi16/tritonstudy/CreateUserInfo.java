@@ -32,54 +32,6 @@ public class CreateUserInfo extends AppCompatActivity {
         Firebase.setAndroidContext(this);
         ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
-        //Submit Button
-//        Button submitButton = (Button) findViewById(R.id.buttonNext);
-//        submitButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-//                //code to push to firebase
-//                EditText etName = (EditText) findViewById(R.id.editTextNameFirst);
-//                EditText etEmail = (EditText) findViewById(R.id.editTextEmail);
-//                EditText etPhone = (EditText) findViewById(R.id.editTextPhone);
-//                EditText etMajor = (EditText) findViewById(R.id.editTextMajor);
-//                EditText etPassword = (EditText) findViewById(R.id.editTextPassword);
-//
-////                HashMap<String, Object> map = new HashMap<String, Object>();
-////
-////                map.put("name",etName.getText().toString());
-////                map.put("email", etEmail.getText().toString());
-////                map.put("phone", etPhone.getText().toString());
-////                map.put("major", etMajor.getText().toString());
-////                map.put("password", etPassword.getText().toString());
-//
-//                Student student = new Student();
-//                student.setName(etName.getText().toString());
-//                student.setEmail(etEmail.getText().toString());
-//                student.setPhoneNumber(etPhone.getText().toString());
-//                student.setMajor(etMajor.getText().toString());
-//                student.setPassword(etPassword.getText().toString());
-//
-//
-//
-////                Intent intent = new Intent(CreateUserInfo.this, CreateUserClassesActivity.class);
-////                intent.putExtra("NewStudent", student);
-////                startActivity(intent);
-//
-//                Intent mIntent = new Intent(CreateUserInfo.this,CreateUserClassesActivity.class);
-//
-//                Bundle mBundle = new Bundle();
-//
-//                mBundle.putSerializable(SER_KEY,student);
-//
-//                Log.d("TEST", student.getEmail());
-//
-//                mIntent.putExtras(mBundle);
-//
-//
-//
-//            }
-//        });
-
     }
     public void submit(View v){
 

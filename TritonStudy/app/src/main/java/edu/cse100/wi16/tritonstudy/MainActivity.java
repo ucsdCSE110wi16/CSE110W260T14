@@ -111,7 +111,11 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void onSearchButtonPress(){
+    public void onSearchButtonClick(View button)
+    {
+        Intent intent = new Intent(this,Search.class);
+        startActivity(intent);
+
 
     }
 
