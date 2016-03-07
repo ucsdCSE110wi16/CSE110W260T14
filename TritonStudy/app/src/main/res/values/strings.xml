@@ -20,7 +20,7 @@
 
     <string name="buttonProfile">Profile</string>
     <string name="buttonSearch">Search</string>
-    <string name="buttonNearby">What\'s Nearby?</string>
+    <string name="buttonDB">Database</string>
     <string name="buttonMap">UCSD Map</string>
 
     <!-- Profile Screen strings -->
@@ -38,5 +38,9 @@
     <string name="title_activity_create_user_verify">Create New User: Verification</string>
     <string name="title_activity_test_receive_results">testReceiveResults</string>
 
+    <!-- Strings for Hamburger menu items -->
+    <string name="bmenu_main">Main menu</string>
+    <string name="bmenu_profile">Profile</string>
+    <string name="bmenu_logout">Log out</string>
 
 </resources>
