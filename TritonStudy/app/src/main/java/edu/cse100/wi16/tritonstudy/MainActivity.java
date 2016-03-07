@@ -57,6 +57,15 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //search Button
+        Button search = (Button) findViewById(R.id.buttonSearch);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            }
+        });
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -80,7 +89,7 @@ public class MainActivity extends AppCompatActivity
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
-                            TextView mGreeting = (TextView)findViewById(R.id.main_greeting);
+                            TextView mGreeting = (TextView) findViewById(R.id.main_greeting);
                             mGreeting.setText("Hello, " + dataSnapshot.child("name").getValue().toString()
                                     , TextView.BufferType.EDITABLE);
                         }
@@ -144,7 +153,7 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_profile) {
 
-        } else if (id == R.id.nav_logout) {
+        } else if (id == R.id.nav_logout) { startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
         } /*else if (id == R.id.nav_manage) {
 

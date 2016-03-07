@@ -20,7 +20,7 @@
 
     <string name="buttonProfile">Profile</string>
     <string name="buttonSearch">Search</string>
-    <string name="buttonNearby">What\'s Nearby?</string>
+    <string name="buttonDB">Database</string>
     <string name="buttonMap">UCSD Map</string>
 
     <!-- Profile Screen strings -->
