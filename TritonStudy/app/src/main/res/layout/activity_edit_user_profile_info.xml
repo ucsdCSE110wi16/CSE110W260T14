@@ -204,8 +204,8 @@
                 android:layout_column="2"
                 android:background="#58ce46"
                 android:textColor="#ffffff"
-                android:layout_gravity="center"
-                android:onClick="left"
+                android:layout_gravity="left"
+                android:onClick="onSaveButtonClick"
                 android:layout_margin="8dp" />
 
         </GridLayout>

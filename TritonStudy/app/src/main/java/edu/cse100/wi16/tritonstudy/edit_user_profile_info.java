@@ -38,7 +38,6 @@ public class edit_user_profile_info extends AppCompatActivity {
 
     // TODO: Change bio text orientation, should be top left
 
-
     int CROP_IMAGE = 1;
     int SET_BACKGROUND = 2;
     Uri uri;
@@ -71,6 +70,40 @@ public class edit_user_profile_info extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onSaveButtonClick(View v){
+
+        Log.d("DEBUG", "onSaveButtonClick()");
+
+        Log.d("DEBUG", "connect to edit texts");
+        EditText etName = (EditText) findViewById(R.id.edit_user_profile_info_etName);
+        EditText etEmail = (EditText) findViewById(R.id.edit_user_profile_info_etEmail);
+        EditText etPhone = (EditText) findViewById(R.id.edit_user_profile_info_etPhone);
+        EditText etBio = (EditText) findViewById(R.id.edit_user_profile_info_etBio);
+
+        Log.d("DEBUG", "save value of edit texts");
+        String name = etName.getText().toString();
+        String email = etEmail.getText().toString();
+        String phone= etPhone.getText().toString();
+        String bio = etBio.getText().toString();
+
+        String uid = rootRef.getAuth().getUid().toString();
+        Log.d("DEBUG", "UID = " + uid);
+
+
+        Firebase userRef = rootRef.child("users/"+uid);
+        Log.d("DEBUG", "User reference =" + userRef);
+
+        Log.d("DEBUG", "put changed value in map");
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name", name);
+        map.put("phoneNumber",phone);
+        map.put("bio", bio);
+
+        Log.d("DEBUG", "update user info");
+        userRef.updateChildren(map);
+    }
 
 //        //Submit Button
 //        Button submitButton = (Button) findViewById(R.id.buttonSubmit);
@@ -78,46 +111,7 @@ public class edit_user_profile_info extends AppCompatActivity {
 //        submitButton.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
 //
-//                EditText eName = (EditText) findViewById(R.id.dynamicProfile_editText_name);
-//                final EditText eEmail = (EditText) findViewById(R.id.dynamicProfile_editText_email);
-//                EditText eMajor = (EditText) findViewById(R.id.dynamicProfile_editText_major);
-//                EditText eBio = (EditText) findViewById(R.id.dynamicProfile_editText_bio);
-//
-//                final String mName = eName.getText().toString();
-//                final String mEmail = eEmail.getText().toString();
-//                final String mMajor = eMajor.getText().toString();
-//                final String mBio = eBio.getText().toString();
-//
-//                String uid = mRef.getAuth().getUid().toString();
-//                Log.d("Variable", "UID is: " + uid);
-//
-//                Firebase userRef = mRef.child("users/"+uid);
-////                Log.d("Variable", userRef.toString());
-//
-//                Map<String, Object> map = new HashMap<String, Object>();
-//                map.put("name", mName);
-//
-//                Log.d("Email", mRef.getAuth().getProviderData().get("email").toString());
-//                Log.d("Password", mRef.getAuth().getProvider().toString());
-//
-//                mRef.changeEmail(mRef.getAuth().getProviderData().get("email").toString(),
-//                        mRef.getAuth().getProvider().toString(), mEmail, new Firebase.ResultHandler() {
-//                    @Override
-//                    public void onSuccess() {
-//                        Log.d("STATE", "Email changed to" + eEmail);
-//                    }
-//                    @Override
-//                    public void onError(FirebaseError firebaseError) {
-//                        Log.d("ERROR", "Email unchanged! ");
-//                    }
-//                });
-//
-//                map.put("major",mMajor);
-//                map.put("bio", mBio);
-//
-//                Log.d("Auth State", String.valueOf((mRef.getAuth())));
-//
-//                userRef.updateChildren(map);
+
 //
 //
 //
@@ -153,7 +147,7 @@ public class edit_user_profile_info extends AppCompatActivity {
 ////                startActivity(new Intent(ProfileActivity.this, add_studytime.class));
 //            }
 //        });
-    }
+
 
     public void populateFields(AuthData authData){
         Log.d("DEBUG", "populateFields()");
