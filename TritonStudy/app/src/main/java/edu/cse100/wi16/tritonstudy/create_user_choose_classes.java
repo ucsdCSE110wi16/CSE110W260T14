@@ -17,10 +17,7 @@ import java.util.Map;
 public class create_user_choose_classes extends AppCompatActivity {
 
 
-    Student student; // created here so all methods can access
-
-    // define firebase reference location
-    Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+    Student student; // created here to guarentee access
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +90,9 @@ public class create_user_choose_classes extends AppCompatActivity {
         String password = student.getPassword();
         Log.d("PASSWORD", student.getPassword());
 
-        ref.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+        Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+
+        rootRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
                 Log.d("DIVIDER", "//////////////////////////////////////////");
@@ -103,9 +102,9 @@ public class create_user_choose_classes extends AppCompatActivity {
                 String uid = result.get("uid").toString();
 
                 Log.d("name", student.getName());
-                Log.d("ref", ref.toString());
-                Log.d("users", ref.child("users/").toString());
-                Log.d("uid", ref.child("users/").child(uid).toString());
+                Log.d("ref", rootRef.toString());
+                Log.d("users", rootRef.child("users/").toString());
+                Log.d("uid", rootRef.child("users/").child(uid).toString());
 
                 // save value to firebase
                 ref.child("users").child(uid).setValue(student);
