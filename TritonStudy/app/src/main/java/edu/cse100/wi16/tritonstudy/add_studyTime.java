@@ -5,21 +5,20 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-public class edit_times extends FragmentActivity {
+public class add_studyTime extends FragmentActivity {
 
     //Variables for activity elements
     private TextView tvDisplayDate;
@@ -39,9 +38,25 @@ public class edit_times extends FragmentActivity {
     static final int TIME_START_DIALOG_ID = 1000;
     static final int TIME_END_DIALOG_ID   = 1001;
 
+    // use for all location spinner
+    static final String[] locationArray = new String[]{"Select your location:", "Geisel Library", "Price Center East", "Price Center West", "The Old Student Center",
+            "Biomedical Library", "Galbraith Hall", "North Break (The Village)", "Marshall: P Hall Res Lounge", "Marshall: Q Hall Res Lounge",
+            "Marshall: R Hall Res Lounge", "Marshall: U Hall Res Lounge", "Marshall: Fireside Lounge", "Marshall: Ocean View Lounge",
+            "Muir: Tioga & Tenaya Res Hall Lounges", "Muir: Tioga Hall 11th Floor Mtg Rm", "Muir: Tuolumne Apts Lounge", "Muir: Tamarack Apts Lounges",
+            "Revelle: Blake Hall: Commuter Lounge", "Revelle: Blake Hall: College Center", "Revelle: Blake Hall: Blake 4 Lounge",
+            "Muir: Argo Res Hall Lounges", "Muir: Fleet Res Lounge Halls", "Galbraith Hall: The Think Tank", "Galbraith Hall: Barnwood",
+            "Muir: Keeling 1 Lounge", "Muir: Keeling 3 Lounge", "ERC: Africa Hall", "ERC: Asia Hall", "ERC: Europe Hall", "ERC: Latin Americaa Hall",
+            "ERC: North America Hall", "I-House: Asante House", "I-House: Cuzco House", "I-House: Kathmandu House", "ERC: Commuter Lounge",
+            "Sixth: College Lodge", "Sixth: Dogg House", "Sixth: Commuter Center", "Sixth: Digital Playroom", "Warren: The Courtroom", "Warren: JK Wood Lounge",
+            "Warren: Harlan Res Hall Lounges", "Warren: Frankfurt Res Hall Lounges", "Warren: Stewart Res Hall Lounges", "Warren: CSE Study Lounge"};
+    static final String[] dayArray = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        Log.d("Debug", "add_studyTime()");
+
+        Log.d("Debug", "get current time");
         //Get current date, current time, and default end time (1 hour from current time,
         //if current time is > 23:00 [11pm] then end time is 23:59)
         final Calendar c = Calendar.getInstance();
@@ -64,41 +79,38 @@ public class edit_times extends FragmentActivity {
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_times);
+        setContentView(R.layout.activity_add_studyTime);
 
-        //=============================================
-        //Drop Down Box (spinner) for Study Locations
-        //=============================================
-        Spinner spLocs = (Spinner) findViewById(R.id.spinnerLocation);
-        String[] strLocs = new String[]{"Select your location:", "Geisel Library", "Price Center East", "Price Center West", "The Old Student Center",
-                "Biomedical Library", "Galbraith Hall", "North Break (The Village)", "Marshall: P Hall Res Lounge", "Marshall: Q Hall Res Lounge",
-                "Marshall: R Hall Res Lounge", "Marshall: U Hall Res Lounge", "Marshall: Fireside Lounge", "Marshall: Ocean View Lounge",
-                "Muir: Tioga & Tenaya Res Hall Lounges", "Muir: Tioga Hall 11th Floor Mtg Rm", "Muir: Tuolumne Apts Lounge", "Muir: Tamarack Apts Lounges",
-                "Revelle: Blake Hall: Commuter Lounge", "Revelle: Blake Hall: College Center", "Revelle: Blake Hall: Blake 4 Lounge",
-                "Muir: Argo Res Hall Lounges", "Muir: Fleet Res Lounge Halls", "Galbraith Hall: The Think Tank", "Galbraith Hall: Barnwood",
-                "Muir: Keeling 1 Lounge", "Muir: Keeling 3 Lounge", "ERC: Africa Hall", "ERC: Asia Hall", "ERC: Europe Hall", "ERC: Latin Americaa Hall",
-                "ERC: North America Hall", "I-House: Asante House", "I-House: Cuzco House", "I-House: Kathmandu House", "ERC: Commuter Lounge",
-                "Sixth: College Lodge", "Sixth: Dogg House", "Sixth: Commuter Center", "Sixth: Digital Playroom", "Warren: The Courtroom", "Warren: JK Wood Lounge",
-                "Warren: Harlan Res Hall Lounges", "Warren: Frankfurt Res Hall Lounges", "Warren: Stewart Res Hall Lounges", "Warren: CSE Study Lounge"};
-        ArrayAdapter<String> adLocs = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, strLocs);
-        spLocs.setAdapter(adLocs);
+        setSpinners();
 
-        //=============================================
-        //Drop Down Box (spinner) for Classes (debug)
-        //=============================================
-        Spinner spClasses = (Spinner) findViewById(R.id.spinnerClass);
-        String[] strClasses = new String[]{"Select your class:", "CSE 110", "BIOL 100", "MATH 100B", "LIST 1CX"};
-        ArrayAdapter<String> adClasses = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, strClasses);
-        spClasses.setAdapter(adClasses);
+    }
 
-        //Back Button
-        Button backButton = (Button) findViewById(R.id.buttonBack);
+    public void setSpinners(){
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(edit_times.this, ProfileActivity.class));
-            }
-        });
+        Log.d("DEBUG", "setSpinner()");
+
+        Log.d("DEBUG", "set location spinner");
+        Spinner spLocations = (Spinner) findViewById(R.id.add_studyTime_spLocation);
+        ArrayAdapter<String> adLocs = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_dropdown_item, locationArray);
+        spLocations.setAdapter(adLocs);
+
+        Log.d("DEBUG", "set course spinner");
+        Spinner spCourses = (Spinner) findViewById(R.id.add_studyTime_spCourse);
+        ArrayAdapter<String> adClasses = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_dropdown_item,
+                        create_user_choose_classes.coursesArray);
+        spCourses.setAdapter(adClasses);
+
+        Log.d("DEBUG", "set day spinner");
+        Spinner spDays = (Spinner) findViewById(R.id.add_studyTime_spDays);
+        ArrayAdapter<String> adDays = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_dropdown_item, dayArray);
+        spCourses.setAdapter(adDays);
+    }
+
+    public void onBackButtonClick(View v){
+        // TODO: Implement
     }
 
     public void dateDialog(View v) {

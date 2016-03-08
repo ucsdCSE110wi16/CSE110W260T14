@@ -4,12 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by kshtz on 1/28/2016.
  */
 public class Student implements Parcelable {
-//    private static final long serialVersionUID = -7060210544600464481L;
+
     private String name;
     private String email;
     private String major;
@@ -20,43 +21,29 @@ public class Student implements Parcelable {
     private String class2;
     private String class3;
     private String class4;
+    private ArrayList<StudyTime> studyTimes = new ArrayList<StudyTime>();
 
     public String getName() {return name;}
 
     public void setName(String name) {this.name = name;}
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() {return email;}
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major= major;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
+    public String getPassword() { return password; }
 
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public String getPhoneNumber() {return phoneNumber;}
 
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber;}
 
     public String getBio() {return bio;}
-
     public void setBio(String bio) {this.bio = bio;}
 
     public String getClass1(){return class1;}
@@ -71,6 +58,14 @@ public class Student implements Parcelable {
     public String getClass4(){return class4;}
     public void setClass4(String class4){this.class4 = class4;}
 
+    public ArrayList<StudyTime> getStudyTimes(){return this.studyTimes;}
+
+    public void addStudyTimes(StudyTime studyTime){
+        this.studyTimes.add(studyTime);
+    }
+    public void removeStudyTimes(StudyTime studyTime){
+        // TODO: implement removeStudyTimes
+    }
 
     public static final Parcelable.Creator<Student> CREATOR = new Parcelable.Creator<Student>() {
         public Student createFromParcel(Parcel source) {
