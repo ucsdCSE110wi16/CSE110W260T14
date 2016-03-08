@@ -1,6 +1,7 @@
 package edu.cse100.wi16.tritonstudy;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,30 +15,67 @@ import java.util.ArrayList;
  */
 public class studentAdapter extends ArrayAdapter<Student> {
 
-    public studentAdapter(Context context, ArrayList<Student> users) {
+    String courseToFind;
+
+    public studentAdapter(Context context, ArrayList<Student> users, String courseToFind) {
         super(context, 0, users);
+        Log.d("DEBUG", "Set courseToFind = "+courseToFind);
+        this.courseToFind = courseToFind;
+
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        // Get the data item for this position
+
+        Log.d("DEBUG", "Get the data item for this position");
         Student student = getItem(position);
 
-        // Check if an existing view is being reused, otherwise inflate the view
+        Log.d("DEBUG", "Check if an existing view is being reused, otherwise inflate the view");
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.display_student, parent, false);
         }
 
-        // Lookup view for data population
+        Log.d("DEBUG", "Lookup view for data population");
         TextView tvName = (TextView) convertView.findViewById(R.id.displayUser_tvName);
         TextView tvPhone = (TextView) convertView.findViewById(R.id.displayUser_tvPhone);
+        TextView tvStudyTime = (TextView) convertView.findViewById(R.id.displayUser_tvStudyTime);
 
-        // Populate the data into the template view using the data object
+        Log.d("DEBUG", "Populate the data into the template view using the data object");
+        Log.d("DEBUG", "tvName = "+student.getName());
         tvName.setText(student.getName());
+
+        Log.d("DEBUG", "Find student studytimes for course: "+courseToFind);
+        ArrayList<StudyTime> studyTimes = student.findStudyTimes(courseToFind);
+
+        Log.d("DEBUG", "Construct string of study times");
+        String strStudyTimes = "";
+
+        for (StudyTime studytime : studyTimes) {
+
+            if (studytime.getCourse().equals(courseToFind)) {
+
+                Log.d("DEBUG", "studytime.getCourse().equals(courseToFind)");
+                Log.d("DEBUG", "Concatenate String");
+                strStudyTimes = strStudyTimes.concat(
+                        studytime.getDay() + ": "
+                                + studytime.getHourStart() +":"
+                                + studytime.getMinuteStart()+" - "
+                                + studytime.getHourEnd()+":"
+                                + studytime.getMinuteEnd()+" at "
+                                + studytime.getLocation()+"\n");
+
+                Log.d("DEBUG", "strStudyTimes = "+strStudyTimes);
+            }
+        }
+
+        Log.d("DEBUG", "Set tvStudyTime");
+        tvStudyTime.setText(strStudyTimes);
+
+        Log.d("DEBUG", "Set tvPhone ");
         tvPhone.setText(student.getPhoneNumber());
 
-        // Return the completed view to render on screen
+        Log.d("DEBUG", "Return the completed view to render on screen");
         return convertView;
     }
 }

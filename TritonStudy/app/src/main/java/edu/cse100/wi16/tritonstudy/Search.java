@@ -111,7 +111,7 @@ public class search extends AppCompatActivity {
                     }
                 }
                 Log.d("Debug", "send arraylist to be displayed");
-                displayResults(searchResults);
+                displayResults(searchResults,classTofind);
             }
 
             @Override
@@ -121,10 +121,10 @@ public class search extends AppCompatActivity {
         });
     }
 
-    public void displayResults(ArrayList<Student> searchResults){
+    public void displayResults(ArrayList<Student> searchResults, String classToFind){
 
         Log.d("Debug", "Create adapter to convert the array to views");
-        studentAdapter adapter = new studentAdapter(this, searchResults);
+        studentAdapter adapter = new studentAdapter(this, searchResults, classToFind);
 
         Log.d("Debug", "Attach the adapter to a ListView");
         ListView listView = (ListView) findViewById(R.id.search_lvSearchResults);

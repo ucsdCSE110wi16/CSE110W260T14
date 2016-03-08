@@ -1,29 +1,25 @@
 package edu.cse100.wi16.tritonstudy;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
 import java.util.Calendar;
 import java.util.Map;
 
-public class add_studytime extends FragmentActivity {
+public class create_user_add_studytime extends FragmentActivity {
 
     //Variables for activity elements
     private TextView tvDisplayDate;
@@ -62,7 +58,7 @@ public class add_studytime extends FragmentActivity {
     static final String[] dayNameArray = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
 
-    Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+//    Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +70,6 @@ public class add_studytime extends FragmentActivity {
         Log.d("DEBUG", "Receive student object");
         student = (Student)getIntent().getParcelableExtra(create_user_profile_info.PAR_KEY);
         Log.d("DEBUG", "test student object: name is " + student.getName());
-
-
 
         Log.d("Debug", "get current time");
         //Get current date, current time, and default end time (1 hour from current time,
@@ -100,7 +94,7 @@ public class add_studytime extends FragmentActivity {
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_studytime);
+        setContentView(R.layout.activity_create_user_add_studytime);
 
         setSpinners();
 
@@ -189,7 +183,7 @@ public class add_studytime extends FragmentActivity {
                 Log.d("DEBUG", "save student object to firebase");
                 rootRef.child("users").child(uid).setValue(student);
 
-                Toast.makeText(add_studytime.this, "Successfully created user" + student.getName(),
+                Toast.makeText(create_user_add_studytime.this, "Successfully created user" + student.getName(),
                         Toast.LENGTH_LONG).show();
             }
 

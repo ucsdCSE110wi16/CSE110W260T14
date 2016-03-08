@@ -49,7 +49,7 @@
 
         <!-- Edit Study Times Activity -->
         <activity
-            android:name=".add_studytime"
+            android:name=".create_user_add_studytime"
             android:label="@string/title_activity_edit_times"
             android:theme="@style/AppTheme.ActionBarShowTitle" />
 

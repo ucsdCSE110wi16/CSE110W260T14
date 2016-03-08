@@ -15,10 +15,10 @@ public class StudyTime {
     private String course;
 
     public String getDay() {return day;}
-    public void setDay(String name) {this.day= day;}
+    public void setDay(String day) {this.day= day;}
 
     public int getHourStart() {return hourStart;}
-    public void setHourStart(int name) {this.hourStart= hourStart;}
+    public void setHourStart(int hourStart) {this.hourStart = hourStart;}
 
     public int getHourEnd() {return hourEnd;}
     public void setHourEnd(int hourEnd) {this.hourEnd= hourEnd;}

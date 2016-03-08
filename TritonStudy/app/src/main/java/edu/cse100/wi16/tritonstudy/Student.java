@@ -2,6 +2,7 @@ package edu.cse100.wi16.tritonstudy;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -58,11 +59,29 @@ public class Student implements Parcelable {
     public String getClass4(){return class4;}
     public void setClass4(String class4){this.class4 = class4;}
 
-    public ArrayList<StudyTime> getStudyTimes(){return this.studyTimes;}
+    public ArrayList<StudyTime> getStudyTimes(){
+        return this.studyTimes;
+    }
 
     public void addStudyTimes(StudyTime studyTime){
         this.studyTimes.add(studyTime);
     }
+
+    public ArrayList<StudyTime> findStudyTimes(String courseToFind) {
+
+        ArrayList<StudyTime> courseStudyTimes = new ArrayList<StudyTime>();
+
+        for (StudyTime studytime : studyTimes) {
+
+            if (studytime.getCourse().equals(courseToFind)) {
+
+                courseStudyTimes.add(studytime);
+            }
+        }
+
+        return courseStudyTimes;
+    }
+
     public void removeStudyTimes(StudyTime studyTime){
         // TODO: implement removeStudyTimes
     }

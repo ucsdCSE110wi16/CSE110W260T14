@@ -178,7 +178,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         editTimesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, add_studytime.class));
+//                startActivity(new Intent(ProfileActivity.this, add_studytime.class));
             }
         });
     }

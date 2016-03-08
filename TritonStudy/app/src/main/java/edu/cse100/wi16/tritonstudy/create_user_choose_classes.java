@@ -103,7 +103,7 @@ public class create_user_choose_classes extends AppCompatActivity {
 
         Log.d("DEBUG", "Package student object");
         Intent mIntent = new Intent(create_user_choose_classes.this,
-                add_studytime.class);
+                create_user_add_studytime.class);
         Bundle mBundle = new Bundle();
         mBundle.putParcelable(create_user_profile_info.PAR_KEY, student);
         mIntent.putExtras(mBundle);
