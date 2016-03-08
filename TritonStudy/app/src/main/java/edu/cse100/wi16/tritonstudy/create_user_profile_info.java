@@ -32,6 +32,9 @@ public class create_user_profile_info extends AppCompatActivity {
         EditText etPassword = (EditText) findViewById(R.id.create_user_etPassword);
         EditText etPasswordx2 = (EditText) findViewById(R.id.create_user_etPasswordx2);
 
+        // TODO: check that values of passwords are the same, toast if not
+        // TODO: require that email contains @ucsd.edu, toast if not
+
         Log.d("DEBUG", "Create student object from EditTexts");
         Student student = new Student();
         student.setName(etName.getText().toString());

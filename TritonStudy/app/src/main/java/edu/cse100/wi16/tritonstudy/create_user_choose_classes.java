@@ -15,43 +15,49 @@ import com.firebase.client.FirebaseError;
 import java.util.Map;
 
 public class create_user_choose_classes extends AppCompatActivity {
+    Student student;
 
-
-    Student student; // created here to guarentee access
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.d("DEBUG", "create_user_choose_classes reached");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user_choose_classes);
-
         Firebase.setAndroidContext(this); //required for firebase
 
-        // receive student object from CreateUserInfo
-        student = (Student)getIntent().getParcelableExtra(CreateUserInfo.PAR_KEY);
+        Log.d("DEBUG", "Receive student object");
+        Student student = (Student)getIntent().getParcelableExtra(CreateUserInfo.PAR_KEY);
+
 
         setSpinnerValues();
     }
 
     private void setSpinnerValues(){
+        Log.d("DEBUG", "Set values of spinners displaying course list");
 
+        Log.d("DEBUG", "Set values for Class 1");
         Spinner spClass1 = (Spinner) findViewById(R.id.createUser_spinner_class1);
         String[] arrayCSEcourses = new String[]{"Choose Course","CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
                 "CSE 12", "CSE 15L", "CSE 30", "CSE 20", "CSE 21", "CSE 100", "CSE 101", "CSE 105",
                 "CSE 110", "CSE 120", "CSE 127", "CSE 130", "CSE 131", "CSE 136", "CSE 140",
                 "CSE 140L", "CSE 141", "CSE 141L", "CSE 148", "CSE 150", "CSE 152",
                 "CSE 167", "CSE 168", "CSE 169", "CSE 182"};
-
         ArrayAdapter<String> adClass1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass1.setAdapter(adClass1);
 
+        Log.d("DEBUG", "Set values for Class 2");
         Spinner spClass2 = (Spinner) findViewById(R.id.createUser_spinner_class2);
         ArrayAdapter<String> adClass2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass2.setAdapter(adClass2);
 
+        Log.d("DEBUG", "Set values for Class 3");
         Spinner spClass3 = (Spinner) findViewById(R.id.createUser_spinner_class3);
         ArrayAdapter<String> adClass3 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass3.setAdapter(adClass3);
 
+        Log.d("DEBUG", "Set values for Class 4");
         Spinner spClass4 = (Spinner) findViewById(R.id.createUser_spinner_class4);
         ArrayAdapter<String> adClass4 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass4.setAdapter(adClass4);
@@ -59,90 +65,81 @@ public class create_user_choose_classes extends AppCompatActivity {
     }
 
     private void getSpinnerValues(){
+
+        // TODO: require class1 to be chosen, toast if not chosen
+        // TODO: do not save any classes that are equal to "choose course"
+
+        Log.d("DEBUG", "Get values of spinners");
+
+        Log.d("DEBUG", "Get values of class 1");
         Spinner spClass1 =(Spinner) findViewById(R.id.createUser_spinner_class1);
         student.setClass1(spClass1.getSelectedItem().toString());
-        Log.d("Student Class 1", student.getClass1());
+        Log.d("DEBUG", "The values of class 1 is " + student.getClass1());
 
+        Log.d("DEBUG", "Get values of class 2");
         Spinner spClass2 =(Spinner) findViewById(R.id.createUser_spinner_class2);
         student.setClass2(spClass2.getSelectedItem().toString());
+        Log.d("DEBUG", "The values of class 2 is " + student.getClass2());
 
+        Log.d("DEBUG", "Get values of class 3");
         Spinner spClass3 =(Spinner) findViewById(R.id.createUser_spinner_class3);
         student.setClass3(spClass3.getSelectedItem().toString());
+        Log.d("DEBUG", "The values of class 3 is " + student.getClass3());
 
+        Log.d("DEBUG", "Get values of class 4");
         Spinner spClass4 =(Spinner) findViewById(R.id.createUser_spinner_class4);
         student.setClass4(spClass4.getSelectedItem().toString());
+        Log.d("DEBUG", "The values of class 4 is " + student.getClass4());
     }
 
     public void nextButton(View v){
 
+        Log.d("DEBUG", "Next button pressed");
+
         getSpinnerValues();
 
-        // debug
-        Log.d("DIVIDER", "//////////////////////////////////////////");
-        Log.d("Student Class 1", student.getClass1());
-        Log.d("Student Class 2", student.getClass2());
-        Log.d("Student Class 3", student.getClass3());
-        Log.d("Student Class 4", student.getClass4());
-
+        Log.d("DEBUG", "get values of email, password for account creation");
         String email = student.getEmail();
-        Log.d("EMAIL", student.getEmail());
-
         String password = student.getPassword();
-        Log.d("PASSWORD", student.getPassword());
 
-        Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        Log.d("DEBUG", "get location of root directory of database");
+        final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
         rootRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
-                Log.d("DIVIDER", "//////////////////////////////////////////");
-                Log.d("USER CREATED", "Successfully created user account for "+ student.getName());
 
-                //preserve UID
+                Log.d("DEBUG", "Successfully created user account for "+ student.getName());
+
+                Log.d("DEBUG", "get user account ID");
                 String uid = result.get("uid").toString();
 
-                Log.d("name", student.getName());
-                Log.d("ref", rootRef.toString());
-                Log.d("users", rootRef.child("users/").toString());
-                Log.d("uid", rootRef.child("users/").child(uid).toString());
+                Log.d("DEBUG", "save student object to firebase");
+                rootRef.child("users").child(uid).setValue(student);
 
-                // save value to firebase
-                ref.child("users").child(uid).setValue(student);
-
-//                // save value to firebase
-//                ref.child("users").child(uid).setValue(student);
-
-//                Map<String, Object> map = new HashMap<String, Object>();//
-//                result.put("name", student.getName());
-//                result.put("email", student.getEmail());
-//                result.put("password", student.getPassword());
-//                result.put("major", student.getMajor());
-//                result.put("bio", student.getBio());
-//                result.put("class1", student.getClass1());
-//                result.put("class2", student.getClass2());
-//                result.put("class3", student.getClass3());
-//                result.put("class4", student.getClass4());
-
-
-
+                // TODO: pass student object to get study times
             }
 
             @Override
             public void onError(FirebaseError firebaseError) {
-                Toast.makeText(create_user_choose_classes.this, "Shit is Broke!", Toast.LENGTH_LONG).show();
+                Log.d("DEBUG", "Account not created");
+                // TODO: create toast for error
             }
         });
 
-
-        startActivity(new Intent(create_user_choose_classes.this, LoginActivity.class));
+        Log.d("DEBUG", "send to login screen");
+        startActivity(new Intent(create_user_choose_classes.this, login.class));
 
     }
 
     public void backButton (View v){
+        Log.d("DEBUG", "back button pressed");
         startActivity(new Intent(create_user_choose_classes.this, CreateUserInfo.class));
     }
 
     public void skipButton (View v){
+        Log.d("DEBUG", "back button pressed");
+        // TODO: take out skip button
         startActivity(new Intent(create_user_choose_classes.this, CreateUserVerify.class));
     }
 
