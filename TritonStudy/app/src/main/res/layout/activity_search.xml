@@ -10,21 +10,65 @@
     android:background="#2b92b9"
     tools:context="edu.cse100.wi16.tritonstudy.Search">
 
-    <Spinner
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/search_spinner" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Search for Names"
-        android:id="@+id/SearchProfiles_SearchButton"
-        android:onClick="onSearchButtonClick"
-        android:layout_below="@+id/search_spinner"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="59dp"
-        android:layout_marginStart="59dp" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:layout_columnSpan="3"
+            android:layout_gravity="center_vertical">
+
+        <RadioButton
+            android:id="@+id/search_radioCourse"
+            android:layout_gravity="center_vertical"
+            android:layout_row="0"
+            android:layout_column="0"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Search by Course: "
+            android:layout_row="0"
+            android:layout_column="1"
+            android:id="@+id/search_tvCourse"
+            android:layout_gravity="center_vertical"
+            android:textColor="#ffffff" />
+
+        <Spinner
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_row="0"
+            android:layout_column="3"
+            android:id="@+id/search_spCourse" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search"
+                android:id="@+id/SearchProfiles_SearchButton"
+                android:onClick="onSearchButtonClick"
+                android:layout_below="@+id/search_spinner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="59dp"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_marginStart="59dp" />
+        </GridLayout>
+
+
+
+
+
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -27,24 +27,21 @@ import java.util.Vector;
 public class Search extends AppCompatActivity {
 
     Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-//    private Vector searchResults;
-//    List<String> searchResults;
-Hashtable<String, String> searchResults = new Hashtable<String, String>();
+//    Hashtable<String, String> searchResults = new Hashtable<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Debug", "Search Class:");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
         Firebase.setAndroidContext(this);
 
         setSpinnerValues();
-
-
     }
 
     private void setSpinnerValues() {
 
+        Log.d("Debug", "set spinner values");
         Spinner spinner = (Spinner) findViewById(R.id.search_spinner);
         String[] arrayCSEcourses = new String[]{"CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
                 "CSE 12", "CSE 15L", "CSE 20", "CSE 21", "CSE 30", "CSE 100", "CSE 101", "CSE 105",
