@@ -11,6 +11,8 @@ import com.firebase.client.Firebase;
 
 public class create_user_profile_info extends AppCompatActivity {
 
+    final static String PAR_KEY = "edu.cse100.wi16.tritonstudy";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +48,6 @@ public class create_user_profile_info extends AppCompatActivity {
         Log.d("DEBUG", "Package student object");
         Intent mIntent = new Intent(this,create_user_choose_classes.class);
         Bundle mBundle = new Bundle();
-        String PAR_KEY = "edu.cse100.wi16.tritonstudy";
         mBundle.putParcelable(PAR_KEY, student);
         mIntent.putExtras(mBundle);
 

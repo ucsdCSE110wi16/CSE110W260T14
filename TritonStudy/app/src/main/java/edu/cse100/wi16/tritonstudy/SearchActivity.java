@@ -108,7 +108,7 @@ public class SearchActivity extends AppCompatActivity
         //set the ListView to the ArrayAdapter created above
         myList.setAdapter(myAdapter);
 
-        //Update Search results count via TextView display, counter provided by the ArrayList
+        //Update search results count via TextView display, counter provided by the ArrayList
         //building FOR EACH-IN loop
 //        TextView searchStatus = (TextView) findViewById(R.id.textSearchStatus);
 //        searchStatus.setText("Matches found: " + Integer.toString(i), TextView.BufferType.EDITABLE);

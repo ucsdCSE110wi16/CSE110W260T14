@@ -30,8 +30,8 @@ public class studentAdapter extends ArrayAdapter<Student> {
         }
 
         // Lookup view for data population
-        TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-        TextView tvPhone = (TextView) convertView.findViewById(R.id.tvPhone);
+        TextView tvName = (TextView) convertView.findViewById(R.id.displayUser_tvName);
+        TextView tvPhone = (TextView) convertView.findViewById(R.id.displayUser_tvPhone);
 
         // Populate the data into the template view using the data object
         tvName.setText(student.getName());

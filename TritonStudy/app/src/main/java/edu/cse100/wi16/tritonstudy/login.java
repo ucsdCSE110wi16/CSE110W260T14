@@ -31,7 +31,7 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/users");
+        rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
         Log.d("DEBUG", "check for firebase authentication");
         rootRef.addAuthStateListener(new Firebase.AuthStateListener() {

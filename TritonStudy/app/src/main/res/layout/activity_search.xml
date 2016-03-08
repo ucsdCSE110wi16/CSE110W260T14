@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#2b92b9"
-    tools:context="edu.cse100.wi16.tritonstudy.Search">
+    tools:context=".search">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search"
-                android:id="@+id/SearchProfiles_SearchButton"
+                android:id="@+id/search_btnSearch"
                 android:onClick="onSearchButtonClick"
                 android:layout_below="@+id/search_spinner"
                 android:layout_alignParentLeft="true"
@@ -64,10 +64,11 @@
                 android:layout_marginStart="59dp" />
         </GridLayout>
 
-
-
-
-
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/search_lvSearchResults"
+            android:background="#ffffff" />
 
     </LinearLayout>
 
