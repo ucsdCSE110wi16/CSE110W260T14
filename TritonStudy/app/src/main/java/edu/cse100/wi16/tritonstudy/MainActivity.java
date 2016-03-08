@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Firebase.setAndroidContext(this);
 
-        rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/users");
-
         Log.d("DEBUG", "check for firebase authentication");
         rootRef.addAuthStateListener(new Firebase.AuthStateListener() {
             @Override

@@ -72,10 +72,13 @@ public class Student implements Parcelable {
             Student student = new Student();
             student.name= source.readString();
             student.email = source.readString();
-            student.major= source.readString();
             student.password = source.readString();
             student.phoneNumber= source.readString();
             student.bio = source.readString();
+            student.class1 = source.readString();
+            student.class2 = source.readString();
+            student.class3 = source.readString();
+            student.class4 = source.readString();
 
             return student;
         }
@@ -90,13 +93,16 @@ public class Student implements Parcelable {
     public void writeToParcel(Parcel parcel, int flags) {
         parcel.writeString(name);
         parcel.writeString(email);
-        parcel.writeString(major);
         parcel.writeString(password);
         parcel.writeString(phoneNumber);
         parcel.writeString(bio);
+        parcel.writeString(class1);
+        parcel.writeString(class2);
+        parcel.writeString(class3);
+        parcel.writeString(class4);
     }
 
-    public Student(){
+    public Student(){ // required for firebase
 
     }
 }

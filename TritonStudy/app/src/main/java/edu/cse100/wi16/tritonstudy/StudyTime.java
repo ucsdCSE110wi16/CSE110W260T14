@@ -35,5 +35,21 @@ public class StudyTime {
     public String getCourse() {return course;}
     public void setCourse(String course) {this.course= course;}
 
+    public StudyTime( String day, int hour_start, int hour_end, int minute, int minute_end, String location, String course){
+
+        this.day = day;
+        this.hourStart = hour_start;
+        this.hourEnd = hour_end;
+        this.minuteStart = minute;
+        this.minuteEnd = minute_end;
+        this.location = location;
+        this.course = course;
+
+    }
+
+    public StudyTime(){ // required for firebase
+
+    }
+
 
 }

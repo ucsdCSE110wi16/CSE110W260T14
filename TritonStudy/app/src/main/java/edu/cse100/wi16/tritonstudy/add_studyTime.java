@@ -10,15 +10,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 
 import java.util.Calendar;
+import java.util.Map;
 
-public class add_studyTime extends FragmentActivity {
+public class add_studytime extends FragmentActivity {
 
     //Variables for activity elements
     private TextView tvDisplayDate;
@@ -33,6 +38,11 @@ public class add_studyTime extends FragmentActivity {
     private int hour_end;
     private int minute;
     private int minute_end;
+
+    Student student;
+    String location;
+    String course;
+    String dayName;
 
     static final int DATE_DIALOG_ID       =  999;
     static final int TIME_START_DIALOG_ID = 1000;
@@ -49,12 +59,23 @@ public class add_studyTime extends FragmentActivity {
             "ERC: North America Hall", "I-House: Asante House", "I-House: Cuzco House", "I-House: Kathmandu House", "ERC: Commuter Lounge",
             "Sixth: College Lodge", "Sixth: Dogg House", "Sixth: Commuter Center", "Sixth: Digital Playroom", "Warren: The Courtroom", "Warren: JK Wood Lounge",
             "Warren: Harlan Res Hall Lounges", "Warren: Frankfurt Res Hall Lounges", "Warren: Stewart Res Hall Lounges", "Warren: CSE Study Lounge"};
-    static final String[] dayArray = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    static final String[] dayNameArray = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
 
-        Log.d("Debug", "add_studyTime()");
+    Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            Firebase.setAndroidContext(this);
+
+            Log.d("Debug", "add_studytime()");
+
+
+        Log.d("DEBUG", "Receive student object");
+        student = (Student)getIntent().getParcelableExtra(create_user_profile_info.PAR_KEY);
+        Log.d("DEBUG", "test student object: name is " + student.getName());
+
+
 
         Log.d("Debug", "get current time");
         //Get current date, current time, and default end time (1 hour from current time,
@@ -79,7 +100,7 @@ public class add_studyTime extends FragmentActivity {
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_studyTime);
+        setContentView(R.layout.activity_add_studytime);
 
         setSpinners();
 
@@ -88,6 +109,12 @@ public class add_studyTime extends FragmentActivity {
     public void setSpinners(){
 
         Log.d("DEBUG", "setSpinner()");
+
+        Log.d("DEBUG", "set day spinner");
+        Spinner spDays = (Spinner) findViewById(R.id.add_studyTime_spDays);
+        ArrayAdapter<String> adDays = new ArrayAdapter<String>
+                (this, android.R.layout.simple_spinner_dropdown_item, dayNameArray);
+        spDays.setAdapter(adDays);
 
         Log.d("DEBUG", "set location spinner");
         Spinner spLocations = (Spinner) findViewById(R.id.add_studyTime_spLocation);
@@ -102,15 +129,77 @@ public class add_studyTime extends FragmentActivity {
                         create_user_choose_classes.coursesArray);
         spCourses.setAdapter(adClasses);
 
-        Log.d("DEBUG", "set day spinner");
-        Spinner spDays = (Spinner) findViewById(R.id.add_studyTime_spDays);
-        ArrayAdapter<String> adDays = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_dropdown_item, dayArray);
-        spCourses.setAdapter(adDays);
+    }
+
+    private void getSpinnerValues() {
+
+        // TODO: Make sure that study times match class in student object
+
+        Log.d("DEBUG", "Get values of spinners");
+
+        Log.d("DEBUG", "Get values of location");
+        Spinner spLocation = (Spinner) findViewById(R.id.add_studyTime_spLocation);
+        location = (spLocation.getSelectedItem().toString());
+        Log.d("DEBUG", "The values of location is " + location);
+
+        Log.d("DEBUG", "Get values of course");
+        Spinner spCourse = (Spinner) findViewById(R.id.add_studyTime_spCourse);
+        course = (spCourse.getSelectedItem().toString());
+        Log.d("DEBUG", "The values of course is " + course);
+
+        Log.d("DEBUG", "Get values of day");
+        Spinner spDayName = (Spinner) findViewById(R.id.add_studyTime_spDays);
+        dayName = (spDayName.getSelectedItem().toString());
+        Log.d("DEBUG", "The values of day is " + dayName);
+
+
+
     }
 
     public void onBackButtonClick(View v){
         // TODO: Implement
+    }
+
+    public void onSubmitButtonClick(View v){
+
+        getSpinnerValues();
+
+        StudyTime studyTime = new StudyTime(dayName, hour_start, hour_end, minute, minute_end, location, course);
+
+        student.addStudyTimes(studyTime);
+
+        Log.d("DEBUG", "get location of root directory of database");
+        final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+
+        Log.d("DEBUG", "get values of email, password for account creation");
+        String email = student.getEmail();
+        Log.d("DEBUG", "email = " + student.getEmail());
+        String password = student.getPassword();
+        Log.d("DEBUG", "password = " + student.getPassword());
+
+        rootRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+            @Override
+            public void onSuccess(Map<String, Object> result) {
+
+                Log.d("DEBUG", "Successfully created user account for " + student.getName());
+
+                Log.d("DEBUG", "get user account ID");
+                String uid = result.get("uid").toString();
+
+                Log.d("DEBUG", "save student object to firebase");
+                rootRef.child("users").child(uid).setValue(student);
+
+                Toast.makeText(add_studytime.this, "Successfully created user" + student.getName(),
+                        Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                Log.d("DEBUG", "Account not created. Error: " + firebaseError);
+                // TODO: create toast for error
+            }
+        });
+
     }
 
     public void dateDialog(View v) {
@@ -128,9 +217,9 @@ public class add_studyTime extends FragmentActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {
-            case DATE_DIALOG_ID:
-                // date picker dialog
-                return new DatePickerDialog(this, android.R.style.Theme_DeviceDefault_Light_Dialog, datePickerListener, year, month, day);
+//            case DATE_DIALOG_ID:
+//                // date picker dialog
+//                return new DatePickerDialog(this, android.R.style.Theme_DeviceDefault_Light_Dialog, datePickerListener, year, month, day);
             case TIME_START_DIALOG_ID:
                 // Start time picker dialog
                 return new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog, timeStartPickerListener, hour_start, minute, true);
@@ -151,31 +240,31 @@ public class add_studyTime extends FragmentActivity {
             return "0" + String.valueOf(c);
     }
 
-    //===================================
-    //= Dialog Fragment for date picker =
-    //===================================
-    private DatePickerDialog.OnDateSetListener datePickerListener
-            = new DatePickerDialog.OnDateSetListener() {
-
-        // when dialog box is closed, below method will be called.
-        public void onDateSet(DatePicker view, int selectedYear,
-                              int selectedMonth, int selectedDay) {
-
-            tvDisplayDate = (TextView) findViewById(R.id.textDate);
-
-            year = selectedYear;
-            month = selectedMonth;
-            day = selectedDay;
-
-            // set selected date into textview
-            String dateString = Integer.toString(month+1) + "-" + Integer.toString(day) + "-" + Integer.toString(year);
-            tvDisplayDate.setText(dateString);
-
-            // set selected date into datepicker also
-            //dpResult.init(year, month, day, null);
-
-        }
-    };
+//    //===================================
+//    //= Dialog Fragment for date picker =
+//    //===================================
+//    private DatePickerDialog.OnDateSetListener datePickerListener
+//            = new DatePickerDialog.OnDateSetListener() {
+//
+//        // when dialog box is closed, below method will be called.
+//        public void onDateSet(DatePicker view, int selectedYear,
+//                              int selectedMonth, int selectedDay) {
+//
+//            tvDisplayDate = (TextView) findViewById(R.id.textDate);
+//
+//            year = selectedYear;
+//            month = selectedMonth;
+//            day = selectedDay;
+//
+//            // set selected date into textview
+//            String dateString = Integer.toString(month+1) + "-" + Integer.toString(day) + "-" + Integer.toString(year);
+//            tvDisplayDate.setText(dateString);
+//
+//            // set selected date into datepicker also
+//            //dpResult.init(year, month, day, null);
+//
+//        }
+//    };
 
     //================================================
     //= Dialog Fragment for Time Picker - Start time =
@@ -185,8 +274,8 @@ public class add_studyTime extends FragmentActivity {
                 public void onTimeSet(TimePicker view, int selectedHour,
                                       int selectedMinute) {
 
-                    tvTimeStart = (TextView)findViewById(R.id.textTimeStart);
-                    tvTimeEnd = (TextView)findViewById(R.id.textTimeEnd);
+                    tvTimeStart = (TextView)findViewById(R.id.add_studyTime_tvDisplayStartTime);
+                    tvTimeEnd = (TextView)findViewById(R.id.add_studyTime_tvDisplayEndTime);
 
                     hour_start = selectedHour;
                     minute = selectedMinute;
@@ -219,7 +308,7 @@ public class add_studyTime extends FragmentActivity {
                 public void onTimeSet(TimePicker view, int selectedHour,
                                       int selectedMinute) {
 
-                    tvTimeEnd = (TextView)findViewById(R.id.textTimeEnd);
+                    tvTimeEnd = (TextView)findViewById(R.id.add_studyTime_tvDisplayEndTime);
 
                     hour_end = selectedHour;
                     minute_end = selectedMinute;
@@ -229,4 +318,6 @@ public class add_studyTime extends FragmentActivity {
                             .append(":").append(pad(minute_end)));
                 }
             };
+
+
 }

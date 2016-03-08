@@ -101,39 +101,15 @@ public class create_user_choose_classes extends AppCompatActivity {
 
         getSpinnerValues();
 
-        Log.d("DEBUG", "get values of email, password for account creation");
-        String email = student.getEmail();
-        Log.d("DEBUG", "email = " + student.getEmail());
-        String password = student.getPassword();
-        Log.d("DEBUG", "password = " + student.getPassword());
+        Log.d("DEBUG", "Package student object");
+        Intent mIntent = new Intent(create_user_choose_classes.this,
+                add_studytime.class);
+        Bundle mBundle = new Bundle();
+        mBundle.putParcelable(create_user_profile_info.PAR_KEY, student);
+        mIntent.putExtras(mBundle);
 
-        Log.d("DEBUG", "get location of root directory of database");
-        final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-
-        rootRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
-            @Override
-            public void onSuccess(Map<String, Object> result) {
-
-                Log.d("DEBUG", "Successfully created user account for "+ student.getName());
-
-                Log.d("DEBUG", "get user account ID");
-                String uid = result.get("uid").toString();
-
-                Log.d("DEBUG", "save student object to firebase");
-                rootRef.child("users").child(uid).setValue(student);
-
-                // TODO: pass student object to get study times
-            }
-
-            @Override
-            public void onError(FirebaseError firebaseError) {
-                Log.d("DEBUG", "Account not created");
-                // TODO: create toast for error
-            }
-        });
-
-        Log.d("DEBUG", "send to login screen");
-        startActivity(new Intent(create_user_choose_classes.this, login.class));
+        Log.d("DEBUG", "Send student object to next activity");
+        startActivity(mIntent);
 
     }
 
