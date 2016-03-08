@@ -7,27 +7,27 @@ public class StudyTime {
 
 
     private String day;
-    private int hourStart;
-    private int hourEnd;
-    private int minuteStart;
-    private int minuteEnd;
+    private String hourStart;
+    private String hourEnd;
+    private String minuteStart;
+    private String minuteEnd;
     private String location;
     private String course;
 
     public String getDay() {return day;}
     public void setDay(String day) {this.day= day;}
 
-    public int getHourStart() {return hourStart;}
-    public void setHourStart(int hourStart) {this.hourStart = hourStart;}
+    public String getHourStart() {return hourStart;}
+    public void setHourStart(String hourStart) {this.hourStart = hourStart;}
 
-    public int getHourEnd() {return hourEnd;}
-    public void setHourEnd(int hourEnd) {this.hourEnd= hourEnd;}
+    public String getHourEnd() {return hourEnd;}
+    public void setHourEnd(String hourEnd) {this.hourEnd= hourEnd;}
 
-    public int getMinuteStart() {return minuteStart;}
-    public void setMinuteStart(int minuteStart) {this.minuteStart= minuteStart;}
+    public String getMinuteStart() {return minuteStart;}
+    public void setMinuteStart(String minuteStart) {this.minuteStart= minuteStart;}
 
-    public int getMinuteEnd() {return minuteEnd;}
-    public void setMinuteEnd(int minuteEnd) {this.minuteEnd= minuteEnd;}
+    public String getMinuteEnd() {return minuteEnd;}
+    public void setMinuteEnd(String minuteEnd) {this.minuteEnd= minuteEnd;}
 
     public String getLocation() {return location;}
     public void setLocation(String location) {this.location= location;}
@@ -35,7 +35,14 @@ public class StudyTime {
     public String getCourse() {return course;}
     public void setCourse(String course) {this.course= course;}
 
-    public StudyTime( String day, int hour_start, int hour_end, int minute, int minute_end, String location, String course){
+    public StudyTime(
+            String day,
+            String hour_start,
+            String hour_end,
+            String minute,
+            String minute_end,
+            String location,
+            String course){
 
         this.day = day;
         this.hourStart = hour_start;

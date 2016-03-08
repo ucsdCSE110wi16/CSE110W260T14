@@ -19,6 +19,10 @@ import java.util.ArrayList;
 
 public class search extends AppCompatActivity {
 
+    // TODO: implement Radio buttons
+    // TODO: account for case of no matches
+    // TODO: Results show without studytimes, consider options
+
     Firebase rootRef;
 
     @Override

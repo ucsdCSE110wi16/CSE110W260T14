@@ -63,7 +63,7 @@ public class studentAdapter extends ArrayAdapter<Student> {
                                 + studytime.getMinuteStart()+" - "
                                 + studytime.getHourEnd()+":"
                                 + studytime.getMinuteEnd()+" at "
-                                + studytime.getLocation()+"\n");
+                                + studytime.getLocation()+"\r");
 
                 Log.d("DEBUG", "strStudyTimes = "+strStudyTimes);
             }

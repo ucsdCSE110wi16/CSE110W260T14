@@ -26,6 +26,8 @@ import com.firebase.client.ValueEventListener;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    // TODO: Get rid of email button
+
     Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
     @Override
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity
         super.onStart();
         Log.d("STATE", "onStart");
 
+        Log.d("STATE", "check authentication status");
         final Firebase ref = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
         ref.addAuthStateListener(new Firebase.AuthStateListener() {
 
