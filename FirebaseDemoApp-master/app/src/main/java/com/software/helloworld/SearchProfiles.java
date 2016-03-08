@@ -1,10 +1,12 @@
 package com.software.helloworld;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.firebase.client.DataSnapshot;
@@ -12,6 +14,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -62,8 +65,8 @@ public class SearchProfiles extends AppCompatActivity {
                 Log.d("Debug", "//////////////////////////");
                 Log.d("Debug", "There are " + snapshot.getChildrenCount() + " children");
 
-                Vector searchResults = new Vector(1,1);
-
+//                HashMap<String, Student> results = new HashMap<String, Student>();
+                ArrayList<Student> results = new ArrayList<Student>();
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Student student = child.getValue(Student.class);
 
@@ -72,17 +75,18 @@ public class SearchProfiles extends AppCompatActivity {
                             student.getClass3().equals(classTofind) ||
                             student.getClass4().equals(classTofind)) {
 
-                        Log.d("Debug", "The Student's name is " + student.getName());
-                        searchResults.add(student.getName());
+                        Log.d("Debug", student.getName() + " is in" + classTofind);
+                        results.add(student);
 
                     }
                 }
 
-                for (Object obj : searchResults) {
-                    if (obj instanceof String) {
-                        Log.d("Debug", "Search Result: "+ obj );
-                    }
-                }
+//                for (Object obj : searchResults) {
+//                    if (obj instanceof String) {
+//                        Log.d("Debug", "Search Result: "+ obj );
+//                    }
+//                }
+                displayResults(results);
 
             }
 
@@ -91,6 +95,20 @@ public class SearchProfiles extends AppCompatActivity {
                 System.out.println("The read failed: " + firebaseError.getMessage());
             }
         });
+
+    }
+
+    public void displayResults(ArrayList<Student> searchResults){
+
+        // Create the adapter to convert the array to views
+        UserAdapter adapter = new UserAdapter(this, searchResults);
+
+
+        // Attach the adapter to a ListView
+        ListView listView = (ListView) findViewById(R.id.lvSearchResults);
+        listView.setAdapter(adapter);
+
+
 
     }
 }
