@@ -38,7 +38,7 @@ public class create_user_choose_classes extends AppCompatActivity {
         Log.d("DEBUG", "Set values of spinners displaying course list");
 
         Log.d("DEBUG", "Set values for Class 1");
-        Spinner spClass1 = (Spinner) findViewById(R.id.createUser_spinner_class1);
+        Spinner spClass1 = (Spinner) findViewById(R.id.choose_classes_spClass1);
         String[] arrayCSEcourses = new String[]{"Choose Course","CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
                 "CSE 12", "CSE 15L", "CSE 30", "CSE 20", "CSE 21", "CSE 100", "CSE 101", "CSE 105",
                 "CSE 110", "CSE 120", "CSE 127", "CSE 130", "CSE 131", "CSE 136", "CSE 140",
@@ -48,17 +48,17 @@ public class create_user_choose_classes extends AppCompatActivity {
         spClass1.setAdapter(adClass1);
 
         Log.d("DEBUG", "Set values for Class 2");
-        Spinner spClass2 = (Spinner) findViewById(R.id.createUser_spinner_class2);
+        Spinner spClass2 = (Spinner) findViewById(R.id.choose_classes_spClass2);
         ArrayAdapter<String> adClass2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass2.setAdapter(adClass2);
 
         Log.d("DEBUG", "Set values for Class 3");
-        Spinner spClass3 = (Spinner) findViewById(R.id.createUser_spinner_class3);
+        Spinner spClass3 = (Spinner) findViewById(R.id.choose_classes_spClass3);
         ArrayAdapter<String> adClass3 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass3.setAdapter(adClass3);
 
         Log.d("DEBUG", "Set values for Class 4");
-        Spinner spClass4 = (Spinner) findViewById(R.id.createUser_spinner_class4);
+        Spinner spClass4 = (Spinner) findViewById(R.id.choose_classes_spClass4);
         ArrayAdapter<String> adClass4 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayCSEcourses);
         spClass4.setAdapter(adClass4);
 
@@ -72,27 +72,27 @@ public class create_user_choose_classes extends AppCompatActivity {
         Log.d("DEBUG", "Get values of spinners");
 
         Log.d("DEBUG", "Get values of class 1");
-        Spinner spClass1 =(Spinner) findViewById(R.id.createUser_spinner_class1);
+        Spinner spClass1 =(Spinner) findViewById(R.id.choose_classes_spClass1);
         student.setClass1(spClass1.getSelectedItem().toString());
         Log.d("DEBUG", "The values of class 1 is " + student.getClass1());
 
         Log.d("DEBUG", "Get values of class 2");
-        Spinner spClass2 =(Spinner) findViewById(R.id.createUser_spinner_class2);
+        Spinner spClass2 =(Spinner) findViewById(R.id.choose_classes_spClass2);
         student.setClass2(spClass2.getSelectedItem().toString());
         Log.d("DEBUG", "The values of class 2 is " + student.getClass2());
 
         Log.d("DEBUG", "Get values of class 3");
-        Spinner spClass3 =(Spinner) findViewById(R.id.createUser_spinner_class3);
+        Spinner spClass3 =(Spinner) findViewById(R.id.choose_classes_spClass3);
         student.setClass3(spClass3.getSelectedItem().toString());
         Log.d("DEBUG", "The values of class 3 is " + student.getClass3());
 
         Log.d("DEBUG", "Get values of class 4");
-        Spinner spClass4 =(Spinner) findViewById(R.id.createUser_spinner_class4);
+        Spinner spClass4 =(Spinner) findViewById(R.id.choose_classes_spClass4);
         student.setClass4(spClass4.getSelectedItem().toString());
         Log.d("DEBUG", "The values of class 4 is " + student.getClass4());
     }
 
-    public void nextButton(View v){
+    public void onNextButtonClick(View v){
 
         Log.d("DEBUG", "Next button pressed");
 
@@ -132,15 +132,9 @@ public class create_user_choose_classes extends AppCompatActivity {
 
     }
 
-    public void backButton (View v){
+    public void onBackButtonClick (View v){
         Log.d("DEBUG", "back button pressed");
         startActivity(new Intent(create_user_choose_classes.this, CreateUserInfo.class));
-    }
-
-    public void skipButton (View v){
-        Log.d("DEBUG", "back button pressed");
-        // TODO: take out skip button
-        startActivity(new Intent(create_user_choose_classes.this, CreateUserVerify.class));
     }
 
 }

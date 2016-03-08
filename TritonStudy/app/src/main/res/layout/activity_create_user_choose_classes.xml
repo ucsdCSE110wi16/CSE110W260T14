@@ -28,8 +28,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Search for classes:"
-                android:id="@+id/textView4"
+                android:text="Choose your enrolled courses:"
+                android:id="@+id/choose_classes_tvTitle"
                 android:textColor="#ffffff"
                 android:layout_row="0"
                 android:layout_column="0"
@@ -38,22 +38,22 @@
             <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/createUser_spinner_class1" />
+            android:id="@+id/choose_classes_spClass1" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/createUser_spinner_class2" />
+                android:id="@+id/choose_classes_spClass2" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/createUser_spinner_class3" />
+                android:id="@+id/choose_classes_spClass3" />
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/createUser_spinner_class4" />
+                android:id="@+id/choose_classes_spClass4" />
 
 
         </LinearLayout>
@@ -69,26 +69,14 @@
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="120dp"
-                android:layout_height="27dp"
-                android:text="Skip this step"
-                android:id="@+id/buttonSkip"
-                android:layout_row="0"
-                android:layout_column="2"
-                android:background="#ff8700"
-                android:onClick="skipButton"
-                android:textColor="#ffffff" />
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
                 android:layout_width="89dp"
                 android:layout_height="27dp"
                 android:text="Back"
-                android:id="@+id/buttonBack"
+                android:id="@+id/choose_classes_btnBack"
                 android:layout_row="2"
                 android:layout_column="0"
                 android:background="#ff8700"
-                android:onClick="backButton"
+                android:onClick="onBackButtonClick"
                 android:textColor="#ffffff" />
 
             <Button
@@ -96,13 +84,13 @@
                 android:layout_width="89dp"
                 android:layout_height="27dp"
                 android:text="Next"
-                android:id="@+id/buttonNext"
+                android:id="@+id/choose_classes_btnNext"
                 android:layout_row="2"
                 android:layout_column="2"
                 android:background="#ff8700"
                 android:textColor="#ffffff"
-                android:onClick="nextButton"
-                android:layout_gravity="fill_horizontal" />
+                android:onClick="onNextButtonClick"
+                android:layout_gravity="right" />
 
         </GridLayout>
     </GridLayout>

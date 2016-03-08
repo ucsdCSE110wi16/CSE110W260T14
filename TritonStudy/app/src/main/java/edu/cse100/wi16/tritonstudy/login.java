@@ -16,7 +16,7 @@ import com.firebase.client.ValueEventListener;
 
 public class login extends AppCompatActivity {
 
-    Firebase ref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,10 @@ public class login extends AppCompatActivity {
                 startActivity(new Intent(login.this, create_user_profile_info.class));
             }
         });
+    }
+
+    private void onLoginButtonPress(View v){
+
     }
 
 
