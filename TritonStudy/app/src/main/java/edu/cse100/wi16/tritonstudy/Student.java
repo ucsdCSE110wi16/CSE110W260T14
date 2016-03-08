@@ -121,7 +121,8 @@ public class Student implements Parcelable {
         parcel.writeString(class4);
     }
 
-    public Student(){ // required for firebase
+    // required for firebase
+    public Student(){
 
     }
 }

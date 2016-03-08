@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ProfileActivityStatic.class));
+                startActivity(new Intent(MainActivity.this, edit_user_profile_info.class));
             }
         });
 

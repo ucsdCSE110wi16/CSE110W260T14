@@ -26,7 +26,7 @@ public class ProfileActivityStatic extends AppCompatActivity {
         profileEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProfileActivityStatic.this, ProfileActivity.class));
+                startActivity(new Intent(ProfileActivityStatic.this, edit_user_profile_info.class));
 //                emailStatic = (TextView) findViewById(R.id.emailStatic);
 //                emailStatic.setTextKeepState("Hello");
             }
