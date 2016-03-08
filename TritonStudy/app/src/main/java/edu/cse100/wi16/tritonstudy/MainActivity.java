@@ -26,10 +26,31 @@ import com.firebase.client.ValueEventListener;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Firebase.setAndroidContext(this);
+
+        rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/users");
+
+        Log.d("DEBUG", "check for firebase authentication");
+        rootRef.addAuthStateListener(new Firebase.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(AuthData authData) {
+                if (authData != null) {
+                    Log.d("DEBUG", "user is logged in, go to main screen");
+
+                } else {
+                    Log.d("DEBUG", "user is not logged in");
+                    startActivity(new Intent(MainActivity.this, login.class));
+                }
+            }
+        });
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -126,6 +147,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    public void onLogOutButtonClick(View v){
+        Log.d("DEBUG", "Log out button pressed");
+        rootRef.unauth();
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -139,7 +165,7 @@ public class MainActivity extends AppCompatActivity
         }
         //Taps on Logout menu item
         if (id == R.id.action_logout) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            startActivity(new Intent(MainActivity.this, login.class));
             return true;
         }
 
