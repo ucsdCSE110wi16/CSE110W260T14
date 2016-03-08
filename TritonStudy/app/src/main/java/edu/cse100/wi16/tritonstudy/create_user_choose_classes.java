@@ -6,18 +6,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
-import java.util.HashMap;
 import java.util.Map;
 
-public class CreateUserClassesActivity extends AppCompatActivity {
+public class create_user_choose_classes extends AppCompatActivity {
 
 
     Student student; // created here so all methods can access
@@ -28,7 +25,7 @@ public class CreateUserClassesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_user_classes);
+        setContentView(R.layout.activity_create_user_choose_classes);
 
         Firebase.setAndroidContext(this); //required for firebase
 
@@ -133,21 +130,21 @@ public class CreateUserClassesActivity extends AppCompatActivity {
 
             @Override
             public void onError(FirebaseError firebaseError) {
-                Toast.makeText(CreateUserClassesActivity.this, "Shit is Broke!", Toast.LENGTH_LONG).show();
+                Toast.makeText(create_user_choose_classes.this, "Shit is Broke!", Toast.LENGTH_LONG).show();
             }
         });
 
 
-        startActivity(new Intent(CreateUserClassesActivity.this, LoginActivity.class));
+        startActivity(new Intent(create_user_choose_classes.this, LoginActivity.class));
 
     }
 
     public void backButton (View v){
-        startActivity(new Intent(CreateUserClassesActivity.this, CreateUserInfo.class));
+        startActivity(new Intent(create_user_choose_classes.this, CreateUserInfo.class));
     }
 
     public void skipButton (View v){
-        startActivity(new Intent(CreateUserClassesActivity.this, CreateUserVerify.class));
+        startActivity(new Intent(create_user_choose_classes.this, CreateUserVerify.class));
     }
 
 }

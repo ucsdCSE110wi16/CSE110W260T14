@@ -85,7 +85,7 @@ public class SearchActivity extends AppCompatActivity
         List<String> myStringArray = new ArrayList<String>();
 
         //Reference to the ListView component in the activity layout
-        myList =(ListView) findViewById(R.id.lvSearchResults);
+//        myList =(ListView) findViewById(R.id.lvSearchResults);
         int i = 0;
 
         //Iterate through the vector
@@ -110,7 +110,7 @@ public class SearchActivity extends AppCompatActivity
 
         //Update Search results count via TextView display, counter provided by the ArrayList
         //building FOR EACH-IN loop
-        TextView searchStatus = (TextView) findViewById(R.id.textSearchStatus);
-        searchStatus.setText("Matches found: " + Integer.toString(i), TextView.BufferType.EDITABLE);
+//        TextView searchStatus = (TextView) findViewById(R.id.textSearchStatus);
+//        searchStatus.setText("Matches found: " + Integer.toString(i), TextView.BufferType.EDITABLE);
     }
 }

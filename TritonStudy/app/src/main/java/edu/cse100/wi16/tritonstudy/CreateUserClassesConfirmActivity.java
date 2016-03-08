@@ -25,7 +25,7 @@ public class CreateUserClassesConfirmActivity extends AppCompatActivity {
         Button backButton = (Button) findViewById(R.id.buttonBack);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(CreateUserClassesConfirmActivity.this, CreateUserClassesActivity.class));
+                startActivity(new Intent(CreateUserClassesConfirmActivity.this, create_user_choose_classes.class));
             }
         });
     }

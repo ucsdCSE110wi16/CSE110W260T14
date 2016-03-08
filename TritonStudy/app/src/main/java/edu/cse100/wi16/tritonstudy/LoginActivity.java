@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
         Button newUserButton = (Button) findViewById(R.id.buttonNewUser);
         newUserButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, CreateUserInfo.class));
+                startActivity(new Intent(LoginActivity.this, create_user_profile_info.class));
             }
         });
     }

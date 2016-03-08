@@ -5,19 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.firebase.client.AuthData;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
 public class CreateUserInfo extends AppCompatActivity {
 
@@ -52,7 +42,7 @@ public class CreateUserInfo extends AppCompatActivity {
         student.setPassword(etPassword.getText().toString());
         student.setBio(etBio.getText().toString());
 
-        Intent mIntent = new Intent(this,CreateUserClassesActivity.class);
+        Intent mIntent = new Intent(this,create_user_choose_classes.class);
         Bundle mBundle = new Bundle();
         mBundle.putParcelable(PAR_KEY, student);
         mIntent.putExtras(mBundle);
