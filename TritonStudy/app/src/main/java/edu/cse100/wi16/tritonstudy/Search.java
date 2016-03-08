@@ -77,6 +77,8 @@ public class search extends AppCompatActivity {
 
     public void onSearchButtonClick(View v){
 
+//        TODO: Check for radio selection
+
         Log.d("Debug", "onSearchButtonClick()");
 
         final String classTofind = getSpinnerValues();

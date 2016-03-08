@@ -72,9 +72,6 @@
         <activity android:name=".EditEmailPassword" />
         <activity android:name=".search" />
 
-        <activity
-            android:name=".SearchActivity"
-            android:label="Search" />
         <activity android:name=".create_user_profile_info"></activity>
     </application>
 
