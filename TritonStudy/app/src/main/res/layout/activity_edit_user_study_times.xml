@@ -44,21 +44,21 @@
             android:layout_height="35dp"
             android:text="Back"
             android:id="@+id/edit_user_study_time_btnBack"
-            android:layout_marginRight="32dp"
+            android:layout_marginRight="150dp"
             android:background="#ff8700"
             android:onClick="onBackButtonClick"
             android:textColor="#ffffff" />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="89dp"
-            android:layout_height="37dp"
-            android:text="Remove"
-            android:id="@+id/edit_user_study_time_btnRemove"
-            android:background="#ff8700"
-            android:layout_marginRight="32dp"
-            android:onClick="onRemoveButtonClick"
-            android:textColor="#ffffff" />
+        <!--<Button-->
+            <!--style="?android:attr/buttonStyleSmall"-->
+            <!--android:layout_width="89dp"-->
+            <!--android:layout_height="37dp"-->
+            <!--android:text="Remove"-->
+            <!--android:id="@+id/edit_user_study_time_btnRemove"-->
+            <!--android:background="#ff8700"-->
+            <!--android:layout_marginRight="32dp"-->
+            <!--android:onClick="onRemoveButtonClick"-->
+            <!--android:textColor="#ffffff" />-->
 
         <Button
             style="?android:attr/buttonStyleSmall"
