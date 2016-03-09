@@ -188,7 +188,8 @@ public class edit_user_add_study_time extends FragmentActivity {
     }
 
     public void onBackButtonClick(View v){
-        // TODO: Implement
+        Log.d("DEBUG", "onBackButtonClick()");
+        startActivity(new Intent(edit_user_add_study_time.this, edit_user_study_times.class));
     }
 
 //    // convert int to string to avoid formatting issues
