@@ -81,8 +81,6 @@ public class search extends AppCompatActivity {
 
     public void onSearchButtonClick(View v){
 
-//        TODO: Check for radio selection
-
         Log.d("Debug", "onSearchButtonClick()");
 
         final String classTofind = getSpinnerValues();
@@ -128,7 +126,7 @@ public class search extends AppCompatActivity {
     public void displayResults(ArrayList<Student> searchResults, String classToFind){
 
         Log.d("Debug", "Create adapter to convert the array to views");
-        studentAdapter adapter = new studentAdapter(this, searchResults, classToFind);
+        adapter_search adapter = new adapter_search(this, searchResults, classToFind);
 
         Log.d("Debug", "Attach the adapter to a ListView");
         ListView listView = (ListView) findViewById(R.id.search_lvSearchResults);

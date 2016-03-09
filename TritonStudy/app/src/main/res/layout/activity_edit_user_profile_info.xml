@@ -151,6 +151,7 @@
                 android:layout_column="0"
                 android:background="#ff8700"
                 android:textColor="#ffffff"
+                android:onClick="onEditStudyTimesButtonClick"
                 android:layout_gravity="center"
                 android:layout_margin="8dp" />
 
@@ -193,6 +194,7 @@
                 android:background="#b4100a"
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
+                android:onClick="onCancelButtonClick"
                 android:layout_margin="8dp" />
 
             <Button

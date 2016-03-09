@@ -4,8 +4,7 @@ package edu.cse100.wi16.tritonstudy;
  * Created by john on 3/7/16.
  */
 public class StudyTime {
-
-
+    
     private String day;
     private String hourStart;
     private String hourEnd;
@@ -54,7 +53,7 @@ public class StudyTime {
 
     }
 
-    public StudyTime(){ // required for firebase
+    public StudyTime(){
 
     }
 

@@ -29,8 +29,6 @@ public class NewUser extends AppCompatActivity {
 
     public void submit(View button) {
 
-
-
         EditText etName = (EditText) findViewById(R.id.et_NewUserName);
         EditText etEmail = (EditText) findViewById(R.id.et_NewUserEmail);
         EditText etPhone = (EditText) findViewById(R.id.et_NewUserPhone);

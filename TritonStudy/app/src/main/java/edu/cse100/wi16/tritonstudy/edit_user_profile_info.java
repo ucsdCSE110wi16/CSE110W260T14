@@ -129,14 +129,7 @@ public class edit_user_profile_info extends AppCompatActivity {
 //        });
 //
 
-        //Cancel Button - returns to the Main Screen
-//        Button cancelButton = (Button) findViewById(R.id.buttonCancel);
-//
-//        cancelButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                startActivity(new Intent(ProfileActivity.this, ProfileActivityStatic.class));
-//            }
-//        });
+
 //
 //        //Edit Times Button
 //        Button editTimesButton = (Button) findViewById(R.id.buttonEditStudy);
@@ -151,6 +144,13 @@ public class edit_user_profile_info extends AppCompatActivity {
         startActivity(new Intent(edit_user_profile_info.this, edit_user_courses.class));
     }
 
+    public void onEditStudyTimesButtonClick(View v){
+        startActivity(new Intent(edit_user_profile_info.this, edit_user_study_times.class));
+    }
+
+    public void onCancelButtonClick(View v){
+        startActivity(new Intent(edit_user_profile_info.this, MainActivity.class));
+    }
 
     public void populateFields(AuthData authData){
         Log.d("DEBUG", "populateFields()");

@@ -4,8 +4,8 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,14 +20,13 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class create_user_add_studytime extends FragmentActivity {
+public class edit_user_add_study_time extends FragmentActivity {
 
-    // TODO: Make sure that study times match class in student object
-    // TODO: implement logic for logged in user
     // TODO: Add title and label to page, "Please choose time you will study..."
 
     //Variables for activity elements
@@ -38,7 +37,7 @@ public class create_user_add_studytime extends FragmentActivity {
 
     private int yearInt;
     private int monthInt;
-//    private int day;
+    //    private int day;
     private int hourStartInt;
     private int hourEndInt;
     private int minuteStartInt;
@@ -55,6 +54,9 @@ public class create_user_add_studytime extends FragmentActivity {
     String location;
     String course;
     String dayName;
+
+    final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+    AuthData authData;
 
 
     static final int DATE_DIALOG_ID       =  999;
@@ -74,28 +76,24 @@ public class create_user_add_studytime extends FragmentActivity {
             "Warren: Harlan Res Hall Lounges", "Warren: Frankfurt Res Hall Lounges", "Warren: Stewart Res Hall Lounges", "Warren: CSE Study Lounge"};
     static final String[] dayNameArray = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            Firebase.setAndroidContext(this);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        Firebase.setAndroidContext(this);
 
-            Log.d("Debug", "create_user_add_studytime()");
+        Log.d("DEBUG", "check for firebase authentication");
+        rootRef.addAuthStateListener(new Firebase.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(AuthData authData) {
+                if (authData != null) {
 
-            Log.d("STATE", "check authentication status");
-            final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-            rootRef.addAuthStateListener(new Firebase.AuthStateListener() {
+                    setAuthData(authData);
 
-                @Override
-                public void onAuthStateChanged(final AuthData authData) {
-                    if (authData != null) {
-                        Log.d("STATE", "User is authenticated");
-
-
-                    } else {
-                        Log.d("DEBUG", "User is not logged in");
-
-                    }
+                } else {
                 }
-            });
+            }
+        });
+
+        Log.d("Debug", "edit_user_add_study_time()");
 
         Log.d("Debug", "get current time");
         //Get current date, current time, and default end time (1 hour from current time,
@@ -120,8 +118,7 @@ public class create_user_add_studytime extends FragmentActivity {
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_user_add_studytime);
-
+        setContentView(R.layout.activity_edit_user_add_study_time);
         setSpinners();
 
     }
@@ -131,24 +128,28 @@ public class create_user_add_studytime extends FragmentActivity {
         Log.d("DEBUG", "setSpinner()");
 
         Log.d("DEBUG", "set day spinner");
-        Spinner spDays = (Spinner) findViewById(R.id.add_studyTime_spDays);
+        Spinner spDays = (Spinner) findViewById(R.id.edit_user_add_studyTime_spDays);
         ArrayAdapter<String> adDays = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item, dayNameArray);
         spDays.setAdapter(adDays);
 
         Log.d("DEBUG", "set location spinner");
-        Spinner spLocations = (Spinner) findViewById(R.id.add_studyTime_spLocation);
+        Spinner spLocations = (Spinner) findViewById(R.id.edit_user_add_studyTime_spLocation);
         ArrayAdapter<String> adLocs = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item, locationArray);
         spLocations.setAdapter(adLocs);
 
         Log.d("DEBUG", "set course spinner");
-        Spinner spCourses = (Spinner) findViewById(R.id.add_studyTime_spCourse);
+        Spinner spCourses = (Spinner) findViewById(R.id.edit_user_add_studyTime_spCourse);
         ArrayAdapter<String> adClasses = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item,
                         login.chooseCoursesArray);
         spCourses.setAdapter(adClasses);
 
+    }
+
+    public void setAuthData(AuthData authData){
+        this.authData = authData;
     }
 
     private void getSpinnerValues() {
@@ -157,17 +158,17 @@ public class create_user_add_studytime extends FragmentActivity {
         Log.d("DEBUG", "Get values of spinners");
 
         Log.d("DEBUG", "Get values of location");
-        Spinner spLocation = (Spinner) findViewById(R.id.add_studyTime_spLocation);
+        Spinner spLocation = (Spinner) findViewById(R.id.edit_user_add_studyTime_spLocation);
         location = (spLocation.getSelectedItem().toString());
         Log.d("DEBUG", "The values of location is " + location);
 
         Log.d("DEBUG", "Get values of course");
-        Spinner spCourse = (Spinner) findViewById(R.id.add_studyTime_spCourse);
+        Spinner spCourse = (Spinner) findViewById(R.id.edit_user_add_studyTime_spCourse);
         course = (spCourse.getSelectedItem().toString());
         Log.d("DEBUG", "The values of course is " + course);
 
         Log.d("DEBUG", "Get values of day");
-        Spinner spDayName = (Spinner) findViewById(R.id.add_studyTime_spDays);
+        Spinner spDayName = (Spinner) findViewById(R.id.edit_user_add_studyTime_spDays);
         dayName = (spDayName.getSelectedItem().toString());
         Log.d("DEBUG", "The values of day is " + dayName);
 
@@ -215,123 +216,52 @@ public class create_user_add_studytime extends FragmentActivity {
 
         getSpinnerValues();
 
-        final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-        Log.d("DEBUG", "check for firebase authentication");
-        rootRef.addAuthStateListener(new Firebase.AuthStateListener() {
+        Log.d("DEBUG", "set firebase reference to logged in users folder");
+        Firebase userRef = rootRef.child("users/" + this.authData.getUid());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onAuthStateChanged(AuthData authData) {
-                if (authData != null) {
-                    Log.d("DEBUG", "user is logged in, arrived here from edit profile");
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    Log.d("DEBUG", "set firebase reference to logged in users folder");
-                    Firebase userRef = rootRef.child("users/" + authData.getUid());
-                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
+                Student student = dataSnapshot.getValue(Student.class);
 
-                            Student student = dataSnapshot.getValue(Student.class);
+                StudyTime studyTime = new StudyTime(
+                        dayName,
+                        hourStartString,
+                        hourEndString,
+                        minuteStartString,
+                        minuteEndString,
+                        location,
+                        course);
 
+                Log.d("DEBUG", "add studyTime to student");
+                student.addStudyTimes(studyTime);
 
-                            StudyTime studyTime = new StudyTime(
-                                    dayName,
-                                    hourStartString,
-                                    hourEndString,
-                                    minuteStartString,
-                                    minuteEndString,
-                                    location,
-                                    course);
+                String uid = rootRef.getAuth().getUid().toString();
+                Log.d("DEBUG", "UID = " + uid);
 
-                            Log.d("DEBUG", "add studyTime to student");
-                            student.addStudyTimes(studyTime);
+                Firebase userRef = rootRef.child("users/" + uid+"/studyTimes");
+                Log.d("DEBUG", "User reference =" + userRef);
 
-                            String uid = rootRef.getAuth().getUid().toString();
-                            Log.d("DEBUG", "UID = " + uid);
+                Log.d("DEBUG", "put changed value in map");
+                Map<String, Object> map = new HashMap<String, Object>();
+                ArrayList<StudyTime> studytimes = student.getStudyTimes();
+                map.put("studyTimes", studytimes);
 
-                            Firebase userRef = rootRef.child("users/"+uid+"/");
-                            Log.d("DEBUG", "User reference =" + userRef);
-
-                            Log.d("DEBUG", "put changed value in map");
-                            Map<String, Object> map = new HashMap<String, Object>();
-                            map.put("studyTimes", student.getStudyTimes());
-
-                            Log.d("DEBUG", "update user info");
-                            userRef.updateChildren(map);
-//                            userRef.setValue(map);
-
-                        }
-
-                        @Override
-                        public void onCancelled(FirebaseError firebaseError) {
-                            System.out.println("UpdateLesson error: " + firebaseError.getMessage());
-                        }
-                    });
-
-
-                } else {
-                    Log.d("DEBUG", "user is not logged in, came here from account creation");
+                Log.d("DEBUG", "update user info");
+//                userRef.updateChildren(map);
+//                rootRef.child("users").child(uid).child("studyTimes").setValue(studytimes);
+                rootRef.child("users").child(uid).setValue(student);
 
 
 
-                    Log.d("DEBUG", "Receive student object");
-                    student = (Student) getIntent().getParcelableExtra(create_user_profile_info.PAR_KEY);
-                    Log.d("DEBUG", "test student object: name is " + student.getName());
 
-                    StudyTime studyTime = new StudyTime(
-                            dayName,
-                            hourStartString,
-                            hourEndString,
-                            minuteStartString,
-                            minuteEndString,
-                            location,
-                            course);
-
-                    Log.d("DEBUG", "add studyTime to student");
-                    student.addStudyTimes(studyTime);
-
-                    Log.d("DEBUG", "get values of email, password for account creation");
-                    String email = student.getEmail();
-                    Log.d("DEBUG", "email = " + student.getEmail());
-                    String password = student.getPassword();
-                    Log.d("DEBUG", "password = " + student.getPassword());
-
-                    Log.d("DEBUG", "set location of firebase root");
-                    final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-
-                    rootRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
-                        @Override
-                        public void onSuccess(Map<String, Object> result) {
-
-                            Log.d("DEBUG", "Successfully created user account for " + student.getName());
-
-                            Log.d("DEBUG", "get user account ID");
-                            String uid = result.get("uid").toString();
-
-                            Log.d("DEBUG", "save student object to firebase");
-                            rootRef.child("users").child(uid).setValue(student);
-
-                            Toast.makeText(create_user_add_studytime.this, "Account created for " + student.getName(),
-                                    Toast.LENGTH_LONG).show();
-
-                            Log.d("DEBUG", "Send to login");
-                            startActivity(new Intent(create_user_add_studytime.this, login.class));
-                        }
-
-                        @Override
-                        public void onError(FirebaseError firebaseError) {
-                            Log.d("DEBUG", "Account not created. Error: " + firebaseError);
-
-                            if (firebaseError.toString().contains("specified email address is already")) {
-
-                                Toast.makeText(create_user_add_studytime.this,
-                                        "The specified email address is already in use.",
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-                }
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("UpdateLesson error: " + firebaseError.getMessage());
             }
         });
-    };
+    }
 
     public void dateDialog(View v) {
         showDialog(DATE_DIALOG_ID);

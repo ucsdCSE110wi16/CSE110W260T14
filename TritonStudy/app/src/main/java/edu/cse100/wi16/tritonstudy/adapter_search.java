@@ -13,11 +13,11 @@ import java.util.ArrayList;
 /**
  * Created by john on 3/7/16.
  */
-public class studentAdapter extends ArrayAdapter<Student> {
+public class adapter_search extends ArrayAdapter<Student> {
 
     String courseToFind;
 
-    public studentAdapter(Context context, ArrayList<Student> users, String courseToFind) {
+    public adapter_search(Context context, ArrayList<Student> users, String courseToFind) {
         super(context, 0, users);
         Log.d("DEBUG", "Set courseToFind = "+courseToFind);
         this.courseToFind = courseToFind;
@@ -33,7 +33,7 @@ public class studentAdapter extends ArrayAdapter<Student> {
 
         Log.d("DEBUG", "Check if an existing view is being reused, otherwise inflate the view");
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.display_student, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.display_search_results, parent, false);
         }
 
         Log.d("DEBUG", "Lookup view for data population");
