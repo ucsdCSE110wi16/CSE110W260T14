@@ -99,8 +99,11 @@ public class search extends AppCompatActivity {
                 Log.d("Debug", "hold results in arrayList");
                 ArrayList<Student> searchResults = new ArrayList<Student>();
 
+                Log.d("Debug", "loop through results");
                 for (DataSnapshot child : snapshot.getChildren()) {
                     Student student = child.getValue(Student.class);
+
+                    Log.d("Debug", "match is: "+student.getName());
 
                     if (student.getClass1().equals(classTofind) ||
                             student.getClass2().equals(classTofind) ||

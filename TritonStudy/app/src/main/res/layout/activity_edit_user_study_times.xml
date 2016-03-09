@@ -21,7 +21,9 @@
             android:layout_height="400dp"
             android:id="@+id/edit_user_study_time_lvStudyTimes"
             android:background="#ffffff"
-            android:choiceMode="singleChoice"/>
+            android:choiceMode="singleChoice"
+            android:clickable="true"
+             />
     </LinearLayout>
 
     <LinearLayout

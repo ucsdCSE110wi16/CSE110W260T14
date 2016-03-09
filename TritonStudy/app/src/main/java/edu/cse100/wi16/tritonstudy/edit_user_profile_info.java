@@ -104,42 +104,6 @@ public class edit_user_profile_info extends AppCompatActivity {
         userRef.updateChildren(map);
     }
 
-//        //Submit Button
-//        Button submitButton = (Button) findViewById(R.id.buttonSubmit);
-//
-//        submitButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//
-
-//
-//
-//
-//            }
-//        });
-//
-//        viewImage = (ImageView)findViewById(R.id.profilePicture);
-//        b = (Button)findViewById(R.id.buttonChangePic);
-//
-//        //Change Pic Button
-//        b.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                selectPicture();
-//            }
-//        });
-//
-
-
-//
-//        //Edit Times Button
-//        Button editTimesButton = (Button) findViewById(R.id.buttonEditStudy);
-//
-//        editTimesButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-////                startActivity(new Intent(ProfileActivity.this, add_studytime.class));
-//            }
-//        });
-
     public void onEditCoursesButtonClick(View v){
         startActivity(new Intent(edit_user_profile_info.this, edit_user_courses.class));
     }

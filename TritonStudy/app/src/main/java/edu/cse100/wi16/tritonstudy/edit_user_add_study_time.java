@@ -18,11 +18,13 @@ import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.GenericTypeIndicator;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class edit_user_add_study_time extends FragmentActivity {
@@ -62,19 +64,6 @@ public class edit_user_add_study_time extends FragmentActivity {
     static final int DATE_DIALOG_ID       =  999;
     static final int TIME_START_DIALOG_ID = 1000;
     static final int TIME_END_DIALOG_ID   = 1001;
-
-    // use for all location spinner
-    static final String[] locationArray = new String[]{"Select your location:", "Geisel Library", "Price Center East", "Price Center West", "The Old Student Center",
-            "Biomedical Library", "Galbraith Hall", "North Break (The Village)", "Marshall: P Hall Res Lounge", "Marshall: Q Hall Res Lounge",
-            "Marshall: R Hall Res Lounge", "Marshall: U Hall Res Lounge", "Marshall: Fireside Lounge", "Marshall: Ocean View Lounge",
-            "Muir: Tioga & Tenaya Res Hall Lounges", "Muir: Tioga Hall 11th Floor Mtg Rm", "Muir: Tuolumne Apts Lounge", "Muir: Tamarack Apts Lounges",
-            "Revelle: Blake Hall: Commuter Lounge", "Revelle: Blake Hall: College Center", "Revelle: Blake Hall: Blake 4 Lounge",
-            "Muir: Argo Res Hall Lounges", "Muir: Fleet Res Lounge Halls", "Galbraith Hall: The Think Tank", "Galbraith Hall: Barnwood",
-            "Muir: Keeling 1 Lounge", "Muir: Keeling 3 Lounge", "ERC: Africa Hall", "ERC: Asia Hall", "ERC: Europe Hall", "ERC: Latin Americaa Hall",
-            "ERC: North America Hall", "I-House: Asante House", "I-House: Cuzco House", "I-House: Kathmandu House", "ERC: Commuter Lounge",
-            "Sixth: College Lodge", "Sixth: Dogg House", "Sixth: Commuter Center", "Sixth: Digital Playroom", "Warren: The Courtroom", "Warren: JK Wood Lounge",
-            "Warren: Harlan Res Hall Lounges", "Warren: Frankfurt Res Hall Lounges", "Warren: Stewart Res Hall Lounges", "Warren: CSE Study Lounge"};
-    static final String[] dayNameArray = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +108,7 @@ public class edit_user_add_study_time extends FragmentActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_user_add_study_time);
+
         setSpinners();
 
     }
@@ -130,13 +120,13 @@ public class edit_user_add_study_time extends FragmentActivity {
         Log.d("DEBUG", "set day spinner");
         Spinner spDays = (Spinner) findViewById(R.id.edit_user_add_studyTime_spDays);
         ArrayAdapter<String> adDays = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_dropdown_item, dayNameArray);
+                (this, android.R.layout.simple_spinner_dropdown_item, login.dayNameArray);
         spDays.setAdapter(adDays);
 
         Log.d("DEBUG", "set location spinner");
         Spinner spLocations = (Spinner) findViewById(R.id.edit_user_add_studyTime_spLocation);
         ArrayAdapter<String> adLocs = new ArrayAdapter<String>
-                (this, android.R.layout.simple_spinner_dropdown_item, locationArray);
+                (this, android.R.layout.simple_spinner_dropdown_item, login.locationArray);
         spLocations.setAdapter(adLocs);
 
         Log.d("DEBUG", "set course spinner");
@@ -210,7 +200,7 @@ public class edit_user_add_study_time extends FragmentActivity {
 //
 //    }
 
-    public void onSubmitButtonClick(View v){
+    public void onAddStudyTimesButtonClick(View v){
 
         Log.d("DEBUG", "onSubmitButtonClick()");
 
@@ -222,9 +212,7 @@ public class edit_user_add_study_time extends FragmentActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                Student student = dataSnapshot.getValue(Student.class);
-
-                StudyTime studyTime = new StudyTime(
+                StudyTime newStudyTime = new StudyTime(
                         dayName,
                         hourStartString,
                         hourEndString,
@@ -233,32 +221,42 @@ public class edit_user_add_study_time extends FragmentActivity {
                         location,
                         course);
 
-                Log.d("DEBUG", "add studyTime to student");
-                student.addStudyTimes(studyTime);
+//                            Log.d("DEBUG", "add studyTime to student");
+//                            student.addStudyTimes(studyTime);
 
-                String uid = rootRef.getAuth().getUid().toString();
+                Log.d("DEBUG", "get list from firebase");
+
+
+                String uid = rootRef.getAuth().getUid();
                 Log.d("DEBUG", "UID = " + uid);
 
-                Firebase userRef = rootRef.child("users/" + uid+"/studyTimes");
+                Firebase userRef = rootRef.child("users/" + uid + "/");
                 Log.d("DEBUG", "User reference =" + userRef);
 
-                Log.d("DEBUG", "put changed value in map");
-                Map<String, Object> map = new HashMap<String, Object>();
-                ArrayList<StudyTime> studytimes = student.getStudyTimes();
-                map.put("studyTimes", studytimes);
+                Firebase arrayRef = rootRef.child("users/"+uid+"/studyTimes");
+                Log.d("DEBUG", "User reference =" + userRef);
 
-                Log.d("DEBUG", "update user info");
-//                userRef.updateChildren(map);
-//                rootRef.child("users").child(uid).child("studyTimes").setValue(studytimes);
-                rootRef.child("users").child(uid).setValue(student);
+                Log.d("DEBUG", "Get current list of studytimes");
+                GenericTypeIndicator<List<StudyTime>> t = new GenericTypeIndicator<List<StudyTime>>() {};
+                List<StudyTime> userStudyTimes = dataSnapshot.child("studyTimes").getValue(t);
 
+                Log.d("DEBUG", "Add new study time to list");
+                userStudyTimes.add(newStudyTime);
 
+                Log.d("DEBUG", "Update list on firebase");
+                arrayRef.setValue(userStudyTimes);
 
+                Log.d("DEBUG", "Display Success message");
+                Toast.makeText(edit_user_add_study_time.this,
+                        "Added Study Time for " + newStudyTime.getCourse(), Toast.LENGTH_LONG).show();
+
+                Log.d("DEBUG", "Send back to view study times");
+                startActivity(new Intent(edit_user_add_study_time.this, edit_user_study_times.class));
 
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("UpdateLesson error: " + firebaseError.getMessage());
+                Log.d("DEBUG", "UpdateLesson error: " + firebaseError.getMessage());
             }
         });
     }
@@ -312,31 +310,6 @@ public class edit_user_add_study_time extends FragmentActivity {
             return "0" + String.valueOf(c);
     }
 
-//    //===================================
-//    //= Dialog Fragment for date picker =
-//    //===================================
-//    private DatePickerDialog.OnDateSetListener datePickerListener
-//            = new DatePickerDialog.OnDateSetListener() {
-//
-//        // when dialog box is closed, below method will be called.
-//        public void onDateSet(DatePicker view, int selectedYear,
-//                              int selectedMonth, int selectedDay) {
-//
-//            tvDisplayDate = (TextView) findViewById(R.id.textDate);
-//
-//            year = selectedYear;
-//            month = selectedMonth;
-//            day = selectedDay;
-//
-//            // set selected date into textview
-//            String dateString = Integer.toString(month+1) + "-" + Integer.toString(day) + "-" + Integer.toString(year);
-//            tvDisplayDate.setText(dateString);
-//
-//            // set selected date into datepicker also
-//            //dpResult.init(year, month, day, null);
-//
-//        }
-//    };
 
     //================================================
     //= Dialog Fragment for Time Picker - Start time =
@@ -346,8 +319,8 @@ public class edit_user_add_study_time extends FragmentActivity {
                 public void onTimeSet(TimePicker view, int selectedHour,
                                       int selectedMinute) {
 
-                    tvTimeStart = (TextView)findViewById(R.id.add_studyTime_tvDisplayStartTime);
-                    tvTimeEnd = (TextView)findViewById(R.id.add_studyTime_tvDisplayEndTime);
+                    tvTimeStart = (TextView)findViewById(R.id.edit_user_add_studyTime_tvDisplayStartTime);
+                    tvTimeEnd = (TextView)findViewById(R.id.edit_user_add_studyTime_tvDisplayEndTime);
 
                     hourStartInt = selectedHour;
                     minuteStartInt= selectedMinute;
@@ -379,7 +352,7 @@ public class edit_user_add_study_time extends FragmentActivity {
                 public void onTimeSet(TimePicker view, int selectedHour,
                                       int selectedMinute) {
 
-                    tvTimeEnd = (TextView)findViewById(R.id.add_studyTime_tvDisplayEndTime);
+                    tvTimeEnd = (TextView)findViewById(R.id.edit_user_add_studyTime_tvDisplayEndTime);
 
                     hourEndInt = selectedHour;
                     minuteEndInt = selectedMinute;

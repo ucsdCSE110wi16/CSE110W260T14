@@ -18,6 +18,8 @@ import java.util.ArrayList;
 public class edit_user_study_times extends AppCompatActivity {
 
     final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+    adapter_edit_study_times studytimeAdapter;
+    ListView resultsListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,12 @@ public class edit_user_study_times extends AppCompatActivity {
 
     public void onAddStudyTimesButtonClick(View v){
 
-        startActivity(new Intent(edit_user_study_times.this, create_user_add_studytime.class));
+        startActivity(new Intent(edit_user_study_times.this, edit_user_add_study_time.class));
+    }
+
+    public void onBackButtonClick(View v){
+
+        startActivity(new Intent(edit_user_study_times.this, edit_user_profile_info.class));
     }
 
     public void getStudyTimes(AuthData authData){
@@ -62,6 +69,7 @@ public class edit_user_study_times extends AppCompatActivity {
                 ArrayList<Student> searchResults = new ArrayList<Student>();
 
                 Student student = snapshot.getValue(Student.class);
+                Log.d("Debug", "student object's name is " + student.getName());
 
                 ArrayList<StudyTime> studytimes = student.getStudyTimes();
 
@@ -79,10 +87,22 @@ public class edit_user_study_times extends AppCompatActivity {
     public void displayResults(ArrayList<StudyTime> studytimes){
 
         Log.d("Debug", "Create adapter to convert the array to views");
-        adapter_edit_study_times adapter = new adapter_edit_study_times(edit_user_study_times.this, studytimes);
+        studytimeAdapter = new adapter_edit_study_times(edit_user_study_times.this, studytimes);
 
         Log.d("Debug", "Attach the adapter to a ListView");
-        ListView listView = (ListView) findViewById(R.id.edit_user_study_time_lvStudyTimes);
-        listView.setAdapter(adapter);
+        resultsListView  = (ListView) findViewById(R.id.edit_user_study_time_lvStudyTimes);
+        resultsListView.setAdapter(studytimeAdapter);
+        highlightListItem(1); // this simple function call does the trick
+    }
+
+    private void highlightListItem(int position) {
+        adapter_edit_study_times adapter = (adapter_edit_study_times) resultsListView.getAdapter();
+        adapter.setSelectedItem(position);
+        // in some cases, it may be necessary to re-set adapter (as in the line below)
+        resultsListView.setAdapter(adapter);
+    }
+
+    private void clickOnListItem(int position) {
+        resultsListView.performItemClick(resultsListView, position, resultsListView.getItemIdAtPosition(position));
     }
 }

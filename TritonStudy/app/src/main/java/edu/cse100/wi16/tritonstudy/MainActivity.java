@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.client.AuthData;
 import com.firebase.client.DataSnapshot;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     // TODO: Get rid of email button
 
     Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
                             Log.d("SnapShot Name", dataSnapshot.child("name").getValue().toString());
+                            username = dataSnapshot.child("name").getValue().toString();
 
                             TextView mGreeting = (TextView)findViewById(R.id.main_greeting);
                             mGreeting.setText("Hello, " + dataSnapshot.child("name").getValue().toString()
@@ -117,7 +120,8 @@ public class MainActivity extends AppCompatActivity
                         }
                     });
                 } else {
-                    // user is not logged in
+
+                    startActivity(new Intent(MainActivity.this, login.class));
                 }
             }
         });
@@ -151,6 +155,7 @@ public class MainActivity extends AppCompatActivity
     public void onLogOutButtonClick(View v){
         Log.d("DEBUG", "Log out button pressed");
         rootRef.unauth();
+        Toast.makeText(MainActivity.this, "Logging out " + username , Toast.LENGTH_LONG).show();
     }
 
     @Override
