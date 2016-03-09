@@ -17,10 +17,24 @@ import com.firebase.client.ValueEventListener;
 
 public class login extends AppCompatActivity {
 
+
     // TODO: setup forgot password button
 
     // firebase database reference
     Firebase rootRef;
+
+    // sets course array for entire app
+    final static String[] chooseCoursesArray = new String[]{"Choose Course","CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
+            "CSE 12", "CSE 15L", "CSE 30", "CSE 20", "CSE 21", "CSE 100", "CSE 101", "CSE 105",
+            "CSE 110", "CSE 120", "CSE 127", "CSE 130", "CSE 131", "CSE 136", "CSE 140",
+            "CSE 140L", "CSE 141", "CSE 141L", "CSE 148", "CSE 150", "CSE 152",
+            "CSE 167", "CSE 168", "CSE 169", "CSE 182"};
+
+    final static String[] noneCoursesArray = new String[]{"None","CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
+            "CSE 12", "CSE 15L", "CSE 30", "CSE 20", "CSE 21", "CSE 100", "CSE 101", "CSE 105",
+            "CSE 110", "CSE 120", "CSE 127", "CSE 130", "CSE 131", "CSE 136", "CSE 140",
+            "CSE 140L", "CSE 141", "CSE 141L", "CSE 148", "CSE 150", "CSE 152",
+            "CSE 167", "CSE 168", "CSE 169", "CSE 182"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +45,10 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // firebase database reference
         rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+
+
 
         Log.d("DEBUG", "check for firebase authentication");
         rootRef.addAuthStateListener(new Firebase.AuthStateListener() {

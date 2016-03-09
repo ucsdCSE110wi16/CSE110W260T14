@@ -55,6 +55,7 @@
 
         <!-- Create new user: User Info (name, email, contact info, etc.) Activity -->
 
+
         <!-- Create new user: Select Classes Activity -->
         <activity
             android:name=".create_user_choose_classes"
@@ -71,8 +72,8 @@
             android:label="@string/title_activity_create_user_verify" />
         <activity android:name=".EditEmailPassword" />
         <activity android:name=".search" />
-
-        <activity android:name=".create_user_profile_info"></activity>
+        <activity android:name=".create_user_profile_info" />
+        <activity android:name=".edit_user_courses"></activity>
     </application>
 
 </manifest>

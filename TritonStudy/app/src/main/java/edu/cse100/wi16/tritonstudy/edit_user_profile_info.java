@@ -91,7 +91,6 @@ public class edit_user_profile_info extends AppCompatActivity {
         String uid = rootRef.getAuth().getUid().toString();
         Log.d("DEBUG", "UID = " + uid);
 
-
         Firebase userRef = rootRef.child("users/"+uid);
         Log.d("DEBUG", "User reference =" + userRef);
 
@@ -147,6 +146,10 @@ public class edit_user_profile_info extends AppCompatActivity {
 ////                startActivity(new Intent(ProfileActivity.this, add_studytime.class));
 //            }
 //        });
+
+    public void onEditCoursesButtonClick(View v){
+        startActivity(new Intent(edit_user_profile_info.this, edit_user_courses.class));
+    }
 
 
     public void populateFields(AuthData authData){

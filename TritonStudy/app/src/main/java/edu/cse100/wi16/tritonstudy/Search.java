@@ -64,7 +64,7 @@ public class search extends AppCompatActivity {
         Log.d("Debug", "create adapter");
         ArrayAdapter<String> arrayAdapter
                 = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, create_user_choose_classes.coursesArray);
+                (this, android.R.layout.simple_list_item_1, login.chooseCoursesArray);
 
         Log.d("Debug", "set spinner values");
         spinner.setAdapter(arrayAdapter);

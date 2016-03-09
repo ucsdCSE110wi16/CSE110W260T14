@@ -13,6 +13,8 @@ public class create_user_profile_info extends AppCompatActivity {
 
     // TODO: change orientation of bio field, it is currently vertically centered
     // TODO: Move next button to the left, it is currently a bit off screen
+    // TODO: Change phone and password fields to match their content
+    // TODO: require ucsd.edu in email field.
 
     final static String PAR_KEY = "edu.cse100.wi16.tritonstudy";
 

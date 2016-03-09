@@ -27,6 +27,7 @@ public class create_user_add_studytime extends FragmentActivity {
 
     // TODO: Make sure that study times match class in student object
     // TODO: implement logic for logged in user
+    // TODO: Add title and label to page, "Please choose time you will study..."
 
     //Variables for activity elements
     private TextView tvDisplayDate;
@@ -162,7 +163,7 @@ public class create_user_add_studytime extends FragmentActivity {
         Spinner spCourses = (Spinner) findViewById(R.id.add_studyTime_spCourse);
         ArrayAdapter<String> adClasses = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item,
-                        create_user_choose_classes.coursesArray);
+                        login.chooseCoursesArray);
         spCourses.setAdapter(adClasses);
 
     }

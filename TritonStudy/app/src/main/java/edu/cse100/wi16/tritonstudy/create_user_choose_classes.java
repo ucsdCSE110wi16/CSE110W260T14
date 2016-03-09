@@ -9,20 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.firebase.client.AuthData;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.Map;
 
 public class create_user_choose_classes extends AppCompatActivity {
     Student student;
-
-    // sets course for entire app
-    final static String[] coursesArray = new String[]{"Choose Course","CSE 3", "CSE 7", "CSE 8A", "CSE 8B", "CSE 11",
-            "CSE 12", "CSE 15L", "CSE 30", "CSE 20", "CSE 21", "CSE 100", "CSE 101", "CSE 105",
-            "CSE 110", "CSE 120", "CSE 127", "CSE 130", "CSE 131", "CSE 136", "CSE 140",
-            "CSE 140L", "CSE 141", "CSE 141L", "CSE 148", "CSE 150", "CSE 152",
-            "CSE 167", "CSE 168", "CSE 169", "CSE 182"};
 
 
     @Override
@@ -36,33 +32,32 @@ public class create_user_choose_classes extends AppCompatActivity {
 
         Log.d("DEBUG", "Receive student object");
         student = (Student)getIntent().getParcelableExtra(create_user_profile_info.PAR_KEY);
-        Log.d("DEBUG", "test student object: name is " + student.getName());
 
         setSpinnerValues();
+
     }
 
     public void setSpinnerValues(){
         Log.d("DEBUG", "Set values of spinners displaying course list");
-        Log.d("DEBUG", "test student object: name is " + student.getName());
 
         Log.d("DEBUG", "Set values for Class 1");
         Spinner spClass1 = (Spinner) findViewById(R.id.choose_classes_spClass1);
-        ArrayAdapter<String> adClass1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coursesArray);
+        ArrayAdapter<String> adClass1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, login.chooseCoursesArray);
         spClass1.setAdapter(adClass1);
 
         Log.d("DEBUG", "Set values for Class 2");
         Spinner spClass2 = (Spinner) findViewById(R.id.choose_classes_spClass2);
-        ArrayAdapter<String> adClass2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coursesArray);
+        ArrayAdapter<String> adClass2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, login.noneCoursesArray);
         spClass2.setAdapter(adClass2);
 
         Log.d("DEBUG", "Set values for Class 3");
         Spinner spClass3 = (Spinner) findViewById(R.id.choose_classes_spClass3);
-        ArrayAdapter<String> adClass3 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coursesArray);
+        ArrayAdapter<String> adClass3 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, login.noneCoursesArray);
         spClass3.setAdapter(adClass3);
 
         Log.d("DEBUG", "Set values for Class 4");
         Spinner spClass4 = (Spinner) findViewById(R.id.choose_classes_spClass4);
-        ArrayAdapter<String> adClass4 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coursesArray);
+        ArrayAdapter<String> adClass4 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, login.noneCoursesArray);
         spClass4.setAdapter(adClass4);
 
     }
@@ -110,7 +105,6 @@ public class create_user_choose_classes extends AppCompatActivity {
 
         Log.d("DEBUG", "Send student object to next activity");
         startActivity(mIntent);
-
     }
 
     public void onBackButtonClick (View v){

@@ -166,6 +166,7 @@
                 android:layout_gravity="center"
                 android:background="#ff8700"
                 android:textColor="#ffffff"
+                android:onClick="onEditCoursesButtonClick"
                 android:layout_margin="8dp" />
 
             <Button
