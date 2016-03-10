@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onSearchButtonClick(View button)
     {
-        Intent intent = new Intent(this,search.class);
+        Intent intent = new Intent(this,Search.class);
         startActivity(intent);
 
 
