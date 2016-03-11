@@ -17,9 +17,6 @@ import com.firebase.client.ValueEventListener;
 
 public class login extends AppCompatActivity {
 
-
-    // TODO: setup forgot password button
-
     // firebase database reference
     Firebase rootRef;
 

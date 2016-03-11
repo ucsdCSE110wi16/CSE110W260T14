@@ -113,7 +113,7 @@ public class edit_user_profile_info extends AppCompatActivity {
     }
 
     public void onCancelButtonClick(View v){
-        startActivity(new Intent(edit_user_profile_info.this, MainActivity.class));
+        startActivity(new Intent(edit_user_profile_info.this, main_menu.class));
     }
 
     public void populateFields(AuthData authData){
@@ -149,108 +149,6 @@ public class edit_user_profile_info extends AppCompatActivity {
             }
         });
     }
-
-//    public void selectPicture() {
-//        final CharSequence[] options = { "Take Photo", "Choose from Gallery", "Cancel" };
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
-//        builder.setTitle("Add Photo!");
-//        builder.setItems(options, new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int item) {
-//                if (options[item].equals("Choose from Gallery")) {
-//                    choosePhoto();
-//                } else if (options[item].equals("Take Photo")) {
-//                    takePhoto();
-//                }
-//            }
-//
-//        });
-//
-//        AlertDialog alert11 = builder.create();
-//        alert11.show();
-//    }
-
-    public void takePhoto() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, CROP_IMAGE);
-    }
-
-    public void choosePhoto() {
-        Intent gallery = new Intent();
-        gallery.setType("image/*");
-        gallery.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(gallery, "Select Picture"), CROP_IMAGE);
-    }
-
-    public void onActivityResult(int reqCode, int resCode, Intent data) {
-        if (resCode == RESULT_OK && data != null){
-            if (reqCode == CROP_IMAGE){
-                Uri imageUri = data.getData();
-                try {
-                    Intent cropIntent = new Intent("com.android.camera.action.CROP");
-                    // indicate image type and Uri
-                    cropIntent.setDataAndType(imageUri, "image/*");
-                    // set crop properties
-                    cropIntent.putExtra("crop", "true");
-                    // indicate aspect of desired crop
-                    cropIntent.putExtra("aspectX", 3);
-                    cropIntent.putExtra("aspectY", 4);
-                    // indicate output X and Y
-                    cropIntent.putExtra("outputX", 300);
-                    cropIntent.putExtra("outputY", 300);
-                    // retrieve data on return
-                    cropIntent.putExtra("scaleUpIfNeeded", true);
-
-                    cropIntent.putExtra("return-data", true);
-                    // start the activity - we handle returning in onActivityResult
-                    startActivityForResult(cropIntent, SET_BACKGROUND);
-                }
-                // respond to users whose devices do not support the crop action
-                catch (ActivityNotFoundException anfe) {
-                    // display an error message
-                    String errorMessage = "Whoops - your device doesn't support the crop action!";
-                    Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-
-            }
-            else if (reqCode == SET_BACKGROUND) {
-                uri = data.getData();
-                try {
-                    InputStream inputStream = getContentResolver().openInputStream(uri);
-                    //myDrawable = Drawable.createFromStream(inputStream, uri.toString());
-                    Bitmap bitmap= BitmapFactory.decodeStream(inputStream );
-                    viewImage.setImageBitmap(bitmap);
-                } catch (IOException e) {}
-            }
-        }
-        else if (resCode == RESULT_CANCELED) {
-            Toast.makeText(this, "Picture was not taken", Toast.LENGTH_SHORT).show();
-        }
-    }
-    /*
-    //Compresses an image to a smaller size
-    Bitmap compressImage (Bitmap bmp)
-    {
-        //Get dimensions of original image
-        width = bmp.getWidth();
-        height = bmp.getHeight();
-
-        //Get new scale dimensions
-        matrix = new Matrix();
-        scaleWidth = ((float) newWidth) / width;
-        scaleHeight = ((float) newHeight) / height;
-        matrix.postScale(scaleWidth, scaleHeight);
-        matrix.postRotate(45);
-
-        //Write new outputstream containing the compressed image
-        Bitmap finalBmp = Bitmap.createBitmap(originalImage, 0, 0, width, height, matrix, true);
-        outputStream = new ByteArrayOutputStream();
-        finalBmp.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-
-        return finalBmp;
-    }*/
 
 }
 
