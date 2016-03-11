@@ -102,7 +102,7 @@ public class edit_user_study_times extends AppCompatActivity {
         resultsListView.setAdapter(adapter);
     }
 
-    private void clickOnListItem(int position) {
-        resultsListView.performItemClick(resultsListView, position, resultsListView.getItemIdAtPosition(position));
-    }
+//    textView.setOnClickListener(View V);
+//        resultsListView.performItemClick(resultsListView, position, resultsListView.getItemIdAtPosition(position));
+//    }
 }

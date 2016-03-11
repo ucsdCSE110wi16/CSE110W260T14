@@ -21,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:id="@+id/login_imgUCSDLogo"
-            android:background="@drawable/logo_ucsd"
-            android:layout_marginTop="10dp" />
+            android:background="@drawable/logo_ucsd"/>
+            <!--android:layout_marginTop="10dp" />-->
 
         <ImageView
             android:layout_width="198dp"
