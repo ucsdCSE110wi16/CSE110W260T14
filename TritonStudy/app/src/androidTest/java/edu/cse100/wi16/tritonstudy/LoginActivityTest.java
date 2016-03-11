@@ -16,6 +16,16 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
+/*
+----- Scenario: -------
+Given that my account "a@a.com" with password "a" is valid and has been stored in the database,
+1) When I enter my email ("a@a.com") and my password ("a") to the corresponding text areas
+   And I click the Sign In button,
+   Then I'm taken to the Main Activity, which has a greeting with my name ("Antelope") on it.
+
+*/
+
+
 @RunWith (AndroidJUnit4.class)
 
 public class LoginActivityTest {
@@ -29,7 +39,7 @@ public class LoginActivityTest {
 
     @Before
     public void initValidUser() {
-        // Specify a valid username and password
+        // Specify a valid username "a@a.com" and password "a"
         valUser = "a@a.com";
         valPassw = "a";
     }
@@ -38,12 +48,14 @@ public class LoginActivityTest {
     @Test
     public void changeGreetings_inMainActivity() {
 
-        // Type in a valid user name and its valid password
+        // Type in a valid user name "a@a.com" and its valid password "a"
         onView(withId(R.id.login_etEmail)).perform(typeText(valUser), closeSoftKeyboard());
         onView(withId(R.id.login_etPassword)).perform(typeText(valPassw), closeSoftKeyboard());
+
+        // Click the Sign In button
         onView(withId(R.id.login_btnSignIn)).perform(click());
 
-        // Check that the greetings in the MainActivity has the user's name
+        // Check that the greetings in the MainActivity has the user's name ("Antelope")
         onView(withId(R.id.main_greeting)).check(matches(withText("Hello, Antelope")));
     }
 
