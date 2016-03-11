@@ -47,17 +47,10 @@ public class main_menu extends AppCompatActivity {
         });
     }
 
-    // returns the firebase authentication of user.
-    public AuthData getAuth(){
-        AuthData authData = rootRef.getAuth();
-
-            return authData;
-    }
-
     public void main(){
 
 
-        Firebase userRef = rootRef.child("users/" + getAuth().getUid());
+        Firebase userRef = rootRef.child("users/" + rootRef.getAuth().getUid());
         Log.d("DEBUG", "value of userRef = "+userRef.toString());
 
         Log.d("DEBUG", "Get user student object from firebase");
