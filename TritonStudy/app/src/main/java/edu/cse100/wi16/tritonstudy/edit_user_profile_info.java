@@ -1,7 +1,5 @@
 package edu.cse100.wi16.tritonstudy;
 
-
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,9 +21,6 @@ public class edit_user_profile_info extends AppCompatActivity {
     Student myStudent; // logged in users student object
 
     // TODO: Change bio text orientation, should be top left
-
-//    private final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

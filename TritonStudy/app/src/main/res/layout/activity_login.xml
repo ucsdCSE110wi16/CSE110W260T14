@@ -101,7 +101,7 @@
                 <Button
                     android:layout_width="192dp"
                     android:layout_height="40dp"
-                    android:text="@string/buttonNewUser"
+                    android:text="Create New User"
                     android:id="@+id/login_btnNewUser"
                     android:layout_row="1"
                     android:layout_column="1"

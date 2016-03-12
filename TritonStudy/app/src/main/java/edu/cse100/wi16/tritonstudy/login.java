@@ -93,6 +93,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
                 Log.d("DEBUG", "user is not authenticated, display toast");
+                Log.d("DEBUG", "firebase error = "+firebaseError);
                 // TODO: change toast text to something better
                 Toast.makeText(login.this, "Unable to login, check fields", Toast.LENGTH_LONG).show();
 

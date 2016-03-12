@@ -28,26 +28,17 @@ import java.util.Map;
 
 public class create_user_add_studytime extends FragmentActivity {
 
-    // TODO: Make sure that study times match class in student object
-    // TODO: implement logic for logged in user
     // TODO: Add title and label to page, "Please choose time you will study..."
 
     //Variables for activity elements
-    private TextView tvDisplayDate;
     private TextView tvTimeStart;
     private TextView tvTimeEnd;
-    //private Spinner dropdown;
 
-    private int yearInt;
-    private int monthInt;
-//    private int day;
     private int hourStartInt;
     private int hourEndInt;
     private int minuteStartInt;
     private int minuteEndInt;
 
-    private String yearString;
-    private String monthString;
     private String hourStartString;
     private String hourEndString;
     private String minuteStartString = "";
@@ -58,25 +49,32 @@ public class create_user_add_studytime extends FragmentActivity {
     String course;
     String dayName;
 
-
-    static final int DATE_DIALOG_ID       =  999;
     static final int TIME_START_DIALOG_ID = 1000;
     static final int TIME_END_DIALOG_ID   = 1001;
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
-            Firebase.setAndroidContext(this);
 
             Log.d("Debug", "create_user_add_studytime()");
+
+        super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
+
+        getCurrentTime();
+        setContentView(R.layout.activity_create_user_add_studytime);
+        setSpinners();
+
+    }
+
+
+
+    protected void getCurrentTime(){
 
         Log.d("Debug", "get current time");
         //Get current date, current time, and default end time (1 hour from current time,
         //if current time is > 23:00 [11pm] then end time is 23:59)
         final Calendar c = Calendar.getInstance();
-//        yearInt = c.get(Calendar.YEAR);
-//        monthInt = c.get(Calendar.MONTH);
-//        day = c.get(Calendar.DAY_OF_MONTH);
 
         hourStartInt = c.get(Calendar.HOUR_OF_DAY);
         minuteStartInt = c.get(Calendar.MINUTE);
@@ -91,11 +89,6 @@ public class create_user_add_studytime extends FragmentActivity {
             hourEndInt= hourStartInt + 1;
             minuteEndInt= minuteStartInt;
         }
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_user_add_studytime);
-
-        setSpinners();
 
     }
 
@@ -152,7 +145,7 @@ public class create_user_add_studytime extends FragmentActivity {
             minuteStartString = "0";
         }
         minuteStartString = minuteStartString.concat(Integer.toString(minuteStartInt));
-        Log.d("DEBUG", "The value of minuteStartString = "+ minuteStartString);
+        Log.d("DEBUG", "The value of minuteStartString = " + minuteStartString);
 
         Log.d("DEBUG", "convert end time");
 
@@ -164,7 +157,7 @@ public class create_user_add_studytime extends FragmentActivity {
             minuteEndString = "0";
         }
         minuteEndString = minuteEndString.concat(Integer.toString(minuteEndInt));
-        Log.d("DEBUG", "The value of minuteEndString = "+ minuteEndString);
+        Log.d("DEBUG", "The value of minuteEndString = " + minuteEndString);
     }
 
 
@@ -197,9 +190,9 @@ public class create_user_add_studytime extends FragmentActivity {
         Log.d("DEBUG", "password = " + student.getPassword());
 
         Log.d("DEBUG", "set location of firebase root");
-        final Firebase rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
-        rootRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+
+        main_menu.rootRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
 
@@ -209,7 +202,7 @@ public class create_user_add_studytime extends FragmentActivity {
                 String uid = result.get("uid").toString();
 
                 Log.d("DEBUG", "save student object to firebase");
-                rootRef.child("users").child(uid).setValue(student);
+                main_menu.rootRef.child("users").child(uid).setValue(student);
 
                 Toast.makeText(create_user_add_studytime.this, "Account created for " + student.getName(),
                         Toast.LENGTH_LONG).show();
@@ -231,10 +224,6 @@ public class create_user_add_studytime extends FragmentActivity {
             }
         });
     };
-
-    public void dateDialog(View v) {
-        showDialog(DATE_DIALOG_ID);
-    }
 
     public void timeStartDialog(View v) {
         showDialog(TIME_START_DIALOG_ID);
@@ -281,31 +270,6 @@ public class create_user_add_studytime extends FragmentActivity {
             return "0" + String.valueOf(c);
     }
 
-//    //===================================
-//    //= Dialog Fragment for date picker =
-//    //===================================
-//    private DatePickerDialog.OnDateSetListener datePickerListener
-//            = new DatePickerDialog.OnDateSetListener() {
-//
-//        // when dialog box is closed, below method will be called.
-//        public void onDateSet(DatePicker view, int selectedYear,
-//                              int selectedMonth, int selectedDay) {
-//
-//            tvDisplayDate = (TextView) findViewById(R.id.textDate);
-//
-//            year = selectedYear;
-//            month = selectedMonth;
-//            day = selectedDay;
-//
-//            // set selected date into textview
-//            String dateString = Integer.toString(month+1) + "-" + Integer.toString(day) + "-" + Integer.toString(year);
-//            tvDisplayDate.setText(dateString);
-//
-//            // set selected date into datepicker also
-//            //dpResult.init(year, month, day, null);
-//
-//        }
-//    };
 
     //================================================
     //= Dialog Fragment for Time Picker - Start time =
@@ -358,6 +322,4 @@ public class create_user_add_studytime extends FragmentActivity {
                             .append(":").append(pad(minuteEndInt)));
                 }
             };
-
-
 }

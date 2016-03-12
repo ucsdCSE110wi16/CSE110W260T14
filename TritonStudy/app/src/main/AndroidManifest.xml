@@ -61,15 +61,6 @@
             android:name=".create_user_choose_classes"
             android:label="@string/title_activity_create_user_classes" />
 
-        <!-- Create new user: Confirm Classes Activity -->
-        <activity
-            android:name=".CreateUserClassesConfirmActivity"
-            android:label="@string/title_activity_create_user_classes_confirm" />
-
-        <!-- Create new user: Verify Account Activity -->
-        <activity
-            android:name=".CreateUserVerify"
-            android:label="@string/title_activity_create_user_verify" />
         <activity android:name=".EditEmailPassword" />
         <activity android:name=".search" />
         <activity android:name=".create_user_profile_info" />

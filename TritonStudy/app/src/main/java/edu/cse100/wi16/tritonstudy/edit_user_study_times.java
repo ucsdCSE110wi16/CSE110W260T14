@@ -92,15 +92,15 @@ public class edit_user_study_times extends AppCompatActivity {
         Log.d("Debug", "Attach the adapter to a ListView");
         resultsListView  = (ListView) findViewById(R.id.edit_user_study_time_lvStudyTimes);
         resultsListView.setAdapter(studytimeAdapter);
-        highlightListItem(1); // this simple function call does the trick
+//        highlightListItem(1); // this simple function call does the trick
     }
 
-    private void highlightListItem(int position) {
-        adapter_edit_study_times adapter = (adapter_edit_study_times) resultsListView.getAdapter();
-        adapter.setSelectedItem(position);
-        // in some cases, it may be necessary to re-set adapter (as in the line below)
-        resultsListView.setAdapter(adapter);
-    }
+//    private void highlightListItem(int position) {
+//        adapter_edit_study_times adapter = (adapter_edit_study_times) resultsListView.getAdapter();
+//        adapter.setSelectedItem(position);
+//        // in some cases, it may be necessary to re-set adapter (as in the line below)
+//        resultsListView.setAdapter(adapter);
+//    }
 
 //    textView.setOnClickListener(View V);
 //        resultsListView.performItemClick(resultsListView, position, resultsListView.getItemIdAtPosition(position));
