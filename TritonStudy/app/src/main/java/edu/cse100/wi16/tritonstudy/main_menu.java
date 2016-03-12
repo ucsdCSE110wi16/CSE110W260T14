@@ -76,7 +76,7 @@ public class main_menu extends AppCompatActivity {
 
     public void onSearchButtonClick(View button) {
         Log.d("DEBUG", "onSearchButtonClick(), send to search screen");
-        startActivity(new Intent(main_menu.this, search.class));
+        startActivity(new Intent(main_menu.this, Search.class));
     }
 
     public void onProfileButtonClick(View v) {

@@ -17,7 +17,7 @@ import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class search extends AppCompatActivity {
+public class Search extends AppCompatActivity {
 
     // TODO: implement Radio buttons
     // TODO: account for case of no matches
@@ -43,7 +43,7 @@ public class search extends AppCompatActivity {
 
                 } else {
                     Log.d("DEBUG", "user is not logged in, return to login");
-                    startActivity(new Intent(search.this, login.class));
+                    startActivity(new Intent(Search.this, login.class));
                 }
             }
         });
@@ -128,7 +128,7 @@ public class search extends AppCompatActivity {
 
     public void onBackButtonClick(View v){
         Log.d("DEBUG", "onBackButtonClick()");
-        startActivity(new Intent(search.this, main_menu.class));
+        startActivity(new Intent(Search.this, main_menu.class));
     }
 
     public void displayResults(ArrayList<Student> searchResults, String classToFind){
