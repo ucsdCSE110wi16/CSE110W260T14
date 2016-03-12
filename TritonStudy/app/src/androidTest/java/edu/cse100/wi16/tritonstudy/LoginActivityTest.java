@@ -19,9 +19,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 /*
 ----- Scenario: -------
 Given that my account "a@a.com" with password "a" is valid and has been stored in the database,
-1) When I enter my email ("a@a.com") and my password ("a") to the corresponding text areas
+When I enter my email ("a@a.com") and my password ("a") to the corresponding text areas
    And I click the Sign In button,
-   Then I'm taken to the Main Activity, which has a greeting with my name ("Antelope") on it.
+Then I'm taken to the Main Activity, which has a greeting with my name ("Antelope") on it.
 
 */
 

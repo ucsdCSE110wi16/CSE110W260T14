@@ -40,11 +40,11 @@ public class CreateUserProfileTest {
     private String myBio;
 
     @Rule
-    public ActivityTestRule<login> loginActivityRule = new ActivityTestRule<>(login.class);
+    public ActivityTestRule<login> createUserRule = new ActivityTestRule<>(login.class);
 
     @Before
     public void initValidUser() {
-        // Specify a valid username "a@a.com" and password "a"]
+        // Specify a user info that the account will be created under
         myName = "Felicia Gunawan";
         myEmail = "fel@gmail.com";
         myPassword = "fel";
