@@ -217,7 +217,7 @@
             android:layout_height="35dp"
             android:text="Back"
             android:id="@+id/edit_user_study_time_btnBack"
-            android:layout_marginRight="160dp"
+            android:layout_marginRight="140dp"
             android:background="#ff8700"
             android:onClick="onBackButtonClick"
             android:textColor="#ffffff" />
