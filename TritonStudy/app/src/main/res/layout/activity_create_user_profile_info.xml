@@ -161,7 +161,7 @@
             android:layout_width="95dp"
             android:layout_height="50dp"
             android:text="Next"
-            android:id="@+id/create_user_btnSaveChanges"
+            android:id="@+id/create_user_btnNext"
             android:background="#58ce46"
             android:textColor="#ffffff"
             android:layout_gravity="center"

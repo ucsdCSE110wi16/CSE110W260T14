@@ -97,7 +97,7 @@ public class create_user_add_studytime extends FragmentActivity {
         Log.d("DEBUG", "setSpinner()");
 
         Log.d("DEBUG", "set day spinner");
-        Spinner spDays = (Spinner) findViewById(R.id.add_studyTime_spDays);
+        Spinner spDays = (Spinner) findViewById(R.id.create_user_add_studyTime_spDays);
         ArrayAdapter<String> adDays = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item, login.dayNameArray);
         spDays.setAdapter(adDays);
@@ -132,7 +132,7 @@ public class create_user_add_studytime extends FragmentActivity {
         Log.d("DEBUG", "The values of course is " + course);
 
         Log.d("DEBUG", "Get values of day");
-        Spinner spDayName = (Spinner) findViewById(R.id.add_studyTime_spDays);
+        Spinner spDayName = (Spinner) findViewById(R.id.create_user_add_studyTime_spDays);
         dayName = (spDayName.getSelectedItem().toString());
         Log.d("DEBUG", "The values of day is " + dayName);
 

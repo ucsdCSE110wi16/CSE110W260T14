@@ -25,7 +25,6 @@ public class adapter_edit_study_times extends ArrayAdapter<StudyTime> {
     public adapter_edit_study_times(Context context, ArrayList<StudyTime> passedUserStudyTimes) {
         super(context, 0, passedUserStudyTimes);
         Log.d("DEBUG", "adapter_edit_study_times()");
-
     }
 
     @Override

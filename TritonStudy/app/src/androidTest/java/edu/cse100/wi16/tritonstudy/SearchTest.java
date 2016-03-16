@@ -37,7 +37,7 @@ public class SearchTest {
     private String res1_Phone;
 
     @Rule
-    public ActivityTestRule<search> searchActivityRule = new ActivityTestRule<>(search.class);
+    public ActivityTestRule<Search> searchActivityRule = new ActivityTestRule<>(Search.class);
 
 
     @Before
@@ -53,12 +53,6 @@ public class SearchTest {
 
     @Test
     public void changeGreetings_inMainActivity() {
-
-        // Click/activate the radio button "Search by Course"
-        onView(withId(R.id.search_radioCourse)).perform(click());
-
-        // Check if the radio button "Search by Course" is checked
-        onView(withId(R.id.search_radioCourse)).check(matches(isChecked()));
 
         // Select a course ("CSE 3") from the spinner
         onView(withId(R.id.search_spCourse)).perform(click());

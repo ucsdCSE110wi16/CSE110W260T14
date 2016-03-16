@@ -2,19 +2,31 @@ package edu.cse100.wi16.tritonstudy;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.widget.TimePicker;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
+import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.isDialog;
+import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
+import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.allOf;
 
 @RunWith (AndroidJUnit4.class)
 
@@ -46,7 +58,7 @@ public class CreateUserProfileTest {
     public void initValidUser() {
         // Specify a user info that the account will be created under
         myName = "Felicia Gunawan";
-        myEmail = "fel@gmail.com";
+        myEmail = "fel@ucsd.edu";
         myPassword = "fel";
         myPhone = "432-123-4567";
         myBio = "I'm a Bioinformatics student.";
@@ -57,6 +69,7 @@ public class CreateUserProfileTest {
     @Test
     public void changeGreetings_inMainActivity() {
 
+        main_menu.rootRef.unauth();
         /* Scenario Part 1: */
 
         // Click New user button
@@ -79,11 +92,12 @@ public class CreateUserProfileTest {
         onView(withId(R.id.create_user_etName)).check(matches(withText(myName)));
 
         /* Scenario Part 3: */
+
         // Enter phone number, bio, password, and password confirmation
         onView(withId(R.id.create_user_etPhone)).perform(typeText(myPhone), closeSoftKeyboard());
         onView(withId(R.id.create_user_etBio)).perform(typeText(myBio), closeSoftKeyboard());
         onView(withId(R.id.create_user_etPassword)).perform(typeText(myPassword), closeSoftKeyboard());
-        onView(withId(R.id.create_user_etPasswordx2)).perform(typeText(myPassword), closeSoftKeyboard());
+        onView(withId(R.id.create_user_etPasswordConfirm)).perform(typeText(myPassword), closeSoftKeyboard());
 
         // Click Next button
         onView(withId(R.id.create_user_btnNext)).perform(click());
@@ -92,6 +106,39 @@ public class CreateUserProfileTest {
         // by checking if there is a text "Choose your enrolled courses:" (on the top)
         onView(withId(R.id.choose_classes_tvTitle)).check(matches(withText("Choose your enrolled courses:")));
 
+        // Choose CSE 3 for first class
+        onView(withId(R.id.choose_classes_spClass1)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("CSE 3"))).perform(click());
+
+        // Choose CSE 7 for second class
+        onView(withId(R.id.choose_classes_spClass2)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("CSE 7"))).perform(click());
+
+        // Choose CSE 8A for third class
+        onView(withId(R.id.choose_classes_spClass3)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("CSE 8A"))).perform(click());
+
+        // Choose CSE 8B for fourth class
+        onView(withId(R.id.choose_classes_spClass4)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("CSE 8B"))).perform(click());
+
+        // Click Next button
+        onView(withId(R.id.create_user_choose_classes_btnNext)).perform(click());
+
+        // Choose Day
+        onView(withId(R.id.create_user_add_studyTime_spDays)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("Wednesday")))
+                .perform(click());
+
+        onView(withId(R.id.add_studyTime_tvDisplayStartTime)).perform(click());
+//        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(R.id.add_studyTime_spCourse)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("CSE 12"))).perform(click());
+
+
     }
+
+
 
 }

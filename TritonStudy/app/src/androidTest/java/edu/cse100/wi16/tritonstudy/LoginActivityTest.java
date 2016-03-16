@@ -44,9 +44,10 @@ public class LoginActivityTest {
         valPassw = "a";
     }
 
-
     @Test
     public void changeGreetings_inMainActivity() {
+
+        main_menu.rootRef.unauth();
 
         // Type in a valid user name "a@a.com" and its valid password "a"
         onView(withId(R.id.login_etEmail)).perform(typeText(valUser), closeSoftKeyboard());
