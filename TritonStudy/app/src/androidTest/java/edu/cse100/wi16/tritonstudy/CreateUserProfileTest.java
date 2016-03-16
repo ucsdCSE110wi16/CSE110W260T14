@@ -131,10 +131,11 @@ public class CreateUserProfileTest {
                 .perform(click());
 
         onView(withId(R.id.add_studyTime_tvDisplayStartTime)).perform(click());
-//        onView(withId(android.R.id.button1)).perform(click());
+        onView(withText("OK")).perform(click());
 
         onView(withId(R.id.add_studyTime_spCourse)).perform(click());
-        onData(allOf(is(instanceOf(String.class)), is("CSE 12"))).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("CSE 8B"))).perform(click());
+
 
 
     }
