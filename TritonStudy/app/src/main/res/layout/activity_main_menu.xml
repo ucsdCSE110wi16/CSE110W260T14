@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2b92b9">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/main_greeting"
+            android:layout_row="0"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_column="0"
+            android:textColor="#ffffff" />
+
+        <ImageView
+            android:layout_width="340dp"
+            android:layout_height="227dp"
+            android:id="@+id/imageView2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:background="@drawable/geisel" />
+
+        <GridLayout
+            android:layout_width="254dp"
+            android:layout_height="162dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="112dp"
+                android:layout_height="64dp"
+                android:text="@string/buttonProfile"
+                android:id="@+id/buttonProfile"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:textColor="#ffffff"
+                android:background="#ff8700"
+                android:onClick="onProfileButtonClick"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="right" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="112dp"
+                android:layout_height="64dp"
+                android:text="@string/buttonSearch"
+                android:id="@+id/buttonSearch"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:textColor="#ffffff"
+                android:background="#ff8700"
+                android:onClick="onSearchButtonClick"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="right" />
+
+        </GridLayout>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:id="@+id/main_btnLogOut"
+            android:layout_row="0"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_column="0"
+            android:textColor="#ffffff"
+            android:background="#ff8700"
+            android:onClick="onLogOutButtonClick"
+            android:layout_marginTop="15dp" />
+    </LinearLayout>
+</LinearLayout>

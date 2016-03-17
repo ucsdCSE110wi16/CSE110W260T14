@@ -17,9 +17,6 @@ import com.firebase.client.ValueEventListener;
 
 public class login extends AppCompatActivity {
 
-
-    // TODO: setup forgot password button
-
     // firebase database reference
     Firebase rootRef;
 
@@ -47,35 +44,28 @@ public class login extends AppCompatActivity {
             "ERC: North America Hall", "I-House: Asante House", "I-House: Cuzco House", "I-House: Kathmandu House", "ERC: Commuter Lounge",
             "Sixth: College Lodge", "Sixth: Dogg House", "Sixth: Commuter Center", "Sixth: Digital Playroom", "Warren: The Courtroom", "Warren: JK Wood Lounge",
             "Warren: Harlan Res Hall Lounges", "Warren: Frankfurt Res Hall Lounges", "Warren: Stewart Res Hall Lounges", "Warren: CSE Study Lounge"};
+
     static final String[] dayNameArray = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.d("DEBUG", "login class reached");
+        Log.d("DEBUG", "login()");
 
         Firebase.setAndroidContext(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // firebase database reference
-        rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        rootRef= new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
-
-
-        Log.d("DEBUG", "check for firebase authentication");
-        rootRef.addAuthStateListener(new Firebase.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(AuthData authData) {
-                if (authData != null) {
-                    Log.d("DEBUG", "user is logged in, go to main screen");
-                    startActivity(new Intent(login.this, MainActivity.class));
-                } else {
-                    Log.d("DEBUG", "user is not logged in");
-                }
+        AuthData authData = rootRef.getAuth();
+            if (authData !=null ) {
+                Log.d("DEBUG", "user is logged in, go to main screen");
+                startActivity(new Intent(login.this, main_menu.class));
             }
-        });
-
+            else{
+                Log.d("DEBUG", "user is not logged in");
+            }
     }
 
     public void onNewUserButtonClick(View v){
@@ -84,7 +74,7 @@ public class login extends AppCompatActivity {
     }
 
     public void onSignInButtonClick(View v){
-        Log.d("DEBUG", "login button pressed");
+        Log.d("DEBUG", "onSignInButtonClick()");
 
         Log.d("DEBUG", "get values of login fields");
         EditText etEmail = (EditText) findViewById(R.id.login_etEmail);
@@ -97,12 +87,13 @@ public class login extends AppCompatActivity {
             @Override
             public void onAuthenticated(final AuthData authData) {
                 Log.d("DEBUG", "user is authenticated, send to main screen");
-                startActivity(new Intent(login.this, MainActivity.class));
+                startActivity(new Intent(login.this, main_menu.class));
             }
 
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
                 Log.d("DEBUG", "user is not authenticated, display toast");
+                Log.d("DEBUG", "firebase error = "+firebaseError);
                 // TODO: change toast text to something better
                 Toast.makeText(login.this, "Unable to login, check fields", Toast.LENGTH_LONG).show();
 

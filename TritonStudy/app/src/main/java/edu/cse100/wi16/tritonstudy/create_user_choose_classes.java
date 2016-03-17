@@ -20,7 +20,6 @@ import java.util.Map;
 public class create_user_choose_classes extends AppCompatActivity {
     Student student;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,9 +62,6 @@ public class create_user_choose_classes extends AppCompatActivity {
     }
 
     private void getSpinnerValues(){
-
-        // TODO: require class1 to be chosen, toast if not chosen
-        // TODO: do not save any classes that are equal to "choose course"
 
         Log.d("DEBUG", "Get values of spinners");
 

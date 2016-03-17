@@ -1,145 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.cse100.wi16.tritonstudy.ProfileActivity"
     android:background="#2b92b9">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
-
-        <!--<ImageView-->
-            <!--android:layout_width="128dp"-->
-            <!--android:layout_height="128dp"-->
-            <!--android:id="@+id/profilePicture"-->
-            <!--android:layout_row="0"-->
-            <!--android:layout_column="0"-->
-            <!--android:background="@drawable/profile_anon"-->
-            <!--android:longClickable="true" />-->
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="210dp"
-            android:layout_height="200dp"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_rowSpan="2">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Name"
-                android:paddingTop="15dp"
-                android:id="@+id/edit_user_profile_info_tvName"
-                android:textColor="#ffffff" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/edit_user_profile_info_etName"
-                android:layout_gravity="center_horizontal"
-                android:textColor="#ffffff"
-                android:background="#016691"
-                android:singleLine="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Email"
-                android:paddingTop="15dp"
-                android:id="@+id/edit_user_profile_info_tvEmail"
-                android:textColor="#ffffff" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/edit_user_profile_info_etEmail"
-                android:textColor="#ffffff"
-                android:background="#016691"
-                android:singleLine="true" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Phone Number:"
-                android:paddingTop="15dp"
-                android:id="@+id/edit_user_profile_info_tvPhone"
-                android:textColor="#ffffff" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/edit_user_profile_info_etPhone"
-                android:textColor="#ffffff"
-                android:background="#016691"
-                android:singleLine="true" />
-        </LinearLayout>
-
-        <!--<Button-->
-            <!--style="?android:attr/buttonStyleSmall"-->
-            <!--android:layout_width="104dp"-->
-            <!--android:layout_height="64dp"-->
-            <!--android:text="Change Picture"-->
-            <!--android:id="@+id/edit_user_profile_info_btnChangePicture"-->
-            <!--android:layout_row="1"-->
-            <!--android:layout_column="0"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:background="#ff8700"-->
-            <!--android:textColor="#ffffff" />-->
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="350dp"
-            android:layout_height="123dp"
-            android:layout_row="2"
-            android:layout_column="0"
-            android:layout_columnSpan="2">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Bio:"
-                android:id="@+id/edit_user_profile_info_tvBio"
-                android:textColor="#ffffff" />
-
-            <EditText
-                android:layout_width="300dp"
-                android:layout_height="100dp"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/edit_user_profile_info_etBio"
-                android:background="#016691"
-                android:singleLine="false"
-                android:layout_gravity="center"
-                android:textColor="#ffffff" />
-        </LinearLayout>
-
-        <GridLayout
-            android:layout_width="321dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="0"
-            android:layout_columnSpan="3"
-            android:layout_gravity="center_horizontal">
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Name"
+            android:paddingTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/edit_user_profile_info_tvName"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/edit_user_profile_info_etName"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ffffff"
+            android:background="#016691"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Email"
+            android:paddingTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="5dp"
+            android:id="@+id/edit_user_profile_info_tvEmail"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:id="@+id/edit_user_profile_info_etEmail"
+            android:textColor="#ffffff"
+            android:background="#016691"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Phone Number:"
+            android:paddingLeft="20dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="15dp"
+            android:id="@+id/edit_user_profile_info_tvPhone"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/edit_user_profile_info_etPhone"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            android:background="#016691"
+        android:singleLine="true" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Bio:"
+            android:id="@+id/edit_user_profile_info_tvBio"
+            android:textColor="#ffffff" />
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/edit_user_profile_info_etBio"
+            android:background="#016691"
+            android:singleLine="false"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textAlignment="gravity"
+            android:gravity="left|top" />
+
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -147,71 +115,61 @@
                 android:layout_height="50dp"
                 android:text="Edit Study Times"
                 android:id="@+id/edit_user_profile_info_btnEditStudyTimes"
-                android:layout_row="0"
-                android:layout_column="0"
                 android:background="#ff8700"
                 android:textColor="#ffffff"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="125dp"
                 android:onClick="onEditStudyTimesButtonClick"
-                android:layout_gravity="center"
-                android:layout_margin="8dp" />
+
+                 />
 
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:text="Edit Courses"
+                android:layout_width="95dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="Edit \n Courses"
                 android:id="@+id/edit_user_profile_info_btnEditCourses"
-                android:layout_row="0"
-                android:layout_column="2"
-                android:layout_gravity="center"
                 android:background="#ff8700"
                 android:textColor="#ffffff"
                 android:onClick="onEditCoursesButtonClick"
-                android:layout_margin="8dp" />
+                />
 
-            <!--<Button-->
-                <!--style="?android:attr/buttonStyleSmall"-->
-                <!--android:layout_width="80dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="Edit Email/Password"-->
-                <!--android:id="@+id/edit_user_profile_info_btnEditEmailPassword"-->
-                <!--android:layout_row="0"-->
-                <!--android:layout_column="2"-->
-                <!--android:background="#ff8700"-->
-                <!--android:textColor="#ffffff"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_margin="8dp" />-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="104dp"
-                android:layout_height="32dp"
+                android:layout_width="75dp"
+                android:layout_height="50dp"
                 android:text="Cancel"
                 android:id="@+id/edit_user_profile_info_btnCancel"
-                android:layout_row="1"
-                android:layout_column="0"
                 android:background="#b4100a"
                 android:textColor="#ffffff"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="120dp"
                 android:onClick="onCancelButtonClick"
-                android:layout_margin="8dp" />
+                 />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
-                android:layout_width="104dp"
-                android:layout_height="32dp"
+                android:layout_width="95dp"
+                android:layout_height="50dp"
                 android:text="Save \n Changes"
                 android:id="@+id/edit_user_profile_info_btnSaveChanges"
-                android:layout_row="1"
-                android:layout_column="2"
                 android:background="#58ce46"
                 android:textColor="#ffffff"
-                android:layout_gravity="left"
+                android:layout_gravity="center"
                 android:onClick="onSaveButtonClick"
                 android:layout_margin="8dp" />
 
-        </GridLayout>
-    </GridLayout>
-
-</RelativeLayout>
+        </LinearLayout>
+</LinearLayout>

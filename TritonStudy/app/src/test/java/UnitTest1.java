@@ -3,9 +3,7 @@
  */
 package edu.cse100.wi16.tritonstudy;
 import org.junit.Test;
-
 import java.util.ArrayList;
-
 import static org.junit.Assert.*;
 
 
@@ -14,44 +12,30 @@ public class UnitTest1 {
     /**
      * To work on unit tests, switch the Test Artifact in the Build Variants view.
      */
-    //Search search_obj = new Search();
-   // StudyTime time_obj =  new StudyTime("Monday","5pm", "6pm", "20",
-     //       "40", "Geisel", "CSE110");
 
-
+    Student student_obj = new Student();
 
     @Test
-    public void addStudyTimes_isCorrect() throws Exception {
+    public void student_obj_tests() throws Exception {
+
+        //testing some setters in the Student class
+        student_obj.setName("Khoi");
+        assertEquals("Khoi", student_obj.getName());
+
+        student_obj.setName("NotKhoi");
+        assertNotEquals("Khoi", student_obj.getName());
+
+        student_obj.setClass1("TDAC102") ;
+        assertEquals("TDAC102", student_obj.getClass1());
+
+        student_obj.setBio("I like to go fishing") ;
+        assertEquals("I like to go fishing", student_obj.getBio());
+
+        student_obj.setPhoneNumber("7142608903") ;
+        assertEquals("7142608903", student_obj.getPhoneNumber());
 
 
-        search_obj.addStudyTimes(
-
-
-                assertEquals(4, 2 + 2);
     }
 
-    private ArrayList<StudyTime> studyTimes = new ArrayList<StudyTime>();
-    public ArrayList<StudyTime> getStudyTimes(){
-        return this.studyTimes;
-    }
-
-    public void addStudyTimes(StudyTime studyTime){
-        this.studyTimes.add(studyTime);
-    }
-
-    public ArrayList<StudyTime> findStudyTimes(String courseToFind) {
-
-        ArrayList<StudyTime> courseStudyTimes = new ArrayList<StudyTime>();
-
-        for (StudyTime studytime : studyTimes) {
-
-            if (studytime.getCourse().equals(courseToFind)) {
-
-                courseStudyTimes.add(studytime);
-            }
-        }
-
-        return courseStudyTimes;
-    }
 
 }

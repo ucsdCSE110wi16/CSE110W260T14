@@ -192,15 +192,6 @@ public class edit_user_add_study_time extends FragmentActivity {
         startActivity(new Intent(edit_user_add_study_time.this, edit_user_study_times.class));
     }
 
-//    // convert int to string to avoid formatting issues
-//    // solves 10:00 appearing as 10:0, or 10:02 as 10:2
-//    public void convertTimesToString(){
-//
-//        Log.d("DEBUG", "convertTimesToString()");
-//
-//
-//    }
-
     public void onAddStudyTimesButtonClick(View v){
 
         Log.d("DEBUG", "onSubmitButtonClick()");

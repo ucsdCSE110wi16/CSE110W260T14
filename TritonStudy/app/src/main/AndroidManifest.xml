@@ -30,16 +30,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Main Screen Activity -->
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
 
-        <!-- View Profile Activity -->
-        <activity
-            android:name=".ProfileActivityStatic"
-            android:label="@string/title_activity_profile" />
 
         <!-- Edit Profile Screen Activity -->
         <activity
@@ -61,21 +52,12 @@
             android:name=".create_user_choose_classes"
             android:label="@string/title_activity_create_user_classes" />
 
-        <!-- Create new user: Confirm Classes Activity -->
-        <activity
-            android:name=".CreateUserClassesConfirmActivity"
-            android:label="@string/title_activity_create_user_classes_confirm" />
-
-        <!-- Create new user: Verify Account Activity -->
-        <activity
-            android:name=".CreateUserVerify"
-            android:label="@string/title_activity_create_user_verify" />
-        <activity android:name=".EditEmailPassword" />
-        <activity android:name=".search" />
+        <activity android:name=".Search" />
         <activity android:name=".create_user_profile_info" />
         <activity android:name=".edit_user_courses" />
         <activity android:name=".edit_user_study_times" />
-        <activity android:name=".edit_user_add_study_time"></activity>
+        <activity android:name=".edit_user_add_study_time" />
+        <activity android:name=".main_menu"></activity>
     </application>
 
 </manifest>

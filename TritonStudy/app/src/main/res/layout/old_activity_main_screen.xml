@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,9 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="edu.cse100.wi16.tritonstudy.MainActivity"
-    tools:showIn="@layout/app_bar_main"
+    tools:context="edu.cse100.wi16.tritonstudy.main_screen"
     android:background="#2b92b9">
 
     <LinearLayout
@@ -52,6 +49,7 @@
                 android:layout_column="0"
                 android:textColor="#ffffff"
                 android:background="#ff8700"
+                android:onClick="onProfileButtonClick"
                 android:layout_marginTop="50dp"
                 android:layout_gravity="right" />
 
@@ -78,10 +76,11 @@
             android:text="Log Out"
             android:id="@+id/main_btnLogOut"
             android:layout_row="0"
+            android:layout_marginLeft="20dp"
             android:layout_column="0"
             android:textColor="#ffffff"
             android:background="#ff8700"
             android:onClick="onLogOutButtonClick"
             android:layout_marginTop="15dp" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

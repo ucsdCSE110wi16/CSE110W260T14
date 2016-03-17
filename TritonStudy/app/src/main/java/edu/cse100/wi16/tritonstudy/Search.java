@@ -126,6 +126,11 @@ public class Search extends AppCompatActivity {
         });
     }
 
+    public void onBackButtonClick(View v){
+        Log.d("DEBUG", "onBackButtonClick()");
+        startActivity(new Intent(Search.this, main_menu.class));
+    }
+
     public void displayResults(ArrayList<Student> searchResults, String classToFind){
 
         Log.d("Debug", "Create adapter to convert the array to views");
