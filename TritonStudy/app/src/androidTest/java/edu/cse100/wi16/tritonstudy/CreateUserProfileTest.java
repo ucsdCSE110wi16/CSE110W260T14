@@ -57,11 +57,11 @@ public class CreateUserProfileTest {
     @Before
     public void initValidUser() {
         // Specify a user info that the account will be created under
-        myName = "Felicia Gunawan";
-        myEmail = "fel@ucsd.edu";
-        myPassword = "fel";
-        myPhone = "432-123-4567";
-        myBio = "I'm a Bioinformatics student.";
+        myName = "Zaphod Beeblebrox";
+        myEmail = "Zaphod@ucsd.edu";
+        myPassword = "ILoveZaphod";
+        myPhone = "555-5555";
+        myBio = "Ex-Galactic President; confidence trickster; etc";
 
     }
 
@@ -151,6 +151,14 @@ public class CreateUserProfileTest {
 
         // Click Next button
         onView(withId(R.id.add_studyTime_btnSubmit)).perform(click());
+
+        //Sleep for 10 seconds
+        //This is to give the app time to render the next activity fully
+        try {
+            Thread.sleep(10000);                 //in milliseconds
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
 
     }
 }

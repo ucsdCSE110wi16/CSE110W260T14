@@ -56,7 +56,7 @@ public class login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        rootRef= new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
+        rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
         AuthData authData = rootRef.getAuth();
             if (authData !=null ) {
@@ -79,8 +79,8 @@ public class login extends AppCompatActivity {
         Log.d("DEBUG", "get values of login fields");
         EditText etEmail = (EditText) findViewById(R.id.login_etEmail);
         EditText etPassword = (EditText) findViewById(R.id.login_etPassword);
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
+        final String email = etEmail.getText().toString();
+        final String password = etPassword.getText().toString();
 
         Log.d("DEBUG", "authenticte user");
         rootRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
@@ -94,6 +94,8 @@ public class login extends AppCompatActivity {
             public void onAuthenticationError(FirebaseError firebaseError) {
                 Log.d("DEBUG", "user is not authenticated, display toast");
                 Log.d("DEBUG", "firebase error = "+firebaseError);
+                Log.d("DEBUG", "Email = "+ email);
+                Log.d("DEBUG", "Password = "+ password);
                 // TODO: change toast text to something better
                 Toast.makeText(login.this, "Unable to login, check fields", Toast.LENGTH_LONG).show();
 
