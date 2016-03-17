@@ -125,21 +125,32 @@ public class CreateUserProfileTest {
         // Click Next button
         onView(withId(R.id.create_user_choose_classes_btnNext)).perform(click());
 
+        /*********************************************
+
+             activity_edit_user_add_study_time.xml
+
+         ********************************************/
+
         // Choose Day
         onView(withId(R.id.create_user_add_studyTime_spDays)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Wednesday")))
                 .perform(click());
 
+        //Close the TimePicker dialog box
         onView(withId(R.id.add_studyTime_tvDisplayStartTime)).perform(click());
         onView(withText("OK")).perform(click());
 
+        // Choose CSE 8B for course
         onView(withId(R.id.add_studyTime_spCourse)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("CSE 8B"))).perform(click());
 
+        // Choose Location
+        onView(withId(R.id.add_studyTime_spLocation)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("Geisel Library")))
+                .perform(click());
 
+        // Click Next button
+        onView(withId(R.id.add_studyTime_btnSubmit)).perform(click());
 
     }
-
-
-
 }

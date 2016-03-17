@@ -52,14 +52,16 @@ public class SearchTest {
 
 
     @Test
-    public void changeGreetings_inMainActivity() {
+    public void doSearch_Test() {
+
+        main_menu.rootRef.unauth();
+
+        // Check if the selected course ("CSE 3") is displayed on the spinner
+        onView(withId(R.id.search_tvCourse)).check(matches(withSpinnerText(containsString("Search by Course:"))));
 
         // Select a course ("CSE 3") from the spinner
         onView(withId(R.id.search_spCourse)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is(selectedClass))).perform(click());
-
-        // Check if the selected course ("CSE 3") is displayed on the spinner
-        onView(withId(R.id.search_spCourse)).check(matches(withSpinnerText(containsString(selectedClass))));
 
         // Click the Search button
         onView(withId(R.id.search_btnSearch)).perform(click());

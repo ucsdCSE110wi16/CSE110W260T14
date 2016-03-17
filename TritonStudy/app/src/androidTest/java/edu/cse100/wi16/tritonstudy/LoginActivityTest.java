@@ -56,8 +56,24 @@ public class LoginActivityTest {
         // Click the Sign In button
         onView(withId(R.id.login_btnSignIn)).perform(click());
 
+        //Sleep for 3 seconds
+        //This is to give the app time to render the next activity fully
+        try {
+            Thread.sleep(3000);                 //in milliseconds
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+
         // Check that the greetings in the MainActivity has the user's name ("Antelope")
         onView(withId(R.id.main_greeting)).check(matches(withText("Hello, Antelope")));
+
+        //Sleep for 3 seconds
+        //This is to give the app time to render the next activity fully
+        try {
+            Thread.sleep(3000);                 //in milliseconds
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
     }
 
 }
