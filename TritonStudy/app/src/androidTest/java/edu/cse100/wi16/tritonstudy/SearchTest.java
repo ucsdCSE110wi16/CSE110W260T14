@@ -69,7 +69,13 @@ public class SearchTest {
                 .atPosition(0)
                 .check(matches(isDisplayed()));
 
-
+        //Sleep for 10 seconds
+        //This is to give the app time to render the next activity fully
+        try {
+            Thread.sleep(10000);                 //in milliseconds
+        } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
 
     }
 

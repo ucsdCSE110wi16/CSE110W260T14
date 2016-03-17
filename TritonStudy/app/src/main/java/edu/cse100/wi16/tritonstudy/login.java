@@ -58,6 +58,8 @@ public class login extends AppCompatActivity {
 
         rootRef = new Firebase("https://sweltering-inferno-5625.firebaseio.com/");
 
+        main_menu.rootRef.unauth();
+
         AuthData authData = rootRef.getAuth();
             if (authData !=null ) {
                 Log.d("DEBUG", "user is logged in, go to main screen");

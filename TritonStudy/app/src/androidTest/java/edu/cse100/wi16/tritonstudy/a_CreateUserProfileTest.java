@@ -43,7 +43,7 @@ And I do not have an account on StudyBuddy,
    Then I'm taken to the Create User Classes Screen/Activity.
 */
 
-public class CreateUserProfileTest {
+public class a_CreateUserProfileTest {
 
     private String myName;
     private String myEmail;
@@ -57,11 +57,18 @@ public class CreateUserProfileTest {
     @Before
     public void initValidUser() {
         // Specify a user info that the account will be created under
-        myName = "Zaphod Beeblebrox";
-        myEmail = "Zaphod@ucsd.edu";
-        myPassword = "ILoveZaphod";
+//        myName = "Zaphod Beeblebrox";
+//        myEmail = "Zzz@ucsd.edu";
+//        myPassword = "ILoveZaphod";
+//        myPhone = "555-5555";
+//        myBio = "Ex-Galactic President; confidence trickster; etc";
+
+
+        myName = "John Doe";
+        myEmail = "doe@ucsd.edu";
+        myPassword = "doe";
         myPhone = "555-5555";
-        myBio = "Ex-Galactic President; confidence trickster; etc";
+        myBio = "ucsd student";
 
     }
 
