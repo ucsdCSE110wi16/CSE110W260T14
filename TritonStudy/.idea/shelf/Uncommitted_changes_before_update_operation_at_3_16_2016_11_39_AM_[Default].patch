@@ -1,0 +1,32 @@
+Index: app/src/androidTest/java/edu/cse100/wi16/tritonstudy/SearchTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/androidTest/java/edu/cse100/wi16/tritonstudy/SearchTest.java	(revision dc853f1698b71d9a13e8fc4f2279c0783190f2c6)
++++ app/src/androidTest/java/edu/cse100/wi16/tritonstudy/SearchTest.java	(revision )
+@@ -37,7 +37,7 @@
+     private String res1_Phone;
+ 
+     @Rule
+-    public ActivityTestRule<search> searchActivityRule = new ActivityTestRule<>(search.class);
++    public ActivityTestRule<Search> searchActivityRule = new ActivityTestRule<>(Search.class);
+ 
+ 
+     @Before
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision dc853f1698b71d9a13e8fc4f2279c0783190f2c6)
++++ app/src/main/AndroidManifest.xml	(revision )
+@@ -62,7 +62,7 @@
+             android:label="@string/title_activity_create_user_classes" />
+ 
+         <activity android:name=".EditEmailPassword" />
+-        <activity android:name=".search" />
++        <activity android:name=".Search" />
+         <activity android:name=".create_user_profile_info" />
+         <activity android:name=".edit_user_courses" />
+         <activity android:name=".edit_user_study_times" />

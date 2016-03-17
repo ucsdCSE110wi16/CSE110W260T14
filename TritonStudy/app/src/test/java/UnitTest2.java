@@ -1,4 +1,3 @@
-//Unit test
 /**
  * Created by Khoi on 3/10/2016.
  */
